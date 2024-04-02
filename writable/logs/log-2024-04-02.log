@@ -108,3 +108,53 @@ CRITICAL - 2024-04-02 12:19:14 --> Undefined index: foto_siswa
 #8 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #9 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
 #10 {main}
+ERROR - 2024-04-02 14:19:18 --> Table 'db_siakad.tbl_databases' doesn't exist
+CRITICAL - 2024-04-02 14:19:18 --> Table 'db_siakad.tbl_databases' doesn't exist
+#0 C:\xampp\htdocs\siakad\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT COUNT(*)...')
+#1 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\xampp\htdocs\siakad\system\Database\BaseBuilder.php(1512): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\xampp\htdocs\siakad\app\Models\ModelKelas.php(258): CodeIgniter\Database\BaseBuilder->countAllResults()
+#5 C:\xampp\htdocs\siakad\app\Controllers\Kelas.php(43): App\Models\ModelKelas->jumlah_anak()
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Kelas->index()
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kelas))
+#8 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-04-02 14:19:32 --> Table 'db_siakad.tbl_id_ta' doesn't exist
+CRITICAL - 2024-04-02 14:19:32 --> Table 'db_siakad.tbl_id_ta' doesn't exist
+#0 C:\xampp\htdocs\siakad\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT COUNT(*)...')
+#1 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\xampp\htdocs\siakad\system\Database\BaseBuilder.php(1512): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\xampp\htdocs\siakad\app\Models\ModelKelas.php(258): CodeIgniter\Database\BaseBuilder->countAllResults()
+#5 C:\xampp\htdocs\siakad\app\Controllers\Kelas.php(43): App\Models\ModelKelas->jumlah_anak()
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Kelas->index()
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kelas))
+#8 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-04-02 14:19:48 --> Column 'id_kelas' in where clause is ambiguous
+CRITICAL - 2024-04-02 14:19:48 --> Column 'id_kelas' in where clause is ambiguous
+#0 C:\xampp\htdocs\siakad\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT COUNT(*)...')
+#1 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\xampp\htdocs\siakad\system\Database\BaseBuilder.php(1512): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\xampp\htdocs\siakad\app\Models\ModelKelas.php(258): CodeIgniter\Database\BaseBuilder->countAllResults()
+#5 C:\xampp\htdocs\siakad\app\Controllers\Kelas.php(43): App\Models\ModelKelas->jumlah_anak()
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Kelas->index()
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kelas))
+#8 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2024-04-02 14:25:22 --> Too few arguments to function App\Models\ModelKelas::detail(), 0 passed in C:\xampp\htdocs\siakad\app\Controllers\Kelas.php on line 34 and exactly 1 expected
+#0 C:\xampp\htdocs\siakad\app\Controllers\Kelas.php(34): App\Models\ModelKelas->detail()
+#1 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Kelas->index()
+#2 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kelas))
+#3 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}

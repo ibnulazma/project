@@ -65,6 +65,7 @@ class Guru extends BaseController
                 'nama_guru' => $this->request->getPost('nama_guru'),
                 'niy'     => $this->request->getPost('niy'),
                 'password'  => $this->request->getPost('password'),
+                'walas'  => $this->request->getPost('walas'),
 
             );
 

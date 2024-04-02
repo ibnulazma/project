@@ -38,9 +38,6 @@ class ModelKelas extends Model
             ->getResultArray();
     }
 
-
-
-
     public function add($data)
     {
         $this->db->table('tbl_kelas')
@@ -249,8 +246,18 @@ class ModelKelas extends Model
             ->get()->getRowArray();
     }
 
+public function jumlah_anak() 
 
+    {
+        return $this->db->table('tbl_database')
+            ->join('tbl_siswa', 'tbl_siswa.nisn = tbl_database.nisn')
+            // ->join('tbl_kelas', 'tbl_kelas.id_kelas = tbl_database.id_kelas')
+            // ->join('tbl_ta', 'tbl_ta.id_ta = tbl_database.id_ta')
+            // ->where('tbl_database.id_kelas')
+            // ->where('tbl_ta.status', '1')
 
+            ->countAllResults();
+    }
 
 
     // public function group_tahun()

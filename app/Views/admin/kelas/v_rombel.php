@@ -63,7 +63,7 @@ $ta = $db->table('tbl_ta')
                                         <td class="text-center"><?= $no++ ?></td>
                                         <td class="text-center"><?= $value['kelas'] ?></td>
                                         <td class="text-center"><?= $value['nama_guru'] ?></td>
-                                        <td class="text-center"><a href="<?= base_url('kelas/rincian_kelas/' . $value['id_kelas']) ?>" class=" text-pink">Jumlah PD</td>
+                                        <td class="text-center"><a href="<?= base_url('kelas/rincian_kelas/' . $value['id_kelas']) ?>" class=" text-pink"><?=$jumlah_anak?>   Jumlah PD</td>
                                         <td class="text-center"><?= $value['tingkat'] ?></td>
 
                                         <td class="text-center">
