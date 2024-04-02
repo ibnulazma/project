@@ -1,0 +1,110 @@
+ERROR - 2024-04-02 12:09:28 --> Table 'db_siakad.tbl_tinggal' doesn't exist
+CRITICAL - 2024-04-02 12:09:28 --> Table 'db_siakad.tbl_tinggal' doesn't exist
+#0 C:\xampp\htdocs\siakad\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\siakad\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\siakad\app\Models\ModelTinggal.php(13): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\siakad\app\Controllers\Peserta.php(146): App\Models\ModelTinggal->AllData()
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Peserta->detail_siswa('1244')
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Peserta))
+#8 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-04-02 12:10:50 --> Table 'db_siakad.tbl_transportasi' doesn't exist
+CRITICAL - 2024-04-02 12:10:50 --> Table 'db_siakad.tbl_transportasi' doesn't exist
+#0 C:\xampp\htdocs\siakad\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\siakad\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\siakad\app\Models\ModelTransportasi.php(13): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\siakad\app\Controllers\Peserta.php(147): App\Models\ModelTransportasi->AllData()
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Peserta->detail_siswa('1244')
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Peserta))
+#8 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-04-02 12:11:38 --> Table 'db_siakad.tbl_pekerjaan' doesn't exist
+CRITICAL - 2024-04-02 12:11:38 --> Table 'db_siakad.tbl_pekerjaan' doesn't exist
+#0 C:\xampp\htdocs\siakad\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\siakad\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\siakad\app\Models\ModelPekerjaan.php(13): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\siakad\app\Controllers\Peserta.php(148): App\Models\ModelPekerjaan->AllData()
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Peserta->detail_siswa('1244')
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Peserta))
+#8 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-04-02 12:12:23 --> Table 'db_siakad.tbl_pekerjaan' doesn't exist
+CRITICAL - 2024-04-02 12:12:23 --> Table 'db_siakad.tbl_pekerjaan' doesn't exist
+#0 C:\xampp\htdocs\siakad\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\siakad\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\siakad\app\Models\ModelPekerjaan.php(13): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\siakad\app\Controllers\Peserta.php(148): App\Models\ModelPekerjaan->AllData()
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Peserta->detail_siswa('1244')
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Peserta))
+#8 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-04-02 12:16:19 --> Table 'db_siakad.tbl_pendidikan' doesn't exist
+CRITICAL - 2024-04-02 12:16:19 --> Table 'db_siakad.tbl_pendidikan' doesn't exist
+#0 C:\xampp\htdocs\siakad\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\siakad\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\siakad\app\Models\ModelPendidikan.php(13): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\siakad\app\Controllers\Peserta.php(149): App\Models\ModelPendidikan->AllData()
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Peserta->detail_siswa('1244')
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Peserta))
+#8 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-04-02 12:16:42 --> Table 'db_siakad.tbl_pendidikan' doesn't exist
+CRITICAL - 2024-04-02 12:16:42 --> Table 'db_siakad.tbl_pendidikan' doesn't exist
+#0 C:\xampp\htdocs\siakad\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\siakad\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\siakad\app\Models\ModelPendidikan.php(13): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\siakad\app\Controllers\Peserta.php(149): App\Models\ModelPendidikan->AllData()
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Peserta->detail_siswa('1244')
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Peserta))
+#8 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-04-02 12:18:44 --> Table 'db_siakad.tbl_penghasilan' doesn't exist
+CRITICAL - 2024-04-02 12:18:44 --> Table 'db_siakad.tbl_penghasilan' doesn't exist
+#0 C:\xampp\htdocs\siakad\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\siakad\system\Database\BaseBuilder.php(1428): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\siakad\app\Models\ModelPenghasilan.php(13): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\siakad\app\Controllers\Peserta.php(150): App\Models\ModelPenghasilan->AllData()
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Peserta->detail_siswa('1244')
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Peserta))
+#8 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2024-04-02 12:19:14 --> Undefined index: foto_siswa
+#0 C:\xampp\htdocs\siakad\app\Views\admin\peserta\v_detail_siswa.php(63): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 63, Array)
+#1 C:\xampp\htdocs\siakad\system\View\View.php(214): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\siakad\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\siakad\system\Common.php(1092): CodeIgniter\View\View->render('admin/peserta/v...', Array, true)
+#4 C:\xampp\htdocs\siakad\app\Controllers\Peserta.php(155): view('admin/peserta/v...', Array)
+#5 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Peserta->detail_siswa('1244')
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Peserta))
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
