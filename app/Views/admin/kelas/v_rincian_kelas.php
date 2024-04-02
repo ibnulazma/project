@@ -25,6 +25,7 @@ $ta = $db->table('tbl_ta')
                     <div class="col-lg-7">
                         <h3>Data Siswa Kelas <?= $kelas['kelas'] ?></h3>
                         <h5>Wali Kelas : <b><?= $kelas['nama_guru'] ?></h5>
+                        <h5>Jumlah Siswa : <?=$jml_siswa?></h5>
                         <p class="text-muted">Tahun Pelajaran <b>Aktif</b> <?= $ta['ta'] ?> Semester <b> <?= $ta['semester'] ?></b></p>
                     </div>
                     <div class="col-lg-4 float-right">
@@ -98,10 +99,6 @@ $ta = $db->table('tbl_ta')
 
 
 
-
-<div class="col-md-12">
-
-</div>
 
 
 <!-- ModalTambah -->

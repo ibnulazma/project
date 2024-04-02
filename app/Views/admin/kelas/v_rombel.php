@@ -12,9 +12,6 @@ $ta = $db->table('tbl_ta')
 
 ?>
 
-
-
-
 <div class="content-header">
     <div class="container-fluid mt-4">
         <div class="card">
@@ -24,7 +21,7 @@ $ta = $db->table('tbl_ta')
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-7">
-                        <h3>Daftar Rombongan Kelas</h3>
+                        <h3>Daftar Rombongan Belajar</h3>
                         <p class="text-muted">Tahun Pelajaran <b>Aktif</b> <?= $ta['ta'] ?> Semester <b> <?= $ta['semester'] ?></b></p>
                     </div>
                     <div class="col-lg-4">
@@ -54,24 +51,24 @@ $ta = $db->table('tbl_ta')
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php
 
-                            $no=1;
-                                foreach ($grupkelas->getResult() as $row) {  
-                                                                        
-                                    $kls = $row->kelas;
-                                    $walas = $row->nama_guru;
-                                    $jumlah = $row->jumlah;
+                                <?php
+                                $no = 1;
+                                foreach ($kelas as $key => $value) {
                                 ?>
                                     <tr>
-                                        <td><?=$no++;?></td>
-                                        <td><?= $kls ?> </td>
-                                        <td><?= $walas ?> </td>
-                                         <td> <strong><?= $jumlah ?></strong> </td>
-                                        <td><a href="" class="btn btn-danger" data-toggle="modal" data-target="#edit<?=$kelas['id_kelas']?>"><i class="fas fa-pencil-alt"></i></a></td>
-                                </tr>
+                                        <td class="text-center"><?= $no++ ?></td>
+                                        <td class="text-center"><?= $value['kelas'] ?></td>
+                                        <td class="text-center"><?= $value['nama_guru'] ?></td>
+                                        <td class="text-center"><a href="<?= base_url('kelas/rincian_kelas/' . $value['id_kelas']) ?>" class=" text-primary">Lihat Detail</td>
+                                        <td class="text-center"><?= $value['tingkat'] ?></td>
+
+                                        <td class="text-center">
+                                            <a href="<?= base_url('kelas/delete/' . $value['id_kelas']) ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                                            <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit<?= $value['id_kelas'] ?>"><i class="fas fa-pencil"></i></button>
+                                        </td>
+                                    </tr>
                                 <?php } ?>
-                                
                             </tbody>
                         </table>
                     </div>
@@ -81,32 +78,9 @@ $ta = $db->table('tbl_ta')
     </div>
 </div>
 
-<table>
-  <thead>
-        <tr>
-            <th>Nama</th>
-            <th>Kelas</th>
-            <th>Jumlah Siswa</th>
-            <th>Jumlah SiswaAksi</th>
-        </tr>
-    </thead>
-    <tbody>
-    <tbody>
-                   
-                
-    </tbody>
-</table>
 
 
 
-
-
-
-
-
-<div class="col-md-12">
-
-</div>
 
 
 

@@ -40,7 +40,7 @@ class Kelas extends BaseController
             'kelas'         => $this->ModelKelas->AllData(),
             'guru'          => $this->ModelGuru->walikelas(),
             'tingkat'       => $this->ModelKelas->Tingkat(),
-            'jumlah_anak'   => $this->ModelKelas->jumlah_anak(),
+            
             'grupkelas'        => $this->ModelKelas->kelas_grup(),
 
         ];
@@ -97,7 +97,7 @@ class Kelas extends BaseController
             'jml_siswa'     => $this->ModelKelas->jml_siswa($id_kelas),
             'datasiswa'     => $this->ModelKelas->datasiswa($id_kelas),
             'tidakpunya'    => $this->ModelKelas->siswablmpuna(),
-
+            
 
             // 'tingkat'       => $this->ModelKelas->SiswaTingkat(),
         ];

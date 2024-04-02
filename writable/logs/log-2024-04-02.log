@@ -373,3 +373,106 @@ CRITICAL - 2024-04-02 22:38:05 --> Undefined index: id_kelas
 #8 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #9 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
 #10 {main}
+CRITICAL - 2024-04-02 22:40:29 --> Undefined index: id_kelas
+#0 C:\xampp\htdocs\siakad\app\Views\admin\kelas\v_rombel.php(71): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 71, Array)
+#1 C:\xampp\htdocs\siakad\system\View\View.php(214): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\siakad\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\siakad\system\Common.php(1092): CodeIgniter\View\View->render('admin/kelas/v_r...', Array, true)
+#4 C:\xampp\htdocs\siakad\app\Controllers\Kelas.php(47): view('admin/kelas/v_r...', Array)
+#5 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Kelas->index()
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kelas))
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+ERROR - 2024-04-02 22:48:29 --> Not unique table/alias: 'tbl_siswa'
+CRITICAL - 2024-04-02 22:48:29 --> Not unique table/alias: 'tbl_siswa'
+#0 C:\xampp\htdocs\siakad\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT COUNT(*)...')
+#1 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\xampp\htdocs\siakad\system\Database\BaseBuilder.php(1512): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\xampp\htdocs\siakad\app\Models\ModelKelas.php(142): CodeIgniter\Database\BaseBuilder->countAllResults()
+#5 C:\xampp\htdocs\siakad\app\Controllers\Kelas.php(97): App\Models\ModelKelas->jml_siswa('1')
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Kelas->rincian_kelas('1')
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kelas))
+#8 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2024-04-02 22:48:44 --> Not unique table/alias: 'tbl_siswa'
+CRITICAL - 2024-04-02 22:48:44 --> Not unique table/alias: 'tbl_siswa'
+#0 C:\xampp\htdocs\siakad\system\Database\MySQLi\Connection.php(280): mysqli->query('SELECT COUNT(*)...')
+#1 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(663): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\xampp\htdocs\siakad\system\Database\BaseConnection.php(591): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\xampp\htdocs\siakad\system\Database\BaseBuilder.php(1512): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\xampp\htdocs\siakad\app\Models\ModelKelas.php(142): CodeIgniter\Database\BaseBuilder->countAllResults()
+#5 C:\xampp\htdocs\siakad\app\Controllers\Kelas.php(97): App\Models\ModelKelas->jml_siswa('1')
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Kelas->rincian_kelas('1')
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kelas))
+#8 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2024-04-02 23:26:43 --> Trying to access array offset on value of type null
+#0 C:\xampp\htdocs\siakad\app\Views\admin\nilai\rapot.php(173): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to acces...', 'C:\\xampp\\htdocs...', 173, Array)
+#1 C:\xampp\htdocs\siakad\system\View\View.php(214): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\siakad\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\siakad\system\Common.php(1092): CodeIgniter\View\View->render('admin/nilai/rap...', Array, true)
+#4 C:\xampp\htdocs\siakad\app\Controllers\Nilai.php(216): view('admin/nilai/rap...', Array)
+#5 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Nilai->printrapot('1234')
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Nilai))
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-04-02 23:30:12 --> Undefined variable: ta
+#0 C:\xampp\htdocs\siakad\app\Views\admin\surat\mutasi.php(13): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 13, Array)
+#1 C:\xampp\htdocs\siakad\system\View\View.php(214): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\siakad\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\siakad\system\Common.php(1092): CodeIgniter\View\View->render('admin/surat/mut...', Array, true)
+#4 C:\xampp\htdocs\siakad\app\Controllers\Surat.php(43): view('admin/surat/mut...', Array)
+#5 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Surat->mutasi()
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Surat))
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-04-02 23:37:45 --> Undefined variable: ta
+#0 C:\xampp\htdocs\siakad\app\Views\admin\surat\terima.php(16): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 16, Array)
+#1 C:\xampp\htdocs\siakad\system\View\View.php(214): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\siakad\system\View\View.php(217): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\siakad\system\Common.php(1092): CodeIgniter\View\View->render('admin/surat/ter...', Array, true)
+#4 C:\xampp\htdocs\siakad\app\Controllers\Surat.php(29): view('admin/surat/ter...', Array)
+#5 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Surat->index()
+#6 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Surat))
+#7 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-04-02 23:43:41 --> unlink(foto_user/photo1.jpg): No such file or directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(foto_use...', 'C:\\xampp\\htdocs...', 132, Array)
+#1 C:\xampp\htdocs\siakad\app\Controllers\User.php(132): unlink('foto_user/photo...')
+#2 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\User->edit('1')
+#3 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#4 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#7 {main}
+CRITICAL - 2024-04-02 23:44:28 --> unlink(foto_user/photo1.jpg): No such file or directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(foto_use...', 'C:\\xampp\\htdocs...', 132, Array)
+#1 C:\xampp\htdocs\siakad\app\Controllers\User.php(132): unlink('foto_user/photo...')
+#2 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\User->edit('1')
+#3 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#4 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#7 {main}
+CRITICAL - 2024-04-02 23:45:03 --> unlink(foto_user/photo1.jpg): No such file or directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(foto_use...', 'C:\\xampp\\htdocs...', 132, Array)
+#1 C:\xampp\htdocs\siakad\app\Controllers\User.php(132): unlink('foto_user/photo...')
+#2 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\User->edit('1')
+#3 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#4 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#7 {main}

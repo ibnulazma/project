@@ -1,16 +1,34 @@
 <?= $this->extend('template/template-backend') ?>
 <?= $this->section('content') ?>
 
+<?php
+$db     = \Config\Database::connect();
 
+$ta = $db->table('tbl_ta')
+    ->where('status', '1')
+    ->get()->getRowArray();
 
+?>
 
-<div class="row">
-
-
-    <div class="col-md-8">
-        <div class="card text-center">
+<div class="content-header">
+    <div class="container-fluid mt-4">
+        <div class="card">
             <div class="card-body">
-                <table class="table">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <h3><?= $subtitle ?></h3>
+                        <p class="text-muted">Tahun Pelajaran <b>Aktif</b> <?= $ta['ta'] ?> Semester <b> <?= $ta['semester'] ?></b></p>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="input-group-append float-right">
+                            <div class="tombol text-center">
+                                <button class="btn btn-circle" data-toggle="modal" data-target="#tambah"> <i class="fa-solid fa-circle-plus fa-3x" style="color: #74C0FC;"></i></button>
+                                <p style="color:#74C0FC">Tambah</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>No</th>
