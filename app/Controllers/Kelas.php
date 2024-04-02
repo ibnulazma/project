@@ -41,6 +41,7 @@ class Kelas extends BaseController
             'guru'          => $this->ModelGuru->walikelas(),
             'tingkat'       => $this->ModelKelas->Tingkat(),
             'jumlah_anak'   => $this->ModelKelas->jumlah_anak(),
+            'grupkelas'        => $this->ModelKelas->kelas_grup(),
 
         ];
         return view('admin/kelas/v_rombel', $data);

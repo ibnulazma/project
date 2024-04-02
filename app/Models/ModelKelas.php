@@ -219,7 +219,9 @@ class ModelKelas extends Model
         $builder->join('tbl_siswa', 'tbl_siswa.nisn = tbl_database.nisn', 'left');
         $builder->join('tbl_ta', 'tbl_ta.id_ta = tbl_database.id_ta', 'left');
         $builder->join('tbl_kelas', 'tbl_kelas.id_kelas = tbl_database.id_kelas', 'left');
+        $builder->join('tbl_guru', 'tbl_guru.id_guru = tbl_kelas.id_guru', 'left');
         $builder->select('kelas, COUNT("kelas") AS jumlah');
+        $builder->select('nama_guru');
         // $bulider->count('jenis_kelamin ,'L') as JUMLAH_L
         // $builder->select('jenis_kelamin, COUNT("L") AS L');
         // $builder->select('jenis_kelamin, COUNT("jenis_kelamin") AS jkP');

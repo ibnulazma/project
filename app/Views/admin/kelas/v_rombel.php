@@ -54,24 +54,24 @@ $ta = $db->table('tbl_ta')
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php
 
-                                <?php
-                                $no = 1;
-                                foreach ($kelas as $key => $value) {
+                            $no=1;
+                                foreach ($grupkelas->getResult() as $row) {  
+                                                                        
+                                    $kls = $row->kelas;
+                                    $walas = $row->nama_guru;
+                                    $jumlah = $row->jumlah;
                                 ?>
                                     <tr>
-                                        <td class="text-center"><?= $no++ ?></td>
-                                        <td class="text-center"><?= $value['kelas'] ?></td>
-                                        <td class="text-center"><?= $value['nama_guru'] ?></td>
-                                        <td class="text-center"><a href="<?= base_url('kelas/rincian_kelas/' . $value['id_kelas']) ?>" class=" text-pink"><?=$jumlah_anak?>   Jumlah PD</td>
-                                        <td class="text-center"><?= $value['tingkat'] ?></td>
-
-                                        <td class="text-center">
-                                            <a href="<?= base_url('kelas/delete/' . $value['id_kelas']) ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
-                                            <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit<?= $value['id_kelas'] ?>"><i class="fas fa-pencil"></i></button>
-                                        </td>
-                                    </tr>
+                                        <td><?=$no++;?></td>
+                                        <td><?= $kls ?> </td>
+                                        <td><?= $walas ?> </td>
+                                         <td> <strong><?= $jumlah ?></strong> </td>
+                                        <td><a href="" class="btn btn-danger" data-toggle="modal" data-target="#edit<?=$kelas['id_kelas']?>"><i class="fas fa-pencil-alt"></i></a></td>
+                                </tr>
                                 <?php } ?>
+                                
                             </tbody>
                         </table>
                     </div>
@@ -81,7 +81,21 @@ $ta = $db->table('tbl_ta')
     </div>
 </div>
 
-
+<table>
+  <thead>
+        <tr>
+            <th>Nama</th>
+            <th>Kelas</th>
+            <th>Jumlah Siswa</th>
+            <th>Jumlah SiswaAksi</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tbody>
+                   
+                
+    </tbody>
+</table>
 
 
 
