@@ -6,12 +6,12 @@
 <ul class="navbar-nav ml-auto">
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin') ?>">
-            <i class="fas fa-home fa-2x"></i>
+            <i class="fas fa-home fa-1x"></i>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('absen') ?>">
-            <i class="fas fa-qrcode fa-2x"></i>
+            <i class="fas fa-qrcode fa-1x"></i>
         </a>
     </li>
     <li class="nav-item dropdown">

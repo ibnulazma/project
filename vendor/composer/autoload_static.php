@@ -89,11 +89,16 @@ class ComposerStaticInit0710cf4d92506765ebec5b6cdd098681
             'FontLib\\' => 8,
             'Faker\\' => 6,
         ),
+        'E' => 
+        array (
+            'Endroid\\QrCode\\' => 15,
+        ),
         'D' => 
         array (
             'Dompdf\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
             'DeepCopy\\' => 9,
+            'DASPRiD\\Enum\\' => 13,
         ),
         'C' => 
         array (
@@ -103,6 +108,10 @@ class ComposerStaticInit0710cf4d92506765ebec5b6cdd098681
             'Complex\\' => 8,
             'CodeIgniter\\CodingStandard\\' => 27,
             'CodeIgniter\\' => 12,
+        ),
+        'B' => 
+        array (
+            'BaconQrCode\\' => 12,
         ),
     );
 
@@ -264,6 +273,10 @@ class ComposerStaticInit0710cf4d92506765ebec5b6cdd098681
         array (
             0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
         ),
+        'Endroid\\QrCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/endroid/qr-code/src',
+        ),
         'Dompdf\\' => 
         array (
             0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
@@ -275,6 +288,10 @@ class ComposerStaticInit0710cf4d92506765ebec5b6cdd098681
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'DASPRiD\\Enum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dasprid/enum/src',
         ),
         'Composer\\XdebugHandler\\' => 
         array (
@@ -299,6 +316,10 @@ class ComposerStaticInit0710cf4d92506765ebec5b6cdd098681
         'CodeIgniter\\' => 
         array (
             0 => __DIR__ . '/../..' . '/system',
+        ),
+        'BaconQrCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bacon/bacon-qr-code/src',
         ),
     );
 

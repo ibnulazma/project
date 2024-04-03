@@ -16,7 +16,8 @@
         "phpoffice/phpspreadsheet": "^1.28",
         "ifsnop/mysqldump-php": "^2.12",
         "dompdf/dompdf": "^2.0",
-        "tecnickcom/tcpdf": "^6.6"
+        "tecnickcom/tcpdf": "^6.6",
+        "endroid/qr-code": "^4.6"
     },
     "require-dev": {
         "codeigniter/coding-standard": "^1.1",

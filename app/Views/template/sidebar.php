@@ -207,37 +207,13 @@
 
                     </ul>
                 </li>
-                <li class="nav-item <?= $menu == 'ppdb' ? 'menu-open' : '' ?>">
-                    <a href="#" class="nav-link <?= $menu == 'ppdb' ? 'active' : '' ?>">
-                        <i class="fa-solid fa-table-list nav-icon"></i>
-                        <p>
-                            PPDB
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?= base_url('ppdb') ?>" class="nav-link <?= $submenu == 'ppdb' ? 'active' : '' ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Formulir</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('daftar') ?>" class="nav-link <?= $submenu == 'daftr' ? 'active' : '' ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Daftar Ulang</p>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
 
                 <li class="nav-header">APLIKASI</li>
                 <li class="nav-item <?= $menu == '' ? 'menu-open' : '' ?>">
                     <a href="#" class="nav-link <?= $menu == '' ? 'active' : '' ?>">
                         <i class="nav-icon fa-solid fa-qrcode"></i>
                         <p>
-                            QR Barcode
+                            Presensi
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -245,7 +221,7 @@
                         <li class="nav-item">
                             <a href="" class="nav-link <?= $submenu == '' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Absen Masuk</p>
+                                <p>Generate Qr Barcode</p>
                             </a>
                         </li>
                         <li class="nav-item">
