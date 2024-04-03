@@ -33,7 +33,7 @@ class Admin extends BaseController
 
     public function index()
     {
-
+        session();
         $data = [
             'title'             => 'SIAKADINKA',
             'subtitle'          => 'Dashboard',

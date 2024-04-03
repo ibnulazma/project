@@ -1,12 +1,68 @@
-<div class=" row d-flex justify-content-start p-2 ml-2 mt-3 text-sm">
+<style>
+    .img-edit {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .img-placeholder h4 {
+        margin-top: 40%;
+        color: white;
+    }
+
+    .img-div:hover .img-placeholder {
+        display: block;
+        cursor: pointer;
+    }
+
+    .form-div {
+        margin-top: 100px;
+        border: 1px solid #e0e0e0;
+    }
+
+    /* #profileDisplay {
+        display: block;
+        height: 210px;
+        width: 60%;
+        margin: 0px auto;
+        border-radius: 50%;
+    } */
+
+    /* .img-placeholder {
+        width: 40%;
+        color: white;
+        height: 50%;
+        background: black;
+        opacity: .7;
+        height: 150px;
+        border-radius: 50%;
+        z-index: 2;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: none;
+    } */
+</style>
+
+
+
+
+
+
+
+
+
+<div class=" row d-flex justify-content-start p-2 ml-2 mt-3 ">
     <a href="" class="mr-3">
-        <img src="<?= base_url() ?>/foto/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="width:50px">
+        <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" alt="AdminLTE Logo" class="img-edit  elevation-3">
     </a>
     <div class="nama">
         <h5 class="font-weight-bolder">SIAKAD INKA <br>
 
-            <?php if (session()->get('level') == 'admin') { ?>
+            <?php if (session()->get('level') == '1') { ?>
                 <span style="font-weight: 50;">Administrator</span>
+            <?php  } else if (session()->get('level') == '2') { ?>
+                <span style="font-weight: 50;">Piket</span>
 
             <?php } else if (session()->get('level') == 'ptk') { ?>
                 <span style="font-weight: 50;">PTK</span>
@@ -19,7 +75,8 @@
 <hr>
 <div class="sidebar">
     <nav class="">
-        <?php if (session()->get('level') == 'admin') { ?>
+        <?php if (session()->get('level') == 1) { ?>
+
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">MENU</li>
                 <li class="nav-item">
@@ -46,7 +103,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('setting') ?>" class="nav-link <?= $submenu == 'profil' ? 'active' : '' ?>">
+                            <a href="<?= base_url('setting') ?>" class="nav-link <?= $submenu == 'profile' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Profile Sekolah</p>
                             </a>
@@ -60,17 +117,15 @@
 
                     </ul>
                 </li>
-
                 <li class="nav-item <?= $menu == 'akademik' ? 'menu-open' : '' ?>">
                     <a href="#" class="nav-link <?= $menu == 'akademik' ? 'active' : '' ?>">
-                        <i class="nav-icon fas fa-graduation-cap"></i>
+                        <i class="nav-icon fas fa-cogs"></i>
                         <p>
                             Akademik
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-
                         <li class="nav-item">
                             <a href="<?= base_url('peserta') ?>" class="nav-link <?= $submenu == 'peserta' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
@@ -101,9 +156,9 @@
                                 <p>Jadwal Pelajaran</p>
                             </a>
                         </li>
+
                     </ul>
                 </li>
-
                 <li class="nav-item <?= $menu == 'nilai' ? 'menu-open' : '' ?>">
                     <a href="#" class="nav-link <?= $menu == 'nilai' ? 'active' : '' ?>">
                         <i class="nav-icon fas fa-paper-plane"></i>
@@ -211,7 +266,42 @@
                     </a>
                 </li>
             </ul>
+        <?php } else if (session()->get('level') == 2) { ?>
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-header">MENU</li>
+                <li class="nav-item">
+                    <a href="<?= base_url('admin') ?>" class="nav-link <?= $menu == 'admin' ? 'active' : '' ?>">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                            Dashboard
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item <?= $menu == '' ? 'menu-open' : '' ?>">
+                    <a href="#" class="nav-link <?= $menu == '' ? 'active' : '' ?>">
+                        <i class="nav-icon fa-solid fa-qrcode"></i>
+                        <p>
+                            QR Barcode
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="" class="nav-link <?= $submenu == '' ? 'active' : '' ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Absen Masuk</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('daftar') ?>" class="nav-link <?= $submenu == '' ? 'active' : '' ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Rekap Kehadiran</p>
+                            </a>
+                        </li>
 
+                    </ul>
+                </li>
+            </ul>
         <?php } elseif (session()->get('level') == 'pendidik') { ?>
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">MENU</li>

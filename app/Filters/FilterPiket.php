@@ -6,7 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class FilterAdmin implements FilterInterface
+class FilterPiket implements FilterInterface
 {
     /**
      * Do whatever processing this filter needs to do.
@@ -45,9 +45,7 @@ class FilterAdmin implements FilterInterface
      */
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        if (session()->get('level') == '1') {
-            return redirect()->to(base_url('admin'));
-        } else if (session()->get('level') == '2') {
+        if (session()->get('level') == '2') {
             return redirect()->to(base_url('admin'));
         }
     }

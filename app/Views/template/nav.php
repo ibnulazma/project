@@ -4,19 +4,51 @@
     </li>
 </ul>
 <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin') ?>">
+            <i class="fas fa-home fa-2x"></i>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('absen') ?>">
+            <i class="fas fa-qrcode fa-2x"></i>
+        </a>
+    </li>
     <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-            <img src="<?= base_url() ?>/foto/logo.png" alt="" width="30px">
+            <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" alt="User Avatar" class="img-circle mr-3" style="width:25px;height:25px">
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item">
-                <i class="fas fa-user mr-2"></i> My Profile
+
+                <div class="media">
+                    <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" alt="User Avatar" class="img-circle mr-3" style="width:25px;height:25px">
+                    <div class="media-body">
+                        <h3 class="dropdown-item-title">
+                            <?= session()->get('nama') ?>
+                        </h3>
+                        <?php if (session()->get('level') == 1) { ?>
+                            <p class="text-sm">Administrator</p>
+                        <?php } elseif (session()->get('level') == 2) { ?>
+                            <p class="text-sm">Piket</p>
+                        <?php } ?>
+
+                    </div>
+
+
+
+                </div>
             </a>
-            <div class="dropdown-divider"></div>
-            <a href="<?= base_url('auth/logout') ?>" class="dropdown-item">
-                <i class="fas fa-sign-out mr-2"></i> Logout
-            </a>
+            <p>
+                <a href="#" class="dropdown-item">
+                    <i class="fas fa-user mr-2"></i> My Profile
+                </a>
+            </p>
+            <p>
+                <a href="<?= base_url('auth/logout') ?>" class="dropdown-item">
+                    <i class="fas fa-sign-out mr-2"></i> Logout
+                </a>
+            </p>
         </div>
     </li>
 </ul>

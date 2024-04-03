@@ -6,15 +6,18 @@ use CodeIgniter\Model;
 
 class ModelAuth extends Model
 {
-    public function login($username, $password)
+    public function login($username, $password, $level)
     {
         return $this->db->table('tbl_user')
             ->where([
                 'username' => $username,
                 'password' => $password,
+                'level' => $level,
 
             ])->get()->getRowArray();
     }
+
+
     public function loginsiswa($nisn, $password)
     {
         return $this->db->table('tbl_siswa')

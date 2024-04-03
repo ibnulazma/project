@@ -11,6 +11,7 @@ use CodeIgniter\Filters\SecureHeaders;
 use App\Filters\FilterAdmin;
 use App\Filters\FilterPendidik;
 use App\Filters\FilterPeserta;
+use App\Filters\FilterPiket;
 
 
 class Filters extends BaseConfig
@@ -25,9 +26,10 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'filteradmin'    => FilterAdmin::class,
+        'filteradmin'   => FilterAdmin::class,
         'filterpeserta'    => FilterPeserta::class,
         'filterpendidik'    => FilterPendidik::class,
+        'filterpiket'    => FilterPiket::class,
     ];
 
     /**
@@ -37,6 +39,16 @@ class Filters extends BaseConfig
     public array $globals = [
         'before' => [
             'filteradmin' =>
+            [
+                'except' => [
+                    'auth', 'auth/*',
+                    'home', 'home/*',
+                    'loginsiswa', 'loginsiswa/*',
+                    '/',
+                    // 
+                ]
+            ],
+            'filterpiket' =>
             [
                 'except' => [
                     'auth', 'auth/*',
@@ -73,6 +85,7 @@ class Filters extends BaseConfig
             'filteradmin' =>
             [
                 'except' => [
+
                     'admin', 'admin/*',
                     'guru', 'guru/*',
                     'kelas', 'kelas/*',
@@ -86,6 +99,14 @@ class Filters extends BaseConfig
                     'ppdb', 'ppdb/*',
                     'nilai', 'nilai/*',
                     'datatables', 'datatables/*',
+                    'absen', 'absen/*'
+                ]
+            ],
+            'filterpiket' =>
+            [
+                'except' => [
+
+                    'admin', 'admin/*',
                     'absen', 'absen/*'
                 ]
             ],
