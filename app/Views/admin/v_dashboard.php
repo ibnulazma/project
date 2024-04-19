@@ -32,7 +32,7 @@ $ta = $db->table('tbl_ta')
                             <div class="icon">
                                 <i class="fas fa-user-friends"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?= base_url('peserta') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-6">
@@ -44,7 +44,7 @@ $ta = $db->table('tbl_ta')
                             <div class="icon">
                                 <i class="fas fa-chalkboard-teacher"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?= base_url('guru') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-6">
@@ -56,12 +56,9 @@ $ta = $db->table('tbl_ta')
                             <div class="icon">
                                 <i class="fas fa-building-columns"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="<?= base_url('kelas') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
         </div>

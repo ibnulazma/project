@@ -99,7 +99,7 @@ class Filters extends BaseConfig
                     'ppdb', 'ppdb/*',
                     'nilai', 'nilai/*',
                     'datatables', 'datatables/*',
-                    'absen', 'absen/*'
+                    'presensi', 'presensi/*'
                 ]
             ],
             'filterpiket' =>
@@ -107,7 +107,7 @@ class Filters extends BaseConfig
                 'except' => [
 
                     'admin', 'admin/*',
-                    'absen', 'absen/*'
+                    'presensi', 'presensi/*'
                 ]
             ],
             'filterpeserta' =>

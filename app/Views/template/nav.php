@@ -10,7 +10,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('absen') ?>">
+        <a class="nav-link" href="<?= base_url('presensi') ?>">
             <i class="fas fa-qrcode fa-1x"></i>
         </a>
     </li>
