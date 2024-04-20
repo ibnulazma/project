@@ -15,3 +15,17 @@ CRITICAL - 2024-04-20 07:21:04 --> Trying to access array offset on value of typ
 #13 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #14 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
 #15 {main}
+CRITICAL - 2024-04-20 10:01:59 --> Class 'App\Controllers\Endroid\QrCode\QrCode' not found
+#0 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Presensi->generate_qr()
+#1 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Presensi))
+#2 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2024-04-20 10:04:08 --> Call to undefined method Endroid\QrCode\QrCode::getContentType()
+#0 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Presensi->generate_qr()
+#1 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Presensi))
+#2 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#5 {main}

@@ -211,8 +211,8 @@ $user = $db->table('tbl_user')
                 </li>
 
                 <li class="nav-header">APLIKASI</li>
-                <li class="nav-item <?= $menu == '' ? 'menu-open' : '' ?>">
-                    <a href="#" class="nav-link <?= $menu == '' ? 'active' : '' ?>">
+                <li class="nav-item <?= $menu == 'presensi' ? 'menu-open' : '' ?>">
+                    <a href="#" class="nav-link <?= $menu == 'presensi' ? 'active' : '' ?>">
                         <i class="nav-icon fa-solid fa-qrcode"></i>
                         <p>
                             Presensi
@@ -221,7 +221,7 @@ $user = $db->table('tbl_user')
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link <?= $submenu == '' ? 'active' : '' ?>">
+                            <a href="<?= base_url('presensi/generate') ?>" class="nav-link <?= $submenu == 'generate' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Generate Qr Barcode</p>
                             </a>
