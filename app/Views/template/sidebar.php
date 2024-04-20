@@ -44,10 +44,19 @@
     } */
 </style>
 
+<?php
+$db     = \Config\Database::connect();
+
+$user = $db->table('tbl_user')
+    ->where('id_user')
+    ->get()->getRowArray();
+
+?>
 
 <div class=" row d-flex justify-content-start p-2 ml-2 mt-3 ">
     <a href="" class="mr-3">
-        <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" alt="AdminLTE Logo" class="img-edit  elevation-3">
+
+        <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" class="img-edit  elevation-3">
     </a>
     <div class="nama">
         <h5 class="font-weight-bolder">SIAKAD INKA <br>

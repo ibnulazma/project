@@ -16,13 +16,13 @@
     </li>
     <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-            <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" alt="User Avatar" class="img-circle mr-3" style="width:25px;height:25px">
+            <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" class=" mr-3" style="width:25px;height:25px; border-radius:50%">
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <a href="#" class="dropdown-item">
 
                 <div class="media">
-                    <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" alt="User Avatar" class="img-circle mr-3" style="width:25px;height:25px">
+                    <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" class=" mr-3" style="width:25px;height:25px;border-radius:50%">
                     <div class="media-body">
                         <h3 class="dropdown-item-title">
                             <?= session()->get('nama') ?>

@@ -8,10 +8,13 @@
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/logins/login-5/assets/css/login-5.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
 </head>
 
 <body>
+
+
+
     <section class="p-3 p-md-4 p-xl-5">
         <div class="container">
             <div class="card border-light-subtle shadow-sm">
@@ -43,12 +46,28 @@
                                             <select id="pilihKamera" style="max-width:400px">
                                             </select>
                                         </div> -->
+
+                                        <?php
+
+                                        $errors = session()->getFlashdata('errors');
+                                        ?>
+                                        <?php if (session()->getFlashdata('pesan')) {
+                                            echo '<div class="alert alert-success" role="alert">';
+                                            echo  session()->getFlashdata('pesan');
+                                            echo ' </div>';
+                                        } elseif (session()->getFlashdata('error')) {
+                                            echo '<div class="alert alert-danger" role="alert">';
+                                            echo '<small>';
+                                            echo session()->getFlashdata('error');
+                                            echo '</small>';
+                                            echo ' </div>';
+                                        } ?>
                                         <div class="video">
                                             <video id="preview" style="width:100%;  height:200px;align-items:center"></video>
                                         </div>
                                         <!-- <input type="text" class="form-control" id="hasilscan"> -->
-                                        <form action="">
-                                            <input type="text" class="form-control" id="text" style="width: 100%;">
+                                        <form action="<?= base_url('presensi/scan') ?>" method="post">
+                                            <input type="text" class="form-control" name="nisn" id="text" style="width: 100%;">
                                         </form>
                                     </div>
                                 </div>
@@ -84,7 +103,9 @@
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <!-- 
     <script>
@@ -215,7 +236,13 @@
 
 
 
-
+    <script>
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideDown(500, function() {
+                $(this).remove();
+            });
+        }, 2000);
+    </script>
 
 </body>
 

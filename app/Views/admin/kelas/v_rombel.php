@@ -44,7 +44,7 @@ $ta = $db->table('tbl_ta')
                                     <th class="text-center">No</th>
                                     <th class="text-center">Kelas</th>
                                     <th class="text-center">Nama Wali Kelas</th>
-                                    <th class="text-center">Jumlah Peserta Didik</th>
+                                    <th class="text-center">Anggota Peserta Didik</th>
                                     <th class="text-center">Tingkat</th>
 
                                     <th class="text-center">Aksi</th>
