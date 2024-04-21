@@ -4,16 +4,6 @@
     </li>
 </ul>
 <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin') ?>">
-            <i class="fas fa-home fa-1x"></i>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('presensi') ?>">
-            <i class="fas fa-qrcode fa-1x"></i>
-        </a>
-    </li>
     <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
             <?php if (session()->get('level') == '1') { ?>
