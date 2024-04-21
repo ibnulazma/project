@@ -8,49 +8,7 @@
 </head>
 
 <style>
-    .navigasi {
-        display: flex;
-        justify-content: space-around;
-        padding: 20px 0;
-    }
 
-    .navigasi ul {
-        display: flex;
-        list-style: none;
-        justify-content: space-between;
-        align-items: center;
-        width: 50%;
-        color: grey;
-
-    }
-
-    .aktip {
-        font-weight: 400;
-        background-color: #3452eb;
-        color: white;
-        padding: 7px;
-        border-radius: 10px;
-    }
-
-    .navigasi ul li {
-        text-decoration: none;
-
-    }
-
-    @media screen and (max-width:576px) {
-        .navigasi ul {
-            /* position: absolute;
-            right: 0;
-            top: 0; */
-            justify-content: space-evenly;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 5px;
-
-        }
-
-        /* li .aktip {} */
-    }
 </style>
 
 

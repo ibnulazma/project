@@ -884,13 +884,6 @@ class Siswa extends BaseController
             return redirect()->to(base_url('siswa/uploadberkas/' . $id_siswa));
         }
     }
-
-
-
-
-
-
-
     public function update_registrasi($id_siswa)
     {
         if ($this->validate([
@@ -947,328 +940,35 @@ class Siswa extends BaseController
         }
     }
 
+    public function status_daftar($id_siswa)
+    {
+        if ($this->validate([
+            'status_daftar' => [
+                'label' => 'Pernyataan',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harap diceklis'
+                ]
+            ],
+
+        ])) {
+            $data = [
+                'id_siswa'          => $id_siswa,
+                'status_daftar'     => $this->request->getPost('status_daftar'),
 
 
+            ];
+            $this->ModelSiswa->edit($data);
+            session()->setFlashdata('pesan', 'Data Berhasil Diubah');
+            return redirect()->to('siswa');
+        } else {
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            $validation =  \Config\Services::validation();
+            return redirect()->to('siswa/uploadberkas/' . $id_siswa)->withInput()->with('validation', $validation);
+            // return redirect()->to('siswa/profile');
+        }
+    }
 
-
-
-
-
-
-
-
-    // public function update_siswa($id_siswa)
-    // {
-    //     if ($this->validate([
-    //         'alamat' => [
-    //             'label' => 'Alamat',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'rt' => [
-    //             'label' => 'RT',
-    //             'rules' => 'required|min_length[2]',
-    //             'errors' => [
-    //                 'required'          => '{field} harus diisi',
-    //                 'min_length'        => ' {field} Harus 2 Digit',
-    //             ]
-    //         ],
-
-    //         'rw' => [
-    //             'label' => 'RW',
-    //             'rules' => 'required|min_length[2]',
-    //             'errors' => [
-    //                 'required' => '{field} harus dipilih',
-    //                 'min_length' => ' {field} Harus 2 Digit',
-    //             ]
-    //         ],
-    //         'desa' => [
-    //             'label' => 'Desa',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'kecamatan' => [
-    //             'label' => 'Kecamatan',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'kabupaten' => [
-    //             'label' => 'Kabupaten',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'provinsi' => [
-    //             'label' => 'Provinsi',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'kodepos' => [
-    //             'label' => 'Kode Pos',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'nama_ayah' => [
-    //             'label' => 'Nama',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'nik_ayah' => [
-    //             'label' => 'NIK',
-    //             'rules' => 'required|min_length[16]',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'tahun_ayah' => [
-    //             'label' => 'Tahun Lahir',
-    //             'rules' => 'required|min_length[4]',
-    //             'errors' => [
-    //                 'required'          => '{field} harus diisi',
-    //                 'min_length'        => '{field} Harus 4 Digit',
-    //             ]
-    //         ],
-    //         'didik_ayah' => [
-    //             'label' => 'Pendidikan',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'kerja_ayah' => [
-    //             'label' => 'Kerja',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'hasil_ayah' => [
-    //             'label' => 'Penghasilan',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'telp_ayah' => [
-    //             'label' => 'Telepon',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi',
-
-    //             ]
-    //         ],
-
-    //         'tahun_ibu' => [
-    //             'label' => 'Tahun Lahir',
-    //             'rules' => 'required|min_length[4]',
-    //             'errors' => [
-    //                 'required'          => '{field} harus diisi',
-    //                 'min_length'        => ' {field} Harus 4 Digit',
-
-    //             ]
-    //         ],
-    //         'nik_ibu' => [
-    //             'label' => 'NIK',
-    //             'rules' => 'required|min_length[16]',
-    //             'errors' => [
-    //                 'required'          => '{field} harus diisi',
-    //                 'min_length'        => ' {field} Harus 4 Digit',
-    //             ]
-    //         ],
-    //         'didik_ibu' => [
-    //             'label' => 'Pendidikan',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi',
-
-    //             ]
-    //         ],
-    //         'hasil_ibu' => [
-    //             'label' => 'Pengasilan',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi',
-    //             ]
-    //         ],
-    //         'kerja_ibu' => [
-    //             'label' => 'Pekerjaan',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi',
-
-    //             ]
-    //         ],
-    //         'telp_ibu' => [
-    //             'label' => 'Telp/Hp',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi',
-
-    //             ]
-    //         ],
-
-    //         'tinggal' => [
-    //             'label' => 'Tinggal',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'transportasi' => [
-    //             'label' => 'Transportasi',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-
-    //         'berat' => [
-    //             'label' => 'Berat Badan',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'tinggi' => [
-    //             'label' => 'Tinggi Badan',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'lingkar' => [
-    //             'label' => 'Lingkar',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'anak_ke' => [
-    //             'label' => 'Anak Ke',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'jml_saudara' => [
-    //             'label' => 'Jumlah Saudara',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'tinggal' => [
-    //             'label' => 'Tempat Tinggal',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'transportasi' => [
-    //             'label' => 'Transportasi',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'cita_cita' => [
-    //             'label' => 'Cita-cita',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-    //         'hobi' => [
-    //             'label' => 'hobi',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi'
-    //             ]
-    //         ],
-
-
-    //         'seri_ijazah' => [
-    //             'label' => 'No Seri Ijazah',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi',
-
-    //             ]
-    //         ],
-    //         'telp_anak' => [
-    //             'label' => 'Telp Anak',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => '{field} harus diisi',
-
-    //             ]
-    //         ],
-
-    //     ])) {
-    //         $data = [
-    //             'id_siswa'          => $id_siswa,
-    //             'no_kip'            => $this->request->getPost('no_kip'),
-    //             'kip'               => $this->request->getPost('kip'),
-    //             'anak_ke'           => $this->request->getPost('anak_ke'),
-    //             'alamat'            => $this->request->getPost('alamat'),
-    //             'rt'                => $this->request->getPost('rt'),
-    //             'rw'                => $this->request->getPost('rw'),
-    //             'provinsi'          => $this->request->getPost('provinsi'),
-    //             'kabupaten'         => $this->request->getPost('kabupaten'),
-    //             'kecamatan'         => $this->request->getPost('kecamatan'),
-    //             'desa'              => $this->request->getPost('desa'),
-    //             'tinggal'           => $this->request->getPost('tinggal'),
-    //             'transportasi'      => $this->request->getPost('transportasi'),
-    //             'kodepos'           => $this->request->getPost('kodepos'),
-    //             'nama_ayah'         => $this->request->getPost('nama_ayah'),
-    //             'nama_ibu'          => $this->request->getPost('nama_ibu'),
-    //             'didik_ibu'         => $this->request->getPost('didik_ibu'),
-    //             'didik_ayah'        => $this->request->getPost('didik_ayah'),
-    //             'kerja_ayah'        => $this->request->getPost('kerja_ayah'),
-    //             'kerja_ibu'         => $this->request->getPost('kerja_ibu'),
-    //             'hasil_ibu'         => $this->request->getPost('hasil_ibu'),
-    //             'hasil_ayah'        => $this->request->getPost('hasil_ayah'),
-    //             'telp_ayah'         => $this->request->getPost('telp_ayah'),
-    //             'telp_ibu'          => $this->request->getPost('telp_ibu'),
-    //             'nik_ibu'           => $this->request->getPost('nik_ibu'),
-    //             'nik_ayah'          => $this->request->getPost('nik_ayah'),
-    //             'tahun_ayah'        => $this->request->getPost('tahun_ayah'),
-    //             'tahun_ibu'         => $this->request->getPost('tahun_ibu'),
-    //             'lingkar'           => $this->request->getPost('lingkar'),
-    //             'telp_anak'         => $this->request->getPost('telp_anak'),
-    //             'lingkar'           => $this->request->getPost('lingkar'),
-    //             'berat'             => $this->request->getPost('berat'),
-    //             'tinggi'            => $this->request->getPost('tinggi'),
-    //             'hobi'              => $this->request->getPost('hobi'),
-    //             'cita_cita'         => $this->request->getPost('cita_cita'),
-    //             'seri_ijazah'       => $this->request->getPost('seri_ijazah'),
-    //             'jml_saudara'       => $this->request->getPost('jml_saudara'),
-    //             'status_daftar'     => 3
-
-    //         ];
-    //         $this->ModelSiswa->edit($data);
-    //         session()->setFlashdata('pesan', 'Data Berhasil Diubah');
-    //         return redirect()->to('siswa/profile');
-    //     } else {
-    //         session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
-    //         $validation =  \Config\Services::validation();
-    //         return redirect()->to('siswa/profile')->withInput()->with('validation', $validation);
-    //         // return redirect()->to('siswa/profile');
-    //     }
-    // }
 
     // biodata siswa
     public function nilai()

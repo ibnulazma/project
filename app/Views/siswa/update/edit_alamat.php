@@ -23,7 +23,7 @@
             </div>
             <div class="col-sm-8">
                 <input type="number" class="form-control <?= ($validation->hasError('rt')) ? 'is-invalid' : ''; ?>" name="rt" id="rt">
-                <div class="invalid-feedback errorRT">
+                <div class="invalid-feedback">
                     <?= $validation->getError('rt'); ?>
                 </div>
             </div>

@@ -2,54 +2,6 @@
 <?= $this->section('content') ?>
 
 
-
-
-<style>
-    .img-edit {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-    }
-
-    .img-placeholder h4 {
-        margin-top: 40%;
-        color: white;
-    }
-
-    .img-div:hover .img-placeholder {
-        display: block;
-        cursor: pointer;
-    }
-
-    .form-div {
-        margin-top: 100px;
-        border: 1px solid #e0e0e0;
-    }
-
-    /* #profileDisplay {
-        display: block;
-        height: 210px;
-        width: 60%;
-        margin: 0px auto;
-        border-radius: 50%;
-    } */
-
-    /* .img-placeholder {
-        width: 40%;
-        color: white;
-        height: 50%;
-        background: black;
-        opacity: .7;
-        height: 150px;
-        border-radius: 50%;
-        z-index: 2;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        display: none;
-    } */
-</style>
-
 <div class="swal" data-swal="<?= session()->getFlashdata('pesan'); ?>"></div>
 
 <div class="content-header">
@@ -65,16 +17,16 @@
                                 $gender = "L";
                                 if ($gender == $siswa['jenis_kelamin']) { ?>
 
-                                    <img class="img-edit img-fluid" src="<?= base_url('foto/muslim.png') ?>" id="profileDisplay" onClick="triggerClick()" id="profileDisplay">
+                                    <img class="img-profil" src="<?= base_url('foto/muslim.png') ?>" id="profileDisplay" onClick="triggerClick()" id="profileDisplay">
                                     <input type="file" name="foto_siswa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display:none">
 
                                 <?php } else { ?>
-                                    <img class=" img-edit img-fluid" src="<?= base_url('foto/woman.png') ?>" alt="User profile picture" style="" onClick="triggerClick()" id="profileDisplay">
+                                    <img class="img-profil" src="<?= base_url('foto/woman.png') ?>" alt="User profile picture" style="" onClick="triggerClick()" id="profileDisplay">
                                     <input type="file" name="foto_siswa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display:none">
                                 <?php  } ?>
 
                             <?php  } else { ?>
-                                <img class="img-edit" src="<?= base_url('foto_siswa/' . $siswa['foto_siswa']) ?>" alt="User profile picture" style="" onClick="triggerClick()" id="profileDisplay">
+                                <img class="img-profil" src="<?= base_url('foto_siswa/' . $siswa['foto_siswa']) ?>" alt="User profile picture" style="" onClick="triggerClick()" id="profileDisplay">
                                 <input type="file" name="foto_siswa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display:none">
                             <?php    } ?>
                         </div>
@@ -93,19 +45,31 @@
                             <div class="col-sm-4 col-4 border-right">
                                 <div class="description-block">
                                     <p class="description-header">ijazah</p>
-                                    <span class="badge bg-danger"><i class="fa-solid fa-circle-xmark"></i> belum</span>
+                                    <?php if ($siswa['ijazah'] == null) { ?>
+                                        <span class="badge bg-danger"><i class="fa-solid fa-circle-xmark"></i> belum</span>
+                                    <?php } else { ?>
+                                        <span class="badge bg-success"><i class="fa-solid fa-circle-check"></i> sudah</span>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-4 border-right">
                                 <div class="description-block">
                                     <p class="description-header">akte</p>
-                                    <p class="badge bg-danger"><i class="fa-solid fa-circle-xmark"></i> belum</p>
+                                    <?php if ($siswa['akte'] == null) { ?>
+                                        <span class="badge bg-danger"><i class="fa-solid fa-circle-xmark"></i> belum</span>
+                                    <?php } else { ?>
+                                        <span class="badge bg-success"><i class="fa-solid fa-circle-check"></i> sudah</span>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-4 border-right">
                                 <div class="description-block">
                                     <p class="description-header">kk</p>
-                                    <p class="badge bg-danger"><i class="fa-solid fa-circle-xmark"></i> belum</p>
+                                    <?php if ($siswa['kartu_keluarga'] == null) { ?>
+                                        <span class="badge bg-danger"><i class="fa-solid fa-circle-xmark"></i> belum</span>
+                                    <?php } else { ?>
+                                        <span class="badge bg-success"><i class="fa-solid fa-circle-check"></i> sudah</span>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -320,12 +284,32 @@
                         </div>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Berkas</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <a href="<?= base_url('ijazah/' . $siswa['ijazah']) ?>" data-toggle="lightbox" data-title="Ijazah" data-gallery="gallery">
+                                    <img src="<?= base_url('foto_siswa/' . $siswa['foto_siswa']) ?>" class="img-fluid mb-2" alt="white sample" />
+                                </a>
+                            </div>
+                            <div class="col-sm-2">
+                                <a href="<?= base_url('kartu_keluarga/' . $siswa['kartu_keluarga']) ?>" data-toggle="lightbox" data-title="Kartu Keluarga" data-gallery="gallery">
+                                    <img src="<?= base_url('kartu_keluarga/' . $siswa['kartu_keluarga']) ?>" class="img-fluid mb-2" alt="black sample" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-
-
+    <a href="<?= base_url('kartu_keluarga/' . $siswa['kartu_keluarga']) ?>" target="_blank">
+        Kartu keluarga
+    </a>
 </div>
 
 <!-- Modal dEditIdentitas-->
@@ -822,7 +806,10 @@
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="<?= base_url() ?>/AdminLTE/plugins/jquery/jquery.min.js"></script>
+
+
+
 
 <script>
     function triggerClick(e) {
@@ -841,40 +828,7 @@
 </script>
 
 
-<script type="text/javascript">
-    // Preview
-    fileImg.onchange = evt => {
-        const [file] = fileImg.files
-        if (file) {
-            img.src = URL.createObjectURL(file)
-        }
-    }
-    // Submit
-    function submitData() {
-        $(document).ready(function() {
-            var formData = new FormData();
-            var files = $('#fileImg')[0].files;
-            formData.append('fileImg', files[0]);
 
-            $.ajax({
-                url: 'function.php',
-                type: 'post',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    if (response == "Success") {
-                        alert("Successfully Added");
-                    } else if (response == "Invalid Extension") {
-                        alert("Invalid Extension");
-                    } else {
-                        alert("Please Fill Out The Form");
-                    }
-                }
-            });
-        });
-    }
-</script>
 
 
 

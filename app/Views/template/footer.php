@@ -6,20 +6,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script src="<?= base_url() ?>/AdminLTE/plugins/jquery/jquery.min.js"></script>
 
 <script src="<?= base_url() ?>/AdminLTE/plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -94,9 +80,20 @@
 <script src="<?= base_url() ?>/AdminLTE/plugins/sweetalert2/sweetalert2.all.min.js"></script>
 <!-- Validasi Form -->
 
+<script src="<?= base_url() ?>/AdminLTE/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
 
 
+<script>
+    $(function() {
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox({
+                alwaysShowClose: true
+            });
+        });
 
+    })
+</script>
 
 
 

@@ -2,31 +2,6 @@
 <?= $this->section('content') ?>
 
 
-<style>
-    .img-edit {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-    }
-
-    .img-placeholder h4 {
-        margin-top: 40%;
-        color: white;
-    }
-
-    .img-div:hover .img-placeholder {
-        display: block;
-        cursor: pointer;
-    }
-
-    .form-div {
-        margin-top: 100px;
-        border: 1px solid #e0e0e0;
-    }
-</style>
-
-
-
 <div class="content-header">
     <div class="container-fluid mt-4">
         <div class="row text-sm">
@@ -39,16 +14,16 @@
                                 $gender = "L";
                                 if ($gender == $siswa['jenis_kelamin']) { ?>
 
-                                    <img class="img-edit img-fluid" src="<?= base_url('foto/muslim.png') ?>" id="profileDisplay" onClick="triggerClick()" id="profileDisplay">
+                                    <img class="img-profil" src="<?= base_url('foto/muslim.png') ?>" id="profileDisplay" onClick="triggerClick()" id="profileDisplay">
                                     <input type="file" name="foto_siswa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display:none">
 
                                 <?php } else { ?>
-                                    <img class=" img-edit img-fluid" src="<?= base_url('foto/woman.png') ?>" alt="User profile picture" style="" onClick="triggerClick()" id="profileDisplay">
+                                    <img class=" img-profil" src="<?= base_url('foto/woman.png') ?>" alt="User profile picture" onClick="triggerClick()" id="profileDisplay">
                                     <input type="file" name="foto_siswa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display:none">
                                 <?php  } ?>
 
                             <?php  } else { ?>
-                                <img class="img-edit img-fluid" src="<?= base_url('foto_siswa/' . $siswa['foto_siswa']) ?>" alt="User profile picture" style="" onClick="triggerClick()" id="profileDisplay">
+                                <img class="img-profil" src="<?= base_url('foto_siswa/' . $siswa['foto_siswa']) ?>" alt="User profile picture" onClick="triggerClick()" id="profileDisplay">
                                 <input type="file" name="foto_siswa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display:none">
                             <?php    } ?>
 

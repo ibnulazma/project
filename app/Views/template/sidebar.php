@@ -1,49 +1,3 @@
-<style>
-    .img-edit {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-    }
-
-    .img-placeholder h4 {
-        margin-top: 40%;
-        color: white;
-    }
-
-    .img-div:hover .img-placeholder {
-        display: block;
-        cursor: pointer;
-    }
-
-    .form-div {
-        margin-top: 100px;
-        border: 1px solid #e0e0e0;
-    }
-
-    /* #profileDisplay {
-        display: block;
-        height: 210px;
-        width: 60%;
-        margin: 0px auto;
-        border-radius: 50%;
-    } */
-
-    /* .img-placeholder {
-        width: 40%;
-        color: white;
-        height: 50%;
-        background: black;
-        opacity: .7;
-        height: 150px;
-        border-radius: 50%;
-        z-index: 2;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        display: none;
-    } */
-</style>
-
 <?php
 $db     = \Config\Database::connect();
 
@@ -56,9 +10,9 @@ $user = $db->table('tbl_user')
 <div class=" row d-flex justify-content-start p-2 ml-2 mt-3 ">
     <a href="" class="mr-3">
         <?php if (session()->get('level') == 1) { ?>
-            <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" class="img-edit  elevation-3">
+            <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" class="img-edit">
         <?php } else if (session()->get('level') == 'siswa') { ?>
-            <img src="<?= base_url('foto_siswa/' .  session()->get('foto')) ?>" class="img-edit  elevation-3">
+            <img src="<?= base_url('foto_siswa/' .  session()->get('foto')) ?>" class="img-edit">
         <?php } ?>
     </a>
     <div class="nama">
@@ -221,42 +175,7 @@ $user = $db->table('tbl_user')
                     </a>
                 </li>
             </ul>
-        <?php } else if (session()->get('level') == 2) { ?>
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-header">MENU</li>
-                <li class="nav-item">
-                    <a href="<?= base_url('admin') ?>" class="nav-link <?= $menu == 'admin' ? 'active' : '' ?>">
-                        <i class="nav-icon fas fa-home"></i>
-                        <p>
-                            Dashboard
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item <?= $menu == '' ? 'menu-open' : '' ?>">
-                    <a href="#" class="nav-link <?= $menu == '' ? 'active' : '' ?>">
-                        <i class="nav-icon fa-solid fa-qrcode"></i>
-                        <p>
-                            QR Barcode
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="" class="nav-link <?= $submenu == '' ? 'active' : '' ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Absen Masuk</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('daftar') ?>" class="nav-link <?= $submenu == '' ? 'active' : '' ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Rekap Kehadiran</p>
-                            </a>
-                        </li>
 
-                    </ul>
-                </li>
-            </ul>
         <?php } elseif (session()->get('level') == 'pendidik') { ?>
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">MENU</li>
