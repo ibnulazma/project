@@ -55,8 +55,11 @@ $user = $db->table('tbl_user')
 
 <div class=" row d-flex justify-content-start p-2 ml-2 mt-3 ">
     <a href="" class="mr-3">
-
-        <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" class="img-edit  elevation-3">
+        <?php if (session()->get('level') == 1) { ?>
+            <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" class="img-edit  elevation-3">
+        <?php } else if (session()->get('level') == 'siswa') { ?>
+            <img src="<?= base_url('foto_siswa/' .  session()->get('foto')) ?>" class="img-edit  elevation-3">
+        <?php } ?>
     </a>
     <div class="nama">
         <h5 class="font-weight-bolder">SIAKAD INKA <br>
@@ -211,32 +214,6 @@ $user = $db->table('tbl_user')
                 </li>
 
                 <li class="nav-header">APLIKASI</li>
-                <li class="nav-item <?= $menu == 'presensi' ? 'menu-open' : '' ?>">
-                    <a href="#" class="nav-link <?= $menu == 'presensi' ? 'active' : '' ?>">
-                        <i class="nav-icon fa-solid fa-qrcode"></i>
-                        <p>
-                            Presensi
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?= base_url('presensi/generate') ?>" class="nav-link <?= $submenu == 'generate' ? 'active' : '' ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Generate Qr Barcode</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('daftar') ?>" class="nav-link <?= $submenu == '' ? 'active' : '' ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Rekap Kehadiran</p>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
-
-
 
                 <li class="nav-item">
                     <a href="<?= base_url('admin/backup') ?>" class="nav-link">

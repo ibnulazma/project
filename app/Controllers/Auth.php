@@ -54,7 +54,7 @@ class Auth extends BaseController
             if ($ceksiswa) {
                 session()->set('username', $ceksiswa['nisn']);
                 session()->set('nama', $ceksiswa['nama_siswa']);
-                // session()->set('foto', $ceksiswa['foto']);
+                session()->set('foto', $ceksiswa['foto_siswa']);
                 session()->set('level', 'siswa');
                 return redirect()->to(base_url('siswa'));
             } else {

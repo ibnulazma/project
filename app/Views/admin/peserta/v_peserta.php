@@ -40,7 +40,7 @@ $ta = $db->table('tbl_ta')
                             </div>
 
                             <div class="tombol text-center">
-                                <a href="" class="btn"> <i class="fa-solid fa-cloud-arrow-down fa-3x" style="color: #74C0FC;"></i></a>
+                                <button class="btn" data-toggle="modal" data-target="#eksport"> <i class="fa-solid fa-cloud-arrow-down fa-3x" style="color: #74C0FC;"></i></button>
                                 <p style="color:#74C0FC">Export</p>
                             </div>
                         </div>
@@ -208,6 +208,28 @@ $ta = $db->table('tbl_ta')
                             </select>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary pull-left">Simpan</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="eksport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eksport Data Peserta Didik</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <a href=""><i class="fas fa-file-excel fa-4x mr-3" style="color: #185719;"></i></a>
+                    <a href=""><i class="fas fa-file-pdf fa-4x" style="color: #cc0000;"></i></a>
                 </div>
             </div>
             <div class="modal-footer">

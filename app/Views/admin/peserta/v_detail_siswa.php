@@ -74,7 +74,7 @@
                                 <?php  } ?>
 
                             <?php  } else { ?>
-                                <img class="img-edit img-fluid" src="<?= base_url('foto_siswa/' . $siswa['foto_siswa']) ?>" alt="User profile picture" style="" onClick="triggerClick()" id="profileDisplay">
+                                <img class="img-edit" src="<?= base_url('foto_siswa/' . $siswa['foto_siswa']) ?>" alt="User profile picture" style="" onClick="triggerClick()" id="profileDisplay">
                                 <input type="file" name="foto_siswa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display:none">
                             <?php    } ?>
                         </div>
