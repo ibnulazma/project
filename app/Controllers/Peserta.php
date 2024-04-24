@@ -547,4 +547,23 @@ class Peserta extends BaseController
             return redirect()->to(base_url('peserta/detail_siswa/' . $nisn));
         }
     }
+
+    public function kartu_keluarga($nisn)
+    {
+        $berkas = new ModelPeserta();
+        $data = $berkas->DataPeserta($nisn);
+        return $this->response->download('kartu_keluarga/' . $data['kartu_keluarga'], null);
+    }
+    public function ijazah($nisn)
+    {
+        $berkas = new ModelPeserta();
+        $data = $berkas->DataPeserta($nisn);
+        return $this->response->download('ijazah/' . $data['ijazah'], null);
+    }
+    public function akte($nisn)
+    {
+        $berkas = new ModelPeserta();
+        $data = $berkas->DataPeserta($nisn);
+        return $this->response->download('akte/' . $data['akte'], null);
+    }
 }

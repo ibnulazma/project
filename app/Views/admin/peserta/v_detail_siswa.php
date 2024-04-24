@@ -48,7 +48,9 @@
                                     <?php if ($siswa['ijazah'] == null) { ?>
                                         <span class="badge bg-danger"><i class="fa-solid fa-circle-xmark"></i> belum</span>
                                     <?php } else { ?>
-                                        <span class="badge bg-success"><i class="fa-solid fa-circle-check"></i> sudah</span>
+                                        <a href="<?= base_url('peserta/ijazah/' . $siswa['nisn']); ?>" target="_blank">
+                                            <span class="badge bg-success"><i class="fa-solid fa-circle-check"></i> sudah</span>
+                                        </a>
                                     <?php } ?>
                                 </div>
                             </div>
@@ -58,7 +60,9 @@
                                     <?php if ($siswa['akte'] == null) { ?>
                                         <span class="badge bg-danger"><i class="fa-solid fa-circle-xmark"></i> belum</span>
                                     <?php } else { ?>
-                                        <span class="badge bg-success"><i class="fa-solid fa-circle-check"></i> sudah</span>
+                                        <a href="<?= base_url('peserta/akte/' . $siswa['nisn']); ?>" target="_blank">
+                                            <span class=" badge bg-success"><i class="fa-solid fa-circle-check"></i> sudah</span>
+                                        </a>
                                     <?php } ?>
                                 </div>
                             </div>
@@ -68,7 +72,9 @@
                                     <?php if ($siswa['kartu_keluarga'] == null) { ?>
                                         <span class="badge bg-danger"><i class="fa-solid fa-circle-xmark"></i> belum</span>
                                     <?php } else { ?>
-                                        <span class="badge bg-success"><i class="fa-solid fa-circle-check"></i> sudah</span>
+                                        <a href="<?= base_url('peserta/kartu_keluarga/' . $siswa['nisn']); ?>" target="_blank">
+                                            <span class=" badge bg-success"><i class="fa-solid fa-circle-check"></i> sudah</span>
+                                        </a>
                                     <?php } ?>
                                 </div>
                             </div>
@@ -307,13 +313,11 @@
         </div>
     </div>
 
-    <a href="<?= base_url('kartu_keluarga/' . $siswa['kartu_keluarga']) ?>" target="_blank">
-        Kartu keluarga
-    </a>
+
 </div>
 
 <!-- Modal dEditIdentitas-->
-<div class="modal fade" id="identitas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class=" modal fade" id="identitas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">

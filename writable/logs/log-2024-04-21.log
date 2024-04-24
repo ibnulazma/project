@@ -22,3 +22,19 @@ CRITICAL - 2024-04-21 12:28:06 --> Trying to access array offset on value of typ
 #8 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #9 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
 #10 {main}
+CRITICAL - 2024-04-21 20:49:22 --> Trying to get property 'foto_siswa' of non-object
+#0 C:\xampp\htdocs\siakad\app\Controllers\Peserta.php(555): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 555, Array)
+#1 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Peserta->download('1234')
+#2 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Peserta))
+#3 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2024-04-21 20:50:29 --> Trying to get property 'kartu_keluarga' of non-object
+#0 C:\xampp\htdocs\siakad\app\Controllers\Peserta.php(555): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 555, Array)
+#1 C:\xampp\htdocs\siakad\system\CodeIgniter.php(802): App\Controllers\Peserta->download('1234')
+#2 C:\xampp\htdocs\siakad\system\CodeIgniter.php(399): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Peserta))
+#3 C:\xampp\htdocs\siakad\system\CodeIgniter.php(317): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\siakad\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\siakad\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}

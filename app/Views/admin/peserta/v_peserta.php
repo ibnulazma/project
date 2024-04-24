@@ -35,12 +35,12 @@ $ta = $db->table('tbl_ta')
                             </div>
 
                             <div class="tombol text-center">
-                                <button class="btn btn-circle" data-toggle="modal" data-target="#upload"> <i class="fa-solid fa-cloud-arrow-up fa-3x" style="color: #74C0FC"></i></button>
+                                <button class="btn btn-circle" data-toggle="modal" data-target="#upload"> <i class="fa-solid fa-cloud-arrow-down fa-3x" style="color: #74C0FC"></i></button>
                                 <p style="color:#74C0FC">Import</p>
                             </div>
 
                             <div class="tombol text-center">
-                                <button class="btn" data-toggle="modal" data-target="#eksport"> <i class="fa-solid fa-cloud-arrow-down fa-3x" style="color: #74C0FC;"></i></button>
+                                <button class="btn" data-toggle="modal" data-target="#eksport"> <i class="fa-solid fa-cloud-arrow-up fa-3x" style="color: #74C0FC;"></i></button>
                                 <p style="color:#74C0FC">Export</p>
                             </div>
                         </div>
@@ -227,15 +227,17 @@ $ta = $db->table('tbl_ta')
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row justify-content-center">
-                    <a href=""><i class="fas fa-file-excel fa-4x mr-3" style="color: #185719;"></i></a>
-                    <a href=""><i class="fas fa-file-pdf fa-4x" style="color: #cc0000;"></i></a>
+                <div class="row justify-content-start">
+                    <div class="excel text-center">
+                        <a href=""><img src="<?= base_url() ?>/AdminLTE/dist/img/logo.png" alt="" width="90px" class="mr-3"></a>
+                        <p style="font-size: 20px;font-weight:bold">.xlsx</p>
+                    </div>
+                    <div class="pdf text-center">
+                        <a href=""><img src="<?= base_url() ?>/AdminLTE/dist/img/pdf.png" alt="" width="90px"></a>
+                        <p style="font-size: 20px;font-weight:bold">.pdf</p>
+                    </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary pull-left">Simpan</button>
-            </div>
-            <?= form_close() ?>
         </div>
     </div>
 </div>
