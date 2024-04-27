@@ -1,2 +1,5 @@
 writable/debugbar/
 *.json
+
+writable/log/
+*.log

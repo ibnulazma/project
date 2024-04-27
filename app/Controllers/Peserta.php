@@ -209,7 +209,7 @@ class Peserta extends BaseController
         $sheet->setCellValue('J1', 'Tingkat');
 
         $sheet->getStyle('A1:J1')->getFont()->setBold(true);
-        $spreadsheet->getActiveSheet()->getStyle('A1:I1')->getFill()
+        $spreadsheet->getActiveSheet()->getStyle('A1:J1')->getFill()
             ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
             ->getStartColor()->setARGB('FFFFD700');
 
@@ -611,30 +611,42 @@ class Peserta extends BaseController
 
 
 
-    public function eksporexcel()  {
+    public function eksporexcel()
+      {
         $siswa = new ModelPeserta();
     $datasiswa = $siswa->AllData();
 
     $spreadsheet = new Spreadsheet();
     // tulis header/nama kolom 
-    $spreadsheet->setActiveSheetIndex(0)
-                ->setCellValue('A1', 'NISN')
-                ->setCellValue('B1', 'Nama Siswa')
-                ->setCellValue('C1', 'Jenis Kelamin')
-                ->setCellValue('D1', 'Tingkat');
-                // ->setCellValue('E1', 'NIS');
-    
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+    $sheet->setCellValue('A1', 'NO');
+    $sheet->setCellValue('B1', 'NISN');
+    $sheet->setCellValue('C1', 'Nama');
+    $sheet->setCellValue('D1', 'Jenis Kelamin');
+    $sheet->setCellValue('E1', 'Tempat Lahir');
+    $sheet->setCellValue('F1', 'Tanggal Lahir');
+    $sheet->setCellValue('G1', 'Nama Ibu');
+    $sheet->setCellValue('H1', 'Tingkat');
+
+    $sheet->getStyle('A1:H1')->getFont()->setBold(true);
+    $spreadsheet->getActiveSheet()->getStyle('A1:H1')->getFill()
+        ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+        ->getStartColor()->setARGB('FFFFD700');
     $column = 2;
     
     foreach($datasiswa as $data) {
-        $spreadsheet->setActiveSheetIndex(0)
-                    ->setCellValue('A' . $column, $data['nisn'])
-                    ->setCellValue('B' . $column, $data['nama_lengkap'])
-                    ->setCellValue('C' . $column, $data['jenis_kelamin'])
-                    ->setCellValue('D' . $column, $data['tingkat']);
-                    // ->setCellValue('E' . $column, $data['']);
-        $column++;
-    }
+      
+            $sheet->setCellValue('A' . $column, ($column - 1));
+            $sheet->setCellValue('B' . $column, $data['nisn']);
+            $sheet->setCellValue('C' . $column, $data['nama_siswa']);
+            $sheet->setCellValue('D' . $column, $data['jenis_kelamin']);
+            $sheet->setCellValue('E' . $column, $data['tempat_lahir']);
+            $sheet->setCellValue('G' . $column, $data['tanggal_lahir']);
+            $sheet->setCellValue('H' . $column, $data['nama_ibu']);
+            $column++;
+        }
+    
     // tulis dalam format .xlsx
     $writer = new Xlsx($spreadsheet);
     $fileName = 'Data Siswa';
