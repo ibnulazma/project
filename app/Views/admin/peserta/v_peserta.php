@@ -43,7 +43,7 @@ $ta = $db->table('tbl_ta')
 
                             <div class="tombol text-center">
                                 <button class="btn" data-toggle="modal" data-target="#eksport"> <i class="fa-solid fa-cloud-arrow-up fa-3x" style="color: #74C0FC;"></i></button>
-                                <p style="color:#74C0FC">Export</p>
+                                <p style="color:#74C0FC">Eksport</p>
                             </div>
                         </div>
                     </div>
@@ -285,11 +285,11 @@ $ta = $db->table('tbl_ta')
             <div class="modal-body">
                 <div class="row justify-content-start">
                     <div class="excel text-center">
-                        <a href=""><img src="<?= base_url() ?>/AdminLTE/dist/img/logo.png" alt="" width="90px" class="mr-3"></a>
+                        <a href="<?=base_url('peserta/eksportpdf')?>"><img src="<?= base_url() ?>/AdminLTE/dist/img/logo.png" alt="" width="90px" class="mr-3"></a>
                         <p style="font-size: 20px;font-weight:bold">.xlsx</p>
                     </div>
                     <div class="pdf text-center">
-                        <a href=""><img src="<?= base_url() ?>/AdminLTE/dist/img/pdf.png" alt="" width="90px"></a>
+                        <a href="<?=base_url('peserta/eksporexcel')?>"><img src="<?= base_url() ?>/AdminLTE/dist/img/pdf.png" alt="" width="90px"></a>
                         <p style="font-size: 20px;font-weight:bold">.pdf</p>
                     </div>
                 </div>
