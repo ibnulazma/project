@@ -608,4 +608,43 @@ class Peserta extends BaseController
         session()->setFlashdata('pesan', 'Siswa Berhasil Di Update !!!');
         return redirect()->to(base_url('peserta'));
     }
+
+
+
+    public function eksporexcel()  {
+        $siswa = new ModelPeserta();
+    $datasiswa = $siswa->AllData();
+
+    $spreadsheet = new Spreadsheet();
+    // tulis header/nama kolom 
+    $spreadsheet->setActiveSheetIndex(0)
+                ->setCellValue('A1', 'NISN')
+                ->setCellValue('B1', 'Nama Siswa')
+                ->setCellValue('C1', 'Jenis Kelamin')
+                ->setCellValue('D1', 'Tingkat');
+                // ->setCellValue('E1', 'NIS');
+    
+    $column = 2;
+    
+    foreach($datasiswa as $data) {
+        $spreadsheet->setActiveSheetIndex(0)
+                    ->setCellValue('A' . $column, $data['nisn'])
+                    ->setCellValue('B' . $column, $data['nama_lengkap'])
+                    ->setCellValue('C' . $column, $data['jenis_kelamin'])
+                    ->setCellValue('D' . $column, $data['tingkat']);
+                    // ->setCellValue('E' . $column, $data['']);
+        $column++;
+    }
+    // tulis dalam format .xlsx
+    $writer = new Xlsx($spreadsheet);
+    $fileName = 'Data Siswa';
+
+    // Redirect hasil generate xlsx ke web client
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename='.$fileName.'.xlsx');
+    header('Cache-Control: max-age=0');
+
+    $writer->save('php://output');
+        
+    }
 }
