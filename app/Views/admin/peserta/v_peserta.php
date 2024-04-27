@@ -22,10 +22,12 @@ $ta = $db->table('tbl_ta')
                 <h1 class="card-title"><?= $subtitle ?></h1>
             </div>
             <div class="card-body">
+
                 <div class="row">
                     <div class="col-lg-7">
                         <h3>Daftar Peserta Didik</h3>
                         <p class="text-muted">Tahun Pelajaran <b>Aktif</b> <?= $ta['ta'] ?> Semester <b> <?= $ta['semester'] ?></b></p>
+                        <p class=" text-danger">*<i> Proses Luluskan dahulu tingkat 9, baru Proses Naik Tingkat</i></p>
                     </div>
                     <div class="col-lg-4">
                         <div class="input-group-append float-right">
@@ -46,6 +48,7 @@ $ta = $db->table('tbl_ta')
                         </div>
                     </div>
                 </div>
+
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">
@@ -57,7 +60,7 @@ $ta = $db->table('tbl_ta')
                             <table class="table table-bordered" id="example2">
                                 <thead>
                                     <tr class="text-center">
-                                        <th><input type="checkbox"></th>
+                                        <th>No</th>
                                         <th>NIS</th>
                                         <th>NISN</th>
                                         <th>Nama Siswa</th>
@@ -77,9 +80,10 @@ $ta = $db->table('tbl_ta')
                                         <tr class="<?php
                                                     $hasil = "Sudah Meninggal";
                                                     if ($hasil == $value['kerja_ayah']) { ?>
-                        echo bg-lightblue
-                        <?php } ?>" data-widget="expandable-table" aria-expanded="false">
-                                            <td><input type="checkbox"></td>
+                                                            echo bg-lightblue
+                                                    <?php } ?>
+                                                    ">
+                                            <td><?= $no++; ?></td>
                                             <td class="text-center"><?= $value["nis"] ?></td>
                                             <td class="text-center"><?= $value["nisn"] ?></td>
                                             <td><?= $value["nama_siswa"] ?></td>
@@ -88,7 +92,6 @@ $ta = $db->table('tbl_ta')
                                             <td class="text-center"><?= $value["tingkat"] ?></td>
 
                                             <td class="text-center">
-
 
                                                 <?php if ($value['status_daftar'] == 1) { ?>
                                                     <span class="badge bg-danger">belum aktif</span>
@@ -106,13 +109,20 @@ $ta = $db->table('tbl_ta')
                                 </tbody>
                             </table>
                         </div>
+
                     </div>
+
                 </div>
+
+                <button class="btn btn-danger mr-3" data-toggle="modal" data-target="#lulus">Proses Lulus</button>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#naik">Proses Naik Tingkat</button>
+
             </div>
         </div>
     </div>
 </div>
 </div>
+
 <!-- Modal TambahManual -->
 
 <div class="modal fade" id="upload" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -150,6 +160,7 @@ $ta = $db->table('tbl_ta')
         </div>
     </div>
 </div>
+
 
 <div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -217,6 +228,51 @@ $ta = $db->table('tbl_ta')
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="lulus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Peserta Didik</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?= form_open('peserta/lulus') ?>
+                <table class="table table-bordered" id="example1">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="check-all"></th>
+                            <th>Nama Peserta Didik</th>
+                            <th>NISN</th>
+                            <th>Tingkat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($lulus as $key => $data) { ?>
+                            <tr>
+                                <td><input type="checkbox" class="check-item" name="nisn[]" value="<?= $data['nisn'] ?>"></td>
+                                <td><?= $data['nama_siswa'] ?></td>
+                                <td><?= $data['nisn'] ?></td>
+                                <td><?= $data['tingkat'] ?></td>
+                                <input type="hidden" name="aktif[]" value="0">
+                                <input type="hidden" name="id_tingkat[]" value="0">
+
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary pull-left">Submit</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+</div>
+
+
 <div class="modal fade" id="eksport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -238,6 +294,47 @@ $ta = $db->table('tbl_ta')
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="naik" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Proses Naik Tingkat</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <?= form_open('peserta/naik') ?>
+                <table class="table table-bordered" id="example1">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="check-in"></th>
+                            <th>Nama Peserta Didik</th>
+                            <th>NISN</th>
+                            <th>Tingkat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($naik as $key => $data) { ?>
+                            <tr>
+                                <td><input type="checkbox" class="check-item" name="nisn[]" value="<?= $data['nisn'] ?>"></td>
+                                <td><?= $data['nama_siswa'] ?></td>
+                                <td><?= $data['nisn'] ?></td>
+                                <td><?= $data['tingkat'] ?></td>
+                                <input type="hidden" class="form-control" name="id_tingkat[]" value="<?= $data['id_tingkat'] + 1 ?>">
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+            <?= form_close() ?>
         </div>
     </div>
 </div>

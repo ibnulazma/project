@@ -50,7 +50,10 @@ class Peserta extends BaseController
             'tingkat'    => $this->ModelKelas->Tingkat(),
             'kelas'      => $this->ModelKelas->kelas(),
             'peserta'    => $this->ModelPeserta->AllData(),
-            'jumlverifikasi'    => $this->ModelPeserta->jmlverifikasi()
+            'jumlverifikasi'    => $this->ModelPeserta->jmlverifikasi(),
+            'lulus'    => $this->ModelPeserta->lulus(),
+            'naik'    => $this->ModelPeserta->naik(),
+            // 'siswa'    => $this->ModelPeserta->detail_data()
 
         ];
         return view('admin/peserta/v_peserta', $data);
@@ -565,5 +568,44 @@ class Peserta extends BaseController
         $berkas = new ModelPeserta();
         $data = $berkas->DataPeserta($nisn);
         return $this->response->download('akte/' . $data['akte'], null);
+    }
+
+    public function lulus()
+    {
+        // $siswa = $this->ModelPeserta->detail_data($nisn);
+        $nisn           = $_POST['nisn'];
+        $id_tingkat     = $_POST['id_tingkat'];
+        $aktif          = $_POST['aktif'];
+
+
+        $jml_siswa = count($nisn);
+        for ($i = 0; $i < $jml_siswa; $i++) {
+            $data = array(
+                'nisn' =>       $nisn[$i],
+                'id_tingkat' => $id_tingkat[$i],
+                'aktif' =>      $aktif[$i],
+            );
+            $this->ModelPeserta->edit($data);
+        }
+        session()->setFlashdata('pesan', 'Siswa Berhasil Di Update !!!');
+        return redirect()->to(base_url('peserta'));
+    }
+    public function naik()
+    {
+        // $siswa = $this->ModelPeserta->detail_data($nisn);
+        $nisn           = $_POST['nisn'];
+        $id_tingkat     = $_POST['id_tingkat'];
+
+
+        $jml_siswa = count($nisn);
+        for ($i = 0; $i < $jml_siswa; $i++) {
+            $data = array(
+                'nisn' =>       $nisn[$i],
+                'id_tingkat' => $id_tingkat[$i],
+            );
+            $this->ModelPeserta->edit($data);
+        }
+        session()->setFlashdata('pesan', 'Siswa Berhasil Di Update !!!');
+        return redirect()->to(base_url('peserta'));
     }
 }

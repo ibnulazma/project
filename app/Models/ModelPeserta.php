@@ -151,6 +151,26 @@ class ModelPeserta extends Model
             ->where('nisn', $nisn)
             ->get()->getRowArray();
     }
+
+    public function naik()
+    {
+
+        return $this->db->table('tbl_siswa')
+            ->join('tbl_tingkat', 'tbl_tingkat.id_tingkat = tbl_siswa.id_tingkat', 'left')
+            ->where('aktif', '1')
+            // ->where('tbl_siswa.id_tingkat', '2')
+            ->get()
+            ->getResultArray();
+    }
+    public function lulus()
+    {
+
+        return $this->db->table('tbl_siswa')
+            ->join('tbl_tingkat', 'tbl_tingkat.id_tingkat = tbl_siswa.id_tingkat', 'left')
+            ->where('tbl_siswa.id_tingkat', '3')
+            ->get()
+            ->getResultArray();
+    }
 }
 
 
