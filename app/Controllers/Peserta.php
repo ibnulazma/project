@@ -612,31 +612,31 @@ class Peserta extends BaseController
 
 
     public function eksporexcel()
-      {
+    {
         $siswa = new ModelPeserta();
-    $datasiswa = $siswa->AllData();
+        $datasiswa = $siswa->AllData();
 
-    $spreadsheet = new Spreadsheet();
-    // tulis header/nama kolom 
-    $spreadsheet = new Spreadsheet();
-    $sheet = $spreadsheet->getActiveSheet();
-    $sheet->setCellValue('A1', 'NO');
-    $sheet->setCellValue('B1', 'NISN');
-    $sheet->setCellValue('C1', 'Nama');
-    $sheet->setCellValue('D1', 'Jenis Kelamin');
-    $sheet->setCellValue('E1', 'Tempat Lahir');
-    $sheet->setCellValue('F1', 'Tanggal Lahir');
-    $sheet->setCellValue('G1', 'Nama Ibu');
-    $sheet->setCellValue('H1', 'Tingkat');
+        $spreadsheet = new Spreadsheet();
+        // tulis header/nama kolom 
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'NO');
+        $sheet->setCellValue('B1', 'NISN');
+        $sheet->setCellValue('C1', 'Nama');
+        $sheet->setCellValue('D1', 'Jenis Kelamin');
+        $sheet->setCellValue('E1', 'Tempat Lahir');
+        $sheet->setCellValue('F1', 'Tanggal Lahir');
+        $sheet->setCellValue('G1', 'Nama Ibu');
+        $sheet->setCellValue('H1', 'Tingkat');
 
-    $sheet->getStyle('A1:H1')->getFont()->setBold(true);
-    $spreadsheet->getActiveSheet()->getStyle('A1:H1')->getFill()
-        ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
-        ->getStartColor()->setARGB('FFFFD700');
-    $column = 2;
-    
-    foreach($datasiswa as $data) {
-      
+        $sheet->getStyle('A1:H1')->getFont()->setBold(true);
+        $spreadsheet->getActiveSheet()->getStyle('A1:H1')->getFill()
+            ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+            ->getStartColor()->setARGB('FFFFD700');
+        $column = 2;
+
+        foreach ($datasiswa as $data) {
+
             $sheet->setCellValue('A' . $column, ($column - 1));
             $sheet->setCellValue('B' . $column, $data['nisn']);
             $sheet->setCellValue('C' . $column, $data['nama_siswa']);
@@ -646,17 +646,36 @@ class Peserta extends BaseController
             $sheet->setCellValue('H' . $column, $data['nama_ibu']);
             $column++;
         }
-    
-    // tulis dalam format .xlsx
-    $writer = new Xlsx($spreadsheet);
-    $fileName = 'Data Siswa';
 
-    // Redirect hasil generate xlsx ke web client
-    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment;filename='.$fileName.'.xlsx');
-    header('Cache-Control: max-age=0');
+        // tulis dalam format .xlsx
+        $writer = new Xlsx($spreadsheet);
+        $fileName = 'Data Siswa';
 
-    $writer->save('php://output');
-        
+        // Redirect hasil generate xlsx ke web client
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename=' . $fileName . '.xlsx');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
+    }
+
+
+    public function eksporpdf()
+    {
+        $dompdf = new Dompdf();
+
+        $data = [
+            'title'         =>  'Biodata Siswa',
+            'siswa'     => $this->ModelPeserta->AllData(),
+
+            // 'tingkat'       => $this->ModelKelas->SiswaTingkat(),
+        ];
+        $html = view('admin/peserta/eksporpdf', $data);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('Legal', 'landscape');
+        $dompdf->render();
+        $dompdf->stream('data siswa.pdf', array(
+            "Attachment" => false
+        ));
     }
 }

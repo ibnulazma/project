@@ -289,7 +289,7 @@ $ta = $db->table('tbl_ta')
                         <p style="font-size: 20px;font-weight:bold">.xlsx</p>
                     </div>
                     <div class="pdf text-center">
-                        <a href="<?=base_url('peserta/eksportpdf')?>"><img src="<?= base_url() ?>/AdminLTE/dist/img/pdf.png" alt="" width="90px"></a>
+                        <a href="<?=base_url('peserta/eksporpdf')?>"><img src="<?= base_url() ?>/AdminLTE/dist/img/pdf.png" alt="" width="90px"></a>
                         <p style="font-size: 20px;font-weight:bold">.pdf</p>
                     </div>
                 </div>
