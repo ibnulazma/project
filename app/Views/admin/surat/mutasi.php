@@ -35,6 +35,7 @@ $ta = $db->table('tbl_ta')
                             <th>Nama Lengkap</th>
                             <th>NISN</th>
                             <th>Kelas</th>
+                            <th>Surat Permohonan</th>
                             <th>Surat Mutasi</th>
                         </tr>
                     </thead>
@@ -45,6 +46,7 @@ $ta = $db->table('tbl_ta')
                                 <td><?= $value['nama_siswa'] ?></td>
                                 <td><?= $value['nisn'] ?></td>
                                 <td><?= $value['kelas'] ?></td>
+                                <td><a href="<?= base_url('surat/printmohon/' . $value['id_mutasi']) ?>" class="btn btn-danger"><i class="fas fa-print"></i></a></td>
                                 <td><a href="" class="btn btn-info" data-target="#edit<?= $value['id_mutasi'] ?>" data-toggle="modal"><i class="fas fa-print"></i></a></td>
                             </tr>
                         <?php } ?>
@@ -67,6 +69,7 @@ $ta = $db->table('tbl_ta')
                     </button>
                 </div>
                 <div class="modal-body">
+
                     <div class="form-group">
                         <label for="">No Surat</label>
                         <input type="text" class="form-control" name="no_surat" required>
@@ -78,7 +81,6 @@ $ta = $db->table('tbl_ta')
                 </div>
                 <?= form_close() ?>
             </div>
-
         </div>
     </div>
 <?php } ?>
