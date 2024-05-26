@@ -285,11 +285,11 @@ $ta = $db->table('tbl_ta')
             <div class="modal-body">
                 <div class="row justify-content-start">
                     <div class="excel text-center">
-                        <a href=" <?=base_url('peserta/eksporexcel')?>"><img src="<?= base_url() ?>/AdminLTE/dist/img/logo.png" alt="" width="90px" class="mr-3"></a>
+                        <a href=" <?= base_url('peserta/eksporexcel') ?>"><img src="<?= base_url() ?>/AdminLTE/dist/img/logo.png" alt="" width="90px" class="mr-3"></a>
                         <p style="font-size: 20px;font-weight:bold">.xlsx</p>
                     </div>
                     <div class="pdf text-center">
-                        <a href="<?=base_url('peserta/eksporpdf')?>"><img src="<?= base_url() ?>/AdminLTE/dist/img/pdf.png" alt="" width="90px"></a>
+                        <a href="<?= base_url('peserta/eksporpdf') ?>"><img src="<?= base_url() ?>/AdminLTE/dist/img/pdf.png" alt="" width="90px"></a>
                         <p style="font-size: 20px;font-weight:bold">.pdf</p>
                     </div>
                 </div>
@@ -297,7 +297,51 @@ $ta = $db->table('tbl_ta')
         </div>
     </div>
 </div>
+<!-- ProsesNaik Tingkat -->
 <div class="modal fade" id="naik" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Proses Naik Tingkat</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <?= form_open('peserta/naik') ?>
+                <table class="table table-bordered" id="example1">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="check-in"></th>
+                            <th>Nama Peserta Didik</th>
+                            <th>NISN</th>
+                            <th>Tingkat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($naik as $key => $data) { ?>
+                            <tr>
+                                <td><input type="checkbox" class="check-item" name="nisn[]" value="<?= $data['nisn'] ?>"></td>
+                                <td><?= $data['nama_siswa'] ?></td>
+                                <td><?= $data['nisn'] ?></td>
+                                <td><?= $data['tingkat'] ?></td>
+                                <input type="hidden" class="form-control" name="id_tingkat[]" value="<?= $data['id_tingkat'] + 1 ?>">
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="verifikasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">

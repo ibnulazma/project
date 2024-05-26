@@ -1038,10 +1038,10 @@ class Siswa extends BaseController
     public function mutasi($id_siswa)
     {
         $data = [
-            'id_siswa'       => $id_siswa,
-            'alasan'         => $this->request->getPost('alasan'),
-            'sekolah'         => $this->request->getPost('sekolah'),
-            'status' => 1,
+            'id_siswa'          => $id_siswa,
+            'alasan'            => $this->request->getPost('alasan'),
+            'sekolah'           => $this->request->getPost('sekolah'),
+            'status_mutasi'     => 1,
         ];
         $this->ModelSiswa->insertpengajuan($data);
         return redirect()->to('siswa/pengajuan');

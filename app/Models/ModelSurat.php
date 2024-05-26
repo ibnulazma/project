@@ -9,7 +9,10 @@ class ModelSurat extends Model
     public function AllData()
     {
         return $this->db->table('tbl_mutasi')
-            ->join('tbl_siswa', 'tbl_siswa.id_siswa = tbl_mutasi.id_siswa', 'left')
+            ->join('tbl_siswa', 'tbl_siswa.id_siswa = tbl_mutasi.id_siswa')
+            ->join('tbl_database', 'tbl_database.nisn = tbl_siswa.nisn')
+            ->join('tbl_kelas', 'tbl_kelas.id_kelas = tbl_database.id_kelas')
+            ->join('tbl_guru', 'tbl_guru.id_guru = tbl_kelas.id_guru')
             ->orderBy('tbl_siswa.nama_siswa', 'ASC')
             ->where('tbl_mutasi.status_mutasi', '2')
             ->get()

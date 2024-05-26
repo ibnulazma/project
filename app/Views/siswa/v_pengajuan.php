@@ -8,16 +8,16 @@
         <?php if ($siswa['status_daftar'] == 1) { ?>
             <span class="btn btn-danger">Silahkan Update Biodata Terlebih Dahulu</span>
         <?php } elseif ($siswa['status_daftar'] == 3) { ?>
-
-            <p>Untuk melakukan pengajuan pindah sekolah dari SMP Insan Kamil silahkan klik tombol berikut:</p>
-
-            <!-- Button trigger modal -->
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Pengajuan Mutasi
-            </button>
-
         <?php } ?>
+
+        
+        <p>Untuk melakukan pengajuan pindah sekolah dari SMP Insan Kamil silahkan klik tombol berikut:</p>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Pengajuan Mutasi
+        </button>
+
+
 
 
 
@@ -31,9 +31,9 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <?php if ($value['status'] == 1) { ?>
+                                        <?php if ($value['status_mutasi'] == 1) { ?>
                                             <span class="btn btn-info btn-sm"> Silahkan Hubungi Wali Kelas Untuk Persetujuan Permohonan Mutasi</span>
-                                        <?php } else if ($value['status'] == 2) { ?>
+                                        <?php } else if ($value['status_mutasi'] == 2) { ?>
                                             <span class="btn btn-success btn-sm"> Surat Mutasi Dalam Proses TTD Kepala Sekolah</span>
                                         <?php } ?>
                                     </td>

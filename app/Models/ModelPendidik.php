@@ -50,9 +50,10 @@ class ModelPendidik extends Model
     {
         return $this->db->table('tbl_mutasi')
             ->join('tbl_siswa', 'tbl_siswa.id_siswa = tbl_mutasi.id_siswa')
-            ->join('tbl_kelas', 'tbl_kelas.id_kelas = tbl_siswa.id_kelas')
+            ->join('tbl_database', 'tbl_database.nisn = tbl_siswa.nisn')
+            ->join('tbl_kelas', 'tbl_kelas.id_kelas = tbl_database.id_kelas')
             ->join('tbl_guru', 'tbl_guru.id_guru = tbl_kelas.id_guru')
-            ->where('.tbl_mutasi.status', '1')
+            ->where('.tbl_mutasi.status_mutasi', '1')
             ->where('tbl_kelas.id_guru', $id_guru)
             ->get()->getResultArray();
     }

@@ -95,9 +95,6 @@
                                     <td><?= $siswa['tempat_lahir'] ?>, <?= date('d M Y', strtotime($siswa['tanggal_lahir'])) ?></td>
                                 </tr>
 
-
-
-
                                 <tr>
                                     <td>16. NIK </td>
                                     <td><?= $siswa['nik_ayah'] ?></td>

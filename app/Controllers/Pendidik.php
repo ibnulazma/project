@@ -172,7 +172,7 @@ class Pendidik extends BaseController
     {
         $data = [
             'id_mutasi' => $id_mutasi,
-            'status' => 2
+            'status_mutasi' => 2
         ];
         $this->ModelSurat->konfirmasi($data);
         session()->setFlashdata('pesan', 'Reset Berhasil !!!');
