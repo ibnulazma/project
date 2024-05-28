@@ -14,7 +14,7 @@ class ModelSurat extends Model
             ->join('tbl_kelas', 'tbl_kelas.id_kelas = tbl_database.id_kelas')
             ->join('tbl_guru', 'tbl_guru.id_guru = tbl_kelas.id_guru')
             ->orderBy('tbl_siswa.nama_siswa', 'ASC')
-            ->where('tbl_mutasi.status_mutasi', '2')
+            // ->where('tbl_mutasi.status_mutasi', '2')
             ->get()
             ->getResultArray();
     }
@@ -30,7 +30,12 @@ class ModelSurat extends Model
             ->where('id_mutasi', $id_mutasi)
             ->get()->getRowArray();
     }
-
+    public function penerimaan($id_terima)
+    {
+        return $this->db->table('tbl_terima')
+            ->where('id_terima', $id_terima)
+            ->get()->getRowArray();
+    }
 
 
     public function permohonan($id_mutasi)
@@ -46,9 +51,15 @@ class ModelSurat extends Model
             ->where('tbl_mutasi.id_mutasi', $id_mutasi)
             ->get()->getRowArray();
     }
-    public function add($data)
+    public function terima()
     {
-        $this->db->table('tbl_sekolah')
+        return $this->db->table('tbl_terima')
+
+            ->get()->getResultArray();
+    }
+    public function addterima($data)
+    {
+        $this->db->table('tbl_terima')
             ->insert($data);
     }
 

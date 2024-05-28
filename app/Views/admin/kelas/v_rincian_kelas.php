@@ -25,7 +25,7 @@ $ta = $db->table('tbl_ta')
                     <div class="col-lg-7">
                         <h3>Data Siswa Kelas <?= $kelas['kelas'] ?></h3>
                         <h5>Wali Kelas : <b><?= $kelas['nama_guru'] ?></h5>
-                        <h5>Jumlah Siswa : <?=$jml_siswa?></h5>
+                        <h5>Jumlah Siswa : <?= $jml_siswa ?></h5>
                         <p class="text-muted">Tahun Pelajaran <b>Aktif</b> <?= $ta['ta'] ?> Semester <b> <?= $ta['semester'] ?></b></p>
                     </div>
                     <div class="col-lg-4 float-right">
@@ -205,15 +205,15 @@ $ta = $db->table('tbl_ta')
     const $select = $('select[name="ap"]');
     const opts = [{
             'value': '<?= base_url('kelas/halaman/' . $kelas['id_kelas']) ?>',
-            'text': 'Halaman Depan'
+            'text': 'Halaman Depan Rapot'
         },
         {
             'value': '<?= base_url('kelas/label/' . $kelas['id_kelas']) ?>',
-            'text': 'Label'
+            'text': 'Label Nama '
         },
         {
             'value': '<?= base_url('kelas/print/' . $kelas['id_kelas']) ?>',
-            'text': 'Print Biodata'
+            'text': 'Biodata Rapot'
         },
         {
             'value': '<?= base_url('kelas/ledger/' . $kelas['id_kelas']) ?>',

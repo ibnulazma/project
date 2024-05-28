@@ -181,8 +181,6 @@ class Nilai extends BaseController
 
     public function nilaisiswa()
     {
-
-
         $data = [
             'title'         => 'SIAKAD',
             'menu'          => 'nilai',

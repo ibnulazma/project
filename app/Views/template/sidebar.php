@@ -152,7 +152,7 @@ $user = $db->table('tbl_user')
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?= base_url('surat') ?>" class="nav-link <?= $submenu == 'terima' ? 'active' : '' ?>">
+                            <a href="<?= base_url('surat/terima') ?>" class="nav-link <?= $submenu == 'terima' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Surat Penerimaan</p>
                             </a>

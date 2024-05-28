@@ -19,14 +19,6 @@ $ta = $db->table('tbl_ta')
                         <h3><?= $subtitle ?></h3>
                         <p class="text-muted">Tahun Pelajaran <b>Aktif</b> <?= $ta['ta'] ?> Semester <b> <?= $ta['semester'] ?></b></p>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="input-group-append float-right">
-                            <div class="tombol text-center">
-                                <button class="btn btn-circle" data-toggle="modal" data-target="#tambah"> <i class="fa-solid fa-circle-plus fa-3x" style="color: #74C0FC;"></i></button>
-                                <p style="color:#74C0FC">Tambah</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <table class="table table-bordered">
                     <thead>
@@ -46,7 +38,7 @@ $ta = $db->table('tbl_ta')
                                 <td><?= $value['nama_siswa'] ?></td>
                                 <td><?= $value['nisn'] ?></td>
                                 <td><?= $value['kelas'] ?></td>
-                                <td><a href="<?= base_url('surat/printmohon/' . $value['id_mutasi']) ?>" class="btn btn-danger"><i class="fas fa-print"></i></a></td>
+                                <td><a href="<?= base_url('surat/printmohon/' . $value['id_mutasi']) ?>" target="_blank" class="btn btn-danger"><i class="fas fa-print"></i></a></td>
                                 <td><a href="" class="btn btn-info" data-target="#edit<?= $value['id_mutasi'] ?>" data-toggle="modal"><i class="fas fa-print"></i></a></td>
                             </tr>
                         <?php } ?>

@@ -52,9 +52,6 @@
                     <div class="rinci">
                         <h6>Rincian Data Peserta Didik</h6>
                     </div>
-                    <div class="kembali">
-                        <a href="<?= base_url('kelas/rincian_kelas/' . $siswa['id_kelas']) ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-backward fa-beat-fade"></i> Kembali</a>
-                    </div>
                 </div>
             </div>
             <div class="card-body">
