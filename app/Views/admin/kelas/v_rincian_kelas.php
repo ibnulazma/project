@@ -37,7 +37,7 @@ $ta = $db->table('tbl_ta')
 
                             <div class="tombol text-center">
                                 <button class="btn btn-circle" data-toggle="modal" data-target="#upload"> <i class="fa-solid fa-cloud-arrow-up fa-3x" style="color: #74C0FC"></i></button>
-                                <p style="color:#74C0FC">Import</p>
+                                <p style="color:#74C0FC">Import Nilai</p>
                             </div>
 
                             <div class="tombol text-center">
@@ -171,7 +171,7 @@ $ta = $db->table('tbl_ta')
                 <a href="<?= base_url('kelas/printexcel/' . $kelas['id_kelas']) ?>" class="btn btn-outline-success btn-lg"> <i class="fas fa-file-excel mr-2"></i> Download Template</a>
 
 
-                <?= form_open_multipart('kelas/upload/') ?>
+                <?= form_open_multipart('kelas/upload/' . $kelas['id_kelas']) ?>
                 <div class="form-group mt-4">
                     <label for="exampleInputFile">
                         <h5>Upload Nilai</h5>
@@ -209,15 +209,17 @@ $ta = $db->table('tbl_ta')
         },
         {
             'value': '<?= base_url('kelas/label/' . $kelas['id_kelas']) ?>',
-            'text': 'Label Nama '
+            'text': 'Label Nama'
         },
         {
             'value': '<?= base_url('kelas/print/' . $kelas['id_kelas']) ?>',
-            'text': 'Biodata Rapot'
+            'text': 'Biodata Rapot',
+
         },
         {
             'value': '<?= base_url('kelas/ledger/' . $kelas['id_kelas']) ?>',
-            'text': 'Leger'
+            'text': 'Leger',
+
         }
     ];
 

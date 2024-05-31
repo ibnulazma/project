@@ -25,6 +25,7 @@ class Peserta extends BaseController
 
     public function __construct()
     {
+        helper('gantiformat');
         helper('form');
         $this->ModelPeserta = new ModelPeserta();
         $this->ModelKelas = new ModelKelas();
@@ -58,6 +59,14 @@ class Peserta extends BaseController
         ];
         return view('admin/peserta/v_peserta', $data);
     }
+
+
+
+
+
+
+
+
 
     public function verifikasi()
     {

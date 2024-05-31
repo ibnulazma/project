@@ -205,7 +205,7 @@
                                         Penghasilan : <?= $siswa['hasil_ayah'] ?></span>
                                     </li>
                                     <li class="list-group-item">
-                                        Telp : <?= $siswa['telp_ayah'] ?></span>
+                                        Telp : <a href="https://wa.me/<?= gantiformat($siswa['telp_ayah']) ?>" target="_blank"><?= gantiformat($siswa['telp_ayah']) ?></a> </span>
                                     </li>
                                 </ul>
                             </div>
@@ -230,7 +230,7 @@
                                         Penghasilan : <?= $siswa['hasil_ibu'] ?></span>
                                     </li>
                                     <li class="list-group-item">
-                                        Telp : <?= $siswa['telp_ibu'] ?></span>
+                                        Telp : <a href="https://wa.me/<?= gantiformat($siswa['telp_ibu']) ?>" target="_blank"><?= gantiformat($siswa['telp_ibu']) ?></a> </span></span>
                                     </li>
                                 </ul>
                             </div>

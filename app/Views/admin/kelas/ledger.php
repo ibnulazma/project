@@ -31,9 +31,19 @@
 
 <body>
 
+
+    <?php
+
+    $db     = \Config\Database::connect();
+
+    $ta = $db->table('tbl_ta')
+        ->where('status', '1')
+        ->get()->getRowArray();
+
+    ?>
     <div class="container">
         <center>
-            <h4>LEGER NILAI P3MP KELAS <?= $kelas['kelas'] ?><br> SEMESTER GANJIL<br>TAHUN PELAJARAN 2023-2024</h4>
+            <h4>LEGER NILAI P3MP KELAS <?= $kelas['kelas'] ?><br> SEMESTER <?= strtoupper($ta['semester']) ?><br>TAHUN PELAJARAN <?= $ta['ta'] ?></h4>
         </center>
     </div>
     <table class="table1">
@@ -64,9 +74,9 @@
         <tbody>
             <?php
             $no = 1;
-            foreach ($nilai as $row) { ?>
+            foreach ($nilai as $key => $row) { ?>
                 <tr>
-                    <td><?= $no++ ?></td>
+                    <td class="center"><?= $no++ ?></td>
                     <td class="center"><?= $row['nisn'] ?></td>
                     <td><?= $row['nama_siswa'] ?></td>
                     <td class="center"><?= $row['pai'] ?></td>
@@ -99,7 +109,6 @@
                 </tr>
             <?php } ?>
         </tbody>
-
     </table>
 
 

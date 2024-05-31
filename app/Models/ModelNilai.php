@@ -39,17 +39,30 @@ class ModelNilai extends Model
     // }
 
 
-    public function nilaimapel($id_guru)
+    public function nilaikelas($id_kelas)
     {
         return $this->db->table('tbl_nilai')
             ->join('tbl_database', 'tbl_database.nisn = tbl_nilai.nisn', 'left')
             ->join('tbl_siswa', 'tbl_siswa.nisn = tbl_database.nisn', 'left')
-            ->join('tbl_kelas', 'tbl_kelas.id_kelas = tbl_siswa.id_kelas', 'left')
+            ->join('tbl_kelas', 'tbl_kelas.id_kelas = tbl_database.id_kelas', 'left')
+            ->join('tbl_ta', 'tbl_ta.id_ta = tbl_nilai.id_ta', 'left')
             ->join('tbl_guru', 'tbl_guru.id_guru = tbl_kelas.id_guru', 'left')
-            ->where('tbl_siswa.status_daftar', '3')
-            ->where('tbl_kelas.id_guru', $id_guru)
+            // ->where('tbl_siswa.status_daftar', '3')
+            ->where('tbl_ta.status', '1')
+            ->where('tbl_database.id_kelas', $id_kelas)
             ->get()->getResultArray();
     }
+    // public function nilaimapel($id_guru)
+    // {
+    //     return $this->db->table('tbl_nilai')
+    //         ->join('tbl_database', 'tbl_database.nisn = tbl_nilai.nisn', 'left')
+    //         ->join('tbl_siswa', 'tbl_siswa.nisn = tbl_database.nisn', 'left')
+    //         ->join('tbl_kelas', 'tbl_kelas.id_kelas = tbl_siswa.id_kelas', 'left')
+    //         ->join('tbl_guru', 'tbl_guru.id_guru = tbl_kelas.id_guru', 'left')
+    //         ->where('tbl_siswa.status_daftar', '3')
+    //         ->where('tbl_kelas.id_guru', $id_guru)
+    //         ->get()->getResultArray();
+    // }
 
 
     public function nilaisiswa($nisn)

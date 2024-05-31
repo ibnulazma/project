@@ -11,8 +11,10 @@ class ModelKelas extends Model
     {
         return $this->db->table('tbl_kelas')
             ->join('tbl_guru', 'tbl_guru.id_guru = tbl_kelas.id_guru', 'left')
+            ->join('tbl_ta', 'tbl_ta.id_ta = tbl_kelas.id_ta', 'left')
             ->join('tbl_tingkat', 'tbl_tingkat.id_tingkat = tbl_kelas.id_tingkat', 'left')
             ->orderBy('tbl_kelas.id_tingkat', 'ASC')
+            ->where('tbl_ta.status', '1')
             ->get()
             ->getResultArray();
     }
@@ -118,7 +120,6 @@ class ModelKelas extends Model
     public function siswablmpuna()
     {
         return $this->db->table('tbl_siswa')
-
             ->join('tbl_tingkat', 'tbl_tingkat.id_tingkat = tbl_siswa.id_tingkat', 'left')
             ->where('status_daftar', '3')
             ->get()
@@ -130,9 +131,12 @@ class ModelKelas extends Model
     public function jml_siswa($id_kelas)
     {
         return $this->db->table('tbl_database')
-            ->join('tbl_siswa', 'tbl_siswa.nisn = tbl_database.nisn','left')
+            ->join('tbl_siswa', 'tbl_siswa.nisn = tbl_database.nisn', 'left')
+            ->join('tbl_kelas', 'tbl_kelas.id_kelas = tbl_database.id_kelas', 'left')
+            ->join('tbl_ta', 'tbl_ta.id_ta = tbl_database.id_ta', 'left')
             ->where('tbl_siswa.status_daftar', '3')
-            ->where('id_kelas', $id_kelas)
+            ->where('tbl_ta.status', '1')
+            ->where('tbl_database.id_kelas', $id_kelas)
             // ->where('jenis_kelamin', 'Laki-laki')
             ->countAllResults();
     }
