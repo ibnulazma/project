@@ -60,14 +60,6 @@ class Peserta extends BaseController
         return view('admin/peserta/v_peserta', $data);
     }
 
-
-
-
-
-
-
-
-
     public function verifikasi()
     {
 
@@ -686,5 +678,100 @@ class Peserta extends BaseController
         $dompdf->stream('data siswa.pdf', array(
             "Attachment" => false
         ));
+    }
+    public function updateijazah($nisn)
+    {
+        if ($this->validate([
+
+            'ijazah' => [
+                'label' => 'Foto',
+                'rules' => 'max_size[ijazah,1024]|mime_in[ijazah,image/png,image/jpg,image/gif,image/jpeg,image/ico]',
+                'errors' => [
+                    'max_size' => '{field} Max 1024 KB !!!!',
+                    'mime_in' => 'Format {field} Harus PNG, JPG, JPEG, GIF, ICO !!!!',
+                    'max_size' => 'Harus Size 1024Kb'
+                ]
+            ],
+        ])) {
+
+            //masukan foto ke input
+            $foto = $this->request->getFile('ijazah');
+            if ($foto->getError() == 4) {
+
+                $data = array(
+                    'nisn'   => $nisn,
+                );
+                $this->ModelPeserta->edit($data);
+            } else {
+
+                //menghapus fotolama
+                $user = $this->ModelPeserta->detail_data($nisn);
+                if ($user['ijazah'] != "") {
+                    unlink('ijazah/' . $user['ijazah']);
+                }
+                //merename
+                $nama_file = $foto->getRandomName();
+                //jika valid
+                $data = array(
+                    'nisn'          => $nisn,
+                    'ijazah'        => $nama_file,
+                );
+                $foto->move('ijazah', $nama_file);
+                $this->ModelPeserta->edit($data);
+            }
+            session()->setFlashdata('pesan', 'Foto Berhasil Diubah !!!');
+            return redirect()->to(base_url('peserta/detail_siswa/' . $nisn));
+        } else {
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            return redirect()->to(base_url('peserta/detail_siswa/' . $nisn));
+        }
+    }
+
+    public function update_kk($nisn)
+    {
+        if ($this->validate([
+
+            'kartu_keluarga' => [
+                'label' => 'Foto',
+                'rules' => 'max_size[kartu_keluarga,1024]|mime_in[kartu_keluarga,image/png,image/jpg,image/gif,image/jpeg,image/ico]',
+                'errors' => [
+                    'max_size' => '{field} Max 1024 KB !!!!',
+                    'mime_in' => 'Format {field} Harus PNG, JPG, JPEG, GIF, ICO !!!!',
+                    'max_size' => 'Harus Size 1024Kb'
+                ]
+            ],
+        ])) {
+
+            //masukan foto ke input
+            $foto = $this->request->getFile('kartu_keluarga');
+            if ($foto->getError() == 4) {
+
+                $data = array(
+                    'nisn'   => $nisn,
+                );
+                $this->ModelSiswa->edit($data);
+            } else {
+
+                //menghapus fotolama
+                $user = $this->ModelPeserta->detail_data($nisn);
+                if ($user['kartu_keluarga'] != "") {
+                    unlink('kartu_keluarga/' . $user['kartu_keluarga']);
+                }
+                //merename
+                $nama_file = $foto->getRandomName();
+                //jika valid
+                $data = array(
+                    'nisn'                      => $nisn,
+                    'kartu_keluarga'            => $nama_file,
+                );
+                $foto->move('kartu_keluarga', $nama_file);
+                $this->ModelPeserta->edit($data);
+            }
+            session()->setFlashdata('pesan', 'Foto Berhasil Diubah !!!');
+            return redirect()->to(base_url('peserta/detail_siswa/' . $nisn));
+        } else {
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            return redirect()->to(base_url('peserta/detail_siswa/' . $nisn));
+        }
     }
 }

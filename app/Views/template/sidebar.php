@@ -78,7 +78,7 @@ $user = $db->table('tbl_user')
                 </li>
                 <li class="nav-item <?= $menu == 'akademik' ? 'menu-open' : '' ?>">
                     <a href="#" class="nav-link <?= $menu == 'akademik' ? 'active' : '' ?>">
-                        <i class="nav-icon fas fa-cogs"></i>
+                        <i class="nav-icon fas fa-graduation-cap"></i>
                         <p>
                             Akademik
                             <i class="right fas fa-angle-left"></i>

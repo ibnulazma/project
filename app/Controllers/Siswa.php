@@ -918,31 +918,14 @@ class Siswa extends BaseController
 
                 ]
             ],
+            'telp_anak' => [
+                'label' => 'Telp Anak',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi',
 
-        ])) {
-            $data = [
-                'id_siswa'          => $id_siswa,
-                'hobi'              => $this->request->getPost('hobi'),
-                'cita_cita'         => $this->request->getPost('cita_cita'),
-                'seri_ijazah'       => $this->request->getPost('seri_ijazah'),
-                'telp_anak'         => $this->request->getPost('telp_anak'),
-
-
-            ];
-            $this->ModelSiswa->edit($data);
-            session()->setFlashdata('pesan', 'Data Berhasil Diubah');
-            return redirect()->to('siswa/uploadberkas/' . $id_siswa);
-        } else {
-            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
-            $validation =  \Config\Services::validation();
-            return redirect()->to('siswa/registrasi/' . $id_siswa)->withInput()->with('validation', $validation);
-            // return redirect()->to('siswa/profile');
-        }
-    }
-
-    public function status_daftar($id_siswa)
-    {
-        if ($this->validate([
+                ]
+            ],
             'status_daftar' => [
                 'label' => 'Pernyataan',
                 'rules' => 'required',
@@ -954,7 +937,11 @@ class Siswa extends BaseController
         ])) {
             $data = [
                 'id_siswa'          => $id_siswa,
-                'status_daftar'     => $this->request->getPost('status_daftar'),
+                'hobi'              => $this->request->getPost('hobi'),
+                'cita_cita'         => $this->request->getPost('cita_cita'),
+                'seri_ijazah'       => $this->request->getPost('seri_ijazah'),
+                'telp_anak'         => $this->request->getPost('telp_anak'),
+                'status_daftar'         => 2,
 
 
             ];
@@ -964,10 +951,12 @@ class Siswa extends BaseController
         } else {
             session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
             $validation =  \Config\Services::validation();
-            return redirect()->to('siswa/uploadberkas/' . $id_siswa)->withInput()->with('validation', $validation);
+            return redirect()->to('siswa/registrasi/' . $id_siswa)->withInput()->with('validation', $validation);
             // return redirect()->to('siswa/profile');
         }
     }
+
+
 
 
     // biodata siswa
@@ -1027,7 +1016,7 @@ class Siswa extends BaseController
             'subtitle'      => 'Pengajuan',
             'menu'          => 'pengajuan',
             'submenu'       => 'pengajuan',
-            'mutasi'     => $this->ModelSiswa->mutasi($siswa['id_siswa']),
+            'mutasi'     => $this->ModelSiswa->mutasi($siswa['nisn']),
             'siswa'     => $siswa,
             'pengajuan'     => $this->ModelSiswa->pengajuan(),
 
@@ -1035,13 +1024,14 @@ class Siswa extends BaseController
         return view('siswa/v_pengajuan', $data);
     }
 
-    public function mutasi($id_siswa)
+    public function mutasi($nisn)
     {
         $data = [
-            'id_siswa'          => $id_siswa,
+            'nisn'              => $nisn,
             'alasan'            => $this->request->getPost('alasan'),
             'sekolah'           => $this->request->getPost('sekolah'),
             'status_mutasi'     => 1,
+            'id_ta'             => $this->request->getPost('id_ta')
         ];
         $this->ModelSiswa->insertpengajuan($data);
         return redirect()->to('siswa/pengajuan');

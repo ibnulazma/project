@@ -37,7 +37,7 @@ $ta = $db->table('tbl_ta')
                                 <td><?= $key + 1 ?></td>
                                 <td><?= $value['nama_siswa'] ?></td>
                                 <td><?= $value['nisn'] ?></td>
-                                <td><?= $value['kelas'] ?></td>
+                                <td></td>
                                 <td><a href="<?= base_url('surat/printmohon/' . $value['id_mutasi']) ?>" target="_blank" class="btn btn-danger"><i class="fas fa-print"></i></a></td>
                                 <td><a href="" class="btn btn-info" data-target="#edit<?= $value['id_mutasi'] ?>" data-toggle="modal"><i class="fas fa-print"></i></a></td>
                             </tr>

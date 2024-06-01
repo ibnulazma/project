@@ -20,9 +20,7 @@
                 <h3 class="profile-username text-center"><?= $siswa['nama_siswa'] ?></h3>
                 <p class="text-muted text-center">(<?= $siswa['nisn'] ?> / <?= $siswa['nis'] ?>)
                 </p>
-
                 <ul class="list-group  mb-3">
-
                     <ul class="list-group mb-3">
                         <li class="list-group-item">
                             <b>Jenis Kelamin</b> <span class="float-right"><?= $siswa['jenis_kelamin'] ?></span>
@@ -36,7 +34,6 @@
                         <li class="list-group-item">
                             <b> Ibu Kandung</b> <span class="float-right"><?= $siswa['nama_ibu'] ?> </span>
                         </li>
-
                     </ul>
                 </ul>
             </div>
@@ -70,7 +67,6 @@
                 </p>
             </div>
             <div class="card-body">
-
                 <p>
                     <?= $siswa['alamat'] ?> RT <?= $siswa['rt'] ?> RW <?= $siswa['rw'] ?>
                 </p>
@@ -176,7 +172,6 @@
                     </div>
 
                 </div>
-
             </div>
         </div>
 

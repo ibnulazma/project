@@ -37,8 +37,6 @@
 
                         <h3 class="profile-username text-center"><?= $siswa['nama_siswa'] ?></h3>
                         <p class="text-muted text-center">(<?= $siswa['nisn'] ?> / <?= $siswa['nis'] ?>)</p>
-
-
                     </div>
                     <div class="card-footer">
                         <div class="row">
@@ -46,7 +44,7 @@
                                 <div class="description-block">
                                     <p class="description-header">ijazah</p>
                                     <?php if ($siswa['ijazah'] == null) { ?>
-                                        <span class="badge bg-danger"><i class="fa-solid fa-circle-xmark"></i> belum</span>
+                                        <span class="badge bg-danger" data-toggle="modal" data-target="#uploadijazah"><i class="fa-solid fa-circle-xmark"></i> belum</span>
                                     <?php } else { ?>
                                         <a href="<?= base_url('peserta/ijazah/' . $siswa['nisn']); ?>" target="_blank">
                                             <span class="badge bg-success"><i class="fa-solid fa-circle-check"></i> sudah</span>
@@ -58,7 +56,7 @@
                                 <div class="description-block">
                                     <p class="description-header">akte</p>
                                     <?php if ($siswa['akte'] == null) { ?>
-                                        <span class="badge bg-danger"><i class="fa-solid fa-circle-xmark"></i> belum</span>
+                                        <span class="badge bg-danger" data-target="#uploadakte" data-toggle="modal"><i class="fa-solid fa-circle-xmark"></i> belum</span>
                                     <?php } else { ?>
                                         <a href="<?= base_url('peserta/akte/' . $siswa['nisn']); ?>" target="_blank">
                                             <span class=" badge bg-success"><i class="fa-solid fa-circle-check"></i> sudah</span>
@@ -70,7 +68,7 @@
                                 <div class="description-block">
                                     <p class="description-header">kk</p>
                                     <?php if ($siswa['kartu_keluarga'] == null) { ?>
-                                        <span class="badge bg-danger"><i class="fa-solid fa-circle-xmark"></i> belum</span>
+                                        <span class="badge bg-danger" data-target="#uploadkk" data-toggle="modal"> <i class="fa-solid fa-circle-xmark"></i> belum</span>
                                     <?php } else { ?>
                                         <a href="<?= base_url('peserta/kartu_keluarga/' . $siswa['nisn']); ?>" target="_blank">
                                             <span class=" badge bg-success"><i class="fa-solid fa-circle-check"></i> sudah</span>
@@ -298,12 +296,12 @@
                         <div class="row">
                             <div class="col-sm-2">
                                 <a href="<?= base_url('ijazah/' . $siswa['ijazah']) ?>" data-toggle="lightbox" data-title="Ijazah" data-gallery="gallery">
-                                    <img src="<?= base_url('foto_siswa/' . $siswa['foto_siswa']) ?>" class="img-fluid mb-2" alt="white sample" />
+                                    <img src="<?= base_url('ijazah/' . $siswa['ijazah']) ?>" class="img-fluid mb-2" alt="Ijazah" />
                                 </a>
                             </div>
                             <div class="col-sm-2">
                                 <a href="<?= base_url('kartu_keluarga/' . $siswa['kartu_keluarga']) ?>" data-toggle="lightbox" data-title="Kartu Keluarga" data-gallery="gallery">
-                                    <img src="<?= base_url('kartu_keluarga/' . $siswa['kartu_keluarga']) ?>" class="img-fluid mb-2" alt="black sample" />
+                                    <img src="<?= base_url('kartu_keluarga/' . $siswa['kartu_keluarga']) ?>" class="img-fluid mb-2" alt="Kartu Keluarga" />
                                 </a>
                             </div>
                         </div>
@@ -805,7 +803,61 @@
     </div>
 </div>
 
-
+<!-- Upload KK -->
+<div class="modal fade" id="uploadkk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Upload Kartu Keluarga</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?= form_open_multipart('peserta/update_kk/' . $siswa['nisn']) ?>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="file" name="kartu_keluarga" id="" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-floppy-disk"></i> Submit</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="uploadijazah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Upload Ijazah</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?= form_open_multipart('peserta/updateijazah/' . $siswa['nisn']) ?>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="file" name="ijazah" id="" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-floppy-disk"></i> Submit</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+</div>
 
 
 

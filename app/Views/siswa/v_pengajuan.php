@@ -1,6 +1,19 @@
 <?= $this->extend('template/template-backend') ?>
 <?= $this->section('content') ?>
 
+<?php
+
+$db     = \Config\Database::connect();
+
+$ta = $db->table('tbl_ta')
+    ->where('status', '1')
+    ->get()->getRowArray();
+
+?>
+
+<div class="swal" data-swal="<?= session()->getFlashdata('pesan'); ?>"></div>
+
+
 
 
 <div class="content-header">
@@ -8,43 +21,36 @@
         <?php if ($siswa['status_daftar'] == 1) { ?>
             <span class="btn btn-danger">Silahkan Update Biodata Terlebih Dahulu</span>
         <?php } elseif ($siswa['status_daftar'] == 3) { ?>
+            <p>Untuk melakukan pengajuan pindah sekolah dari SMP Insan Kamil silahkan klik tombol berikut:</p>
+
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Pengajuan Mutasi
+            </button>
+
         <?php } ?>
 
-        
-        <p>Untuk melakukan pengajuan pindah sekolah dari SMP Insan Kamil silahkan klik tombol berikut:</p>
+    </div>
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Pengajuan Mutasi
-        </button>
-
-
-
-
-
-        <?php foreach ($mutasi as $value) { ?>
-
-
-            <div class="row mt-5">
-                <div class="card">
-                    <div class="card-body">
-                        <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <?php if ($value['status_mutasi'] == 1) { ?>
-                                            <span class="btn btn-info btn-sm"> Silahkan Hubungi Wali Kelas Untuk Persetujuan Permohonan Mutasi</span>
-                                        <?php } else if ($value['status_mutasi'] == 2) { ?>
-                                            <span class="btn btn-success btn-sm"> Surat Mutasi Dalam Proses TTD Kepala Sekolah</span>
-                                        <?php } ?>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-5">
+                <?php foreach ($mutasi as $value) { ?>
+                    <?php if ($value['status_mutasi'] == 1) { ?>
+                        <div class="callout callout-danger">
+                            <h5> Silahkan Hubungi Wali Kelas Untuk Persetujuan Permohonan Mutasi</h5>
+                        </div>
+                    <?php } else if ($value['status_mutasi'] == 2) { ?>
+                        <div class="callout callout-info">
+                            <h5> Surat Mutasi Dalam Proses TTD Kepala Sekolah</h5>
+                        </div>
+                    <?php } else if ($value['status_mutasi'] == 3) { ?>
+                        <div class="callout callout-success">
+                            <h5> Surat Sudah Bisa Diambil Di TU</h5>
+                        </div>
+                    <?php } ?>
+                <?php } ?>
             </div>
-
-        <?php } ?>
+        </div>
     </div>
 </div>
 
@@ -55,7 +61,7 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <?= form_open('siswa/mutasi/' . $siswa['id_siswa']) ?>
+        <?= form_open('siswa/mutasi/' . $siswa['nisn']) ?>
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Pengajuan Mutasi</h5>
@@ -80,6 +86,7 @@
                         <option value="Sambil Pondok">Sambil Pondok</option>
                     </select>
                 </div>
+                <input type="hidden" name="id_ta" id="" value="<?= $ta['id_ta'] ?>">
                 <div class="form-group">
                     <label for="">Pindah Ke Sekolah</label>
                     <input type="text" name="sekolah" class="form-control">

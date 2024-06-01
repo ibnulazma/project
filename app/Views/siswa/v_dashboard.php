@@ -33,8 +33,8 @@ $ta = $db->table('tbl_ta')
                 <?php  } else if ($siswa['status_daftar'] == 2) { ?>
 
                     <div class="bg-warning p-2">
-                        Verifikasi :Silahkan Kumpulkan Fotocopy Ijazah dan Kartu Keluarga !!!
-
+                        Verifikasi : <b>Silahkan Bawa Ijazah dan Kartu Keluarga Asli Ke Sekolah untuk melakukan scan oleh TU !!!</b>
+                        
                     </div>
 
                 <?php  } else if ($siswa['status_daftar'] == 3) { ?>
