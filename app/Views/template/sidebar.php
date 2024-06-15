@@ -18,7 +18,7 @@ $user = $db->table('tbl_user')
     <div class="nama">
         <h5 class="font-weight-bolder">SIAKAD INKA <br>
 
-            <?php if (session()->get('level') == '1') { ?>
+            <?php if (session()->get('level') == 'admin') { ?>
                 <span style="font-weight: 50;">Administrator</span>
             <?php  } else if (session()->get('level') == '2') { ?>
                 <span style="font-weight: 50;">Piket</span>
@@ -34,7 +34,7 @@ $user = $db->table('tbl_user')
 <hr>
 <div class="sidebar">
     <nav class="">
-        <?php if (session()->get('level') == 1) { ?>
+        <?php if (session()->get('level') == 'admin') { ?>
 
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">MENU</li>

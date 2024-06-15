@@ -67,7 +67,16 @@ class Auth extends BaseController
         }
     }
 
-
+    public function logout()
+    {
+        session()->remove('log');
+        session()->remove('username');
+        session()->remove('nama');
+        session()->remove('foto');
+        session()->remove('level');
+        session()->setFlashdata('pesan', 'Thanks, Are You Logged Out!!');
+        return redirect()->to(base_url('auth'));
+    }
 
     public function loginguru()
     { {
@@ -128,6 +137,7 @@ class Auth extends BaseController
                 'title' => 'SIAKADINKA',
                 'subtitle' => 'Halaman Login',
                 'validation'    =>  \Config\Services::validation(),
+
             ];
 
             return view('v_loginadmin', $data);
@@ -157,15 +167,14 @@ class Auth extends BaseController
         )) {
             $username   = $this->request->getPost('username');
             $password   = $this->request->getPost('password');
-            $level      = $this->request->getPost('level');
 
 
-            $cekadmin = $this->ModelAuth->login($username, $password, $level);
+            $cekadmin = $this->ModelAuth->login($username, $password);
             if ($cekadmin) {
                 session()->set('username', $cekadmin['username']);
                 session()->set('nama', $cekadmin['nama_user']);
                 session()->set('foto', $cekadmin['foto']);
-                session()->set('level', $level);
+                session()->set('level', 'admin');
                 return redirect()->to(base_url('admin'));
             } else {
                 session()->setFlashdata('error', 'Username or Password is Wrong');
@@ -177,18 +186,5 @@ class Auth extends BaseController
             // session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
             // return redirect()->to(base_url('auth'));
         }
-    }
-
-
-
-    public function logout()
-    {
-        session()->remove('log');
-        session()->remove('username');
-        session()->remove('nama');
-        session()->remove('foto');
-        session()->remove('level');
-        session()->setFlashdata('pesan', 'Thanks, Are You Logged Out!!');
-        return redirect()->to(base_url('auth'));
     }
 }

@@ -13,6 +13,7 @@ class Surat extends BaseController
 
     public function __construct()
     {
+        helper('formatindo');
         helper('form');
         $this->ModelSiswa = new ModelSiswa();
         $this->ModelSurat = new ModelSurat();

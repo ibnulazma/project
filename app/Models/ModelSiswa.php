@@ -138,11 +138,11 @@ class ModelSiswa extends Model
     }
 
 
-    public function mutasi($nisn)
+    public function mutasi($id_siswa)
     {
         return $this->db->table('tbl_mutasi')
-            ->join('tbl_siswa', 'tbl_siswa.nisn = tbl_mutasi.nisn', 'left')
-            ->where('tbl_siswa.nisn', $nisn)
+            ->join('tbl_siswa', 'tbl_siswa.id_siswa = tbl_mutasi.id_siswa', 'left')
+            ->where('tbl_siswa.id_siswa', $id_siswa)
             ->get()->getResultArray();
     }
     public function status_mutasi($nisn)
@@ -150,7 +150,7 @@ class ModelSiswa extends Model
         return $this->db->table('tbl_mutasi')
             ->join('tbl_siswa', 'tbl_siswa.nisn = tbl_mutasi.nisn', 'left')
             ->where('tbl_siswa.nisn', $nisn)
-            ->get()->getRowArray();
+            ->get()->getResultArray();
     }
 
     public function pengajuan()

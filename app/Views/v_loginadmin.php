@@ -65,18 +65,6 @@
                             </small>
                         </div>
                     </div>
-                    <div class="form-floating mb-1">
-                        <select name="level" id="" class="form-control bg-light">
-                            <option value="1">Admin</option>
-                            <option value="2">Piket</option>
-                        </select>
-                        <label for="">Role</label>
-                        <div class="invalid-feedback">
-                            <small>
-                                <?= $validation->getError('level'); ?>
-                            </small>
-                        </div>
-                    </div>
                     <div class="input-grup mb-3 d-flex justify-content-between">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" id="exampleCheck1" onclick="myFunction()">

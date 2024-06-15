@@ -12,6 +12,7 @@ class Guru extends BaseController
 
     public function __construct()
     {
+        helper('formatindo');
         helper('form');
         $this->ModelGuru = new ModelGuru();
     }

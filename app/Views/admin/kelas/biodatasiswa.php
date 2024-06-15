@@ -87,8 +87,6 @@
 <body>
 
 
-
-
     <!-- <img src="data:image/png;base64, '.base64_encode(file_get_contents($image_path)).'" alt="" srcset=""> -->
     <div class="content">
         <div class="container">
@@ -109,7 +107,7 @@
                 <tr>
                     <td>3. Tempat, Tanggal Lahir</td>
                     <td>:</td>
-                    <td><?= $biodata['tempat_lahir'] ?>, <?= date('d F Y', strtotime($biodata['tanggal_lahir'])) ?> </td>
+                    <td><?= $biodata['tempat_lahir'] ?>, <?= formatindo(date($biodata['tanggal_lahir']))  ?> </td>
                 </tr>
                 <tr>
                     <td>4. Jenis Kelamin</td>

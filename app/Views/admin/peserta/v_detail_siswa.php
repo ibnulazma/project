@@ -9,6 +9,14 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class=" card">
+
+                    <?php if ($siswa['status_daftar'] == 2) { ?>
+                        <div class="card-header">
+                            <h5 class="card-title">Verifikasi</h5>
+
+                        </div>
+                    <?php } elseif ($siswa['status_daftar'] == 3) { ?>
+                    <?php } ?>
                     <div class="card-body box-profile text-center">
                         <?= form_open_multipart('peserta/editfoto/' . $siswa['nisn']) ?>
                         <div class="text-center">
@@ -56,7 +64,7 @@
                                 <div class="description-block">
                                     <p class="description-header">akte</p>
                                     <?php if ($siswa['akte'] == null) { ?>
-                                        <span class="badge bg-danger" data-target="#uploadakte" data-toggle="modal"><i class="fa-solid fa-circle-xmark"></i> belum</span>
+                                        <span class="badge bg-danger" data-target="#uploadakte" data-toggle="modal"> <i class="fa-solid fa-circle-xmark"></i> belum</span>
                                     <?php } else { ?>
                                         <a href="<?= base_url('peserta/akte/' . $siswa['nisn']); ?>" target="_blank">
                                             <span class=" badge bg-success"><i class="fa-solid fa-circle-check"></i> sudah</span>
@@ -89,7 +97,7 @@
                     <div class="card-body">
                         <ul class="list-group  mb-3">
                             <li class="list-group-item">
-                                <span>TTL: <?= $siswa['tempat_lahir'] ?>, <?= $siswa['tanggal_lahir'] ?> </span>
+                                <span>TTL: <?= $siswa['tempat_lahir'] ?>, <?= formatindo(date($siswa['tanggal_lahir']))  ?> </span>
                             </li>
                             <li class="list-group-item">
                                 <span>NIK : <?= $siswa['nik'] ?> </span>
@@ -110,6 +118,7 @@
                         <h5 class="card-title">
                             Rekam Didik
                         </h5>
+                        <button class="btn btn-primary btn-sm float-right">Submit</button>
                     </div>
                     <div class="card-body">
                         <table class="table table-striped">
@@ -278,7 +287,7 @@
                                         Cita-cita: <?= $siswa['cita_cita'] ?></span>
                                     </li>
                                     <li class="list-group-item">
-                                        No Telp : <?= $siswa['telp_anak'] ?></span>
+                                        No Telp : <a href="https://wa.me/<?= gantiformat($siswa['telp_anak']) ?>" target="_blank"><?= gantiformat($siswa['telp_anak']) ?></a></span>
                                     </li>
                                     <li class="list-group-item">
                                         No Seri Ijazah : <?= $siswa['seri_ijazah'] ?></span>
@@ -302,6 +311,11 @@
                             <div class="col-sm-2">
                                 <a href="<?= base_url('kartu_keluarga/' . $siswa['kartu_keluarga']) ?>" data-toggle="lightbox" data-title="Kartu Keluarga" data-gallery="gallery">
                                     <img src="<?= base_url('kartu_keluarga/' . $siswa['kartu_keluarga']) ?>" class="img-fluid mb-2" alt="Kartu Keluarga" />
+                                </a>
+                            </div>
+                            <div class="col-sm-2">
+                                <a href="<?= base_url('akte/' . $siswa['akte']) ?>" data-toggle="lightbox" data-title="Akte" data-gallery="gallery">
+                                    <img src="<?= base_url('akte/' . $siswa['akte']) ?>" class="img-fluid mb-2" alt="Akte" />
                                 </a>
                             </div>
                         </div>
@@ -831,6 +845,7 @@
         </div>
     </div>
 </div>
+<!-- Ijazah -->
 <div class="modal fade" id="uploadijazah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -846,6 +861,35 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <input type="file" name="ijazah" id="" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-floppy-disk"></i> Submit</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+</div>
+
+<!-- Akte -->
+<div class="modal fade" id="uploadakte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Upload Akte</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?= form_open_multipart('peserta/updateakte/' . $siswa['nisn']) ?>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="file" name="akte" id="" class="form-control">
                         </div>
                     </div>
                 </div>

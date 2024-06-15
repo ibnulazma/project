@@ -31,25 +31,23 @@ $ta = $db->table('tbl_ta')
 
     </div>
 
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-md-5">
-                <?php foreach ($mutasi as $value) { ?>
-                    <?php if ($value['status_mutasi'] == 1) { ?>
-                        <div class="callout callout-danger">
-                            <h5> Silahkan Hubungi Wali Kelas Untuk Persetujuan Permohonan Mutasi</h5>
-                        </div>
-                    <?php } else if ($value['status_mutasi'] == 2) { ?>
-                        <div class="callout callout-info">
-                            <h5> Surat Mutasi Dalam Proses TTD Kepala Sekolah</h5>
-                        </div>
-                    <?php } else if ($value['status_mutasi'] == 3) { ?>
-                        <div class="callout callout-success">
-                            <h5> Surat Sudah Bisa Diambil Di TU</h5>
-                        </div>
-                    <?php } ?>
+    <div class="container-fluid mt-4">
+        <div class="col-md-5">
+            <?php foreach ($mutasi as $value) { ?>
+                <?php if ($value['status_mutasi'] == 1) { ?>
+                    <div class="callout callout-danger">
+                        <h5> Silahkan Hubungi Wali Kelas Untuk Persetujuan Permohonan Mutasi</h5>
+                    </div>
+                <?php } else if ($value['status_mutasi'] == 2) { ?>
+                    <div class="callout callout-info">
+                        <h5> Surat Mutasi Dalam Proses TTD Kepala Sekolah</h5>
+                    </div>
+                <?php } else if ($value['status_mutasi'] == 3) { ?>
+                    <div class="callout callout-success">
+                        <h5> Surat Sudah Bisa Diambil Di TU</h5>
+                    </div>
                 <?php } ?>
-            </div>
+            <?php } ?>
         </div>
     </div>
 </div>
@@ -61,7 +59,7 @@ $ta = $db->table('tbl_ta')
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <?= form_open('siswa/mutasi/' . $siswa['nisn']) ?>
+        <?= form_open('siswa/mutasi/' . $siswa['id_siswa']) ?>
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Pengajuan Mutasi</h5>

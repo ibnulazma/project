@@ -9,8 +9,8 @@ class ModelSurat extends Model
     public function AllData()
     {
         return $this->db->table('tbl_mutasi')
-            ->join('tbl_database', 'tbl_database.nisn = tbl_mutasi.nisn')
-            ->join('tbl_siswa', 'tbl_siswa.nisn = tbl_database.nisn')
+            ->join('tbl_siswa', 'tbl_siswa.id_siswa = tbl_mutasi.id_siswa')
+            ->join('tbl_database', 'tbl_database.nisn = tbl_siswa.nisn')
             ->join('tbl_kelas', 'tbl_kelas.id_kelas = tbl_database.id_kelas')
             ->join('tbl_guru', 'tbl_guru.id_guru = tbl_kelas.id_guru')
             ->join('tbl_ta', 'tbl_ta.id_ta = tbl_database.id_ta')
@@ -19,7 +19,7 @@ class ModelSurat extends Model
             ->get()
             ->getResultArray();
     }
-    public function detail_data($nisn)
+    public function detail_data($id_mutasi)
     {
         return $this->db->table('tbl_mutasi')
             ->join('tbl_siswa', 'tbl_siswa.nisn = tbl_mutasi.nisn', 'left')
@@ -42,13 +42,14 @@ class ModelSurat extends Model
     public function permohonan($id_mutasi)
     {
         return $this->db->table('tbl_mutasi')
-            ->join('tbl_siswa', 'tbl_siswa.nisn = tbl_mutasi.nisn')
+            ->join('tbl_siswa', 'tbl_siswa.id_siswa = tbl_mutasi.id_siswa')
             ->join('tbl_database', 'tbl_database.nisn = tbl_siswa.nisn')
             ->join('tbl_kelas', 'tbl_kelas.id_kelas = tbl_database.id_kelas')
             ->join('tbl_guru', 'tbl_guru.id_guru = tbl_kelas.id_guru')
             ->join('provinsi', 'provinsi.id_provinsi = tbl_siswa.provinsi', 'left')
             ->join('kabupaten', 'kabupaten.id_kabupaten = tbl_siswa.kabupaten', 'left')
             ->join('kecamatan', 'kecamatan.id_kecamatan = tbl_siswa.kecamatan', 'left')
+            ->join('desa', 'desa.id_desa = tbl_siswa.desa', 'left')
             ->where('tbl_mutasi.id_mutasi', $id_mutasi)
             ->get()->getRowArray();
     }

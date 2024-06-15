@@ -6,8 +6,8 @@
 <ul class="navbar-nav ml-auto">
     <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-            <?php if (session()->get('level') == '1') { ?>
-                <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" class=" mr-3" style="width:25px;height:25px; border-radius:50%">
+            <?php if (session()->get('level') == 'admin') { ?>
+                <?= session()->get('nama') ?> <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" class=" mr-3" style="width:25px;height:25px; border-radius:50%">
             <?php  } else if (session()->get('level') == 'siswa') { ?>
                 <img src="<?= base_url('foto_siswa/' .  session()->get('foto')) ?>" class=" mr-3" style="width:25px;height:25px;border-radius:50%">
             <?php  } ?>
@@ -16,7 +16,7 @@
             <a href="#" class="dropdown-item">
 
                 <div class="media">
-                    <?php if (session()->get('level') == '1') { ?>
+                    <?php if (session()->get('level') == 'admin') { ?>
                         <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" class=" mr-3" style="width:25px;height:25px; border-radius:50%">
                     <?php  } else if (session()->get('level') == 'siswa') { ?>
                         <img src="<?= base_url('foto_siswa/' .  session()->get('foto')) ?>" class=" mr-3" style="width:25px;height:25px;border-radius:50%">

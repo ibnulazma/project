@@ -18,7 +18,7 @@ class Siswa extends BaseController
 
     public function __construct()
     {
-
+        helper('formatindo');
         helper('terbilang');
         helper('form');
         $this->ModelSiswa = new ModelSiswa();
@@ -1016,7 +1016,7 @@ class Siswa extends BaseController
             'subtitle'      => 'Pengajuan',
             'menu'          => 'pengajuan',
             'submenu'       => 'pengajuan',
-            'mutasi'     => $this->ModelSiswa->mutasi($siswa['nisn']),
+            'mutasi'     => $this->ModelSiswa->mutasi($siswa['id_siswa']),
             'siswa'     => $siswa,
             'pengajuan'     => $this->ModelSiswa->pengajuan(),
 
@@ -1024,10 +1024,10 @@ class Siswa extends BaseController
         return view('siswa/v_pengajuan', $data);
     }
 
-    public function mutasi($nisn)
+    public function mutasi($id_siswa)
     {
         $data = [
-            'nisn'              => $nisn,
+            'id_siswa'              => $id_siswa,
             'alasan'            => $this->request->getPost('alasan'),
             'sekolah'           => $this->request->getPost('sekolah'),
             'status_mutasi'     => 1,

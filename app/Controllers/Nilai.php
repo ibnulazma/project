@@ -14,6 +14,7 @@ class Nilai extends BaseController
 
     public function __construct()
     {
+        helper('formatindo');
         helper('terbilang');
         helper('form');
         $this->ModelNilai = new ModelNilai();

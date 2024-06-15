@@ -12,7 +12,7 @@
     body {
         margin: 0;
         padding: 0;
-        font-size: 16px;
+        font-size: 20px;
         font-family: 'Times New Roman', Times, serif;
     }
 
@@ -92,7 +92,7 @@
 
 <body>
 
-    <div class="wrapper">
+    <div class="wrapper" style="margin-top: 20px;">
         <div class="header ">
             <div class="tanggal"></div>
             <div class="perihal">Perihal : Permohonan Pindah Sekolah</div>
@@ -115,7 +115,7 @@
                 <tr>
                     <td class="vertical">Alamat</td>
                     <td class="vertical">:</td>
-                    <td><?= $mutasi['alamat'] ?> RT <?= $mutasi['rt'] ?>/RW <?= $mutasi['rw'] ?>/ Desa/Kel. <?= $mutasi['desa'] ?> <br> <?= $mutasi['nama_kecamatan'] ?> <?= ucwords($mutasi['city_name']) ?></td>
+                    <td><?= $mutasi['alamat'] ?> RT <?= $mutasi['rt'] ?> RW <?= $mutasi['rw'] ?> Desa/Kel. <?= $mutasi['desa'] ?> <br> <?= $mutasi['nama_kecamatan'] ?> <?= ucwords($mutasi['city_name']) ?></td>
 
                 </tr>
             </table>
@@ -147,7 +147,7 @@
             <p>Atas kerjasamanya kami ucapkan terima kasih.</p>
 
             <div class="column">
-                <p>Tangerang, <?= date('d F Y') ?></p>
+                <p>Tangerang, <?= formatindo(date('Y-m-d')) ?></p>
                 <p>Hormat Kami</p>
                 <br>
                 <br>

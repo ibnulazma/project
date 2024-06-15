@@ -22,7 +22,6 @@ $ta = $db->table('tbl_ta')
                 <h1 class="card-title"><?= $subtitle ?></h1>
             </div>
             <div class="card-body">
-
                 <div class="row">
                     <div class="col-lg-7">
                         <h3>Daftar Peserta Didik</h3>
@@ -35,7 +34,6 @@ $ta = $db->table('tbl_ta')
                                 <button class="btn btn-circle" data-toggle="modal" data-target="#tambah"> <i class="fa-solid fa-circle-plus fa-3x" style="color: #74C0FC;"></i></button>
                                 <p style="color:#74C0FC">Tambah</p>
                             </div>
-
                             <div class="tombol text-center">
                                 <button class="btn btn-circle" data-toggle="modal" data-target="#upload"> <i class="fa-solid fa-cloud-arrow-down fa-3x" style="color: #74C0FC"></i></button>
                                 <p style="color:#74C0FC">Import</p>
@@ -96,7 +94,7 @@ $ta = $db->table('tbl_ta')
                                                 <?php if ($value['status_daftar'] == 1) { ?>
                                                     <span class="badge bg-danger">belum aktif</span>
                                                 <?php } elseif ($value['status_daftar'] == 2) { ?>
-                                                    <span class="badge bg-info">verifikasi</span>
+                                                    <button class="btn btn-info btn-sm" data-target="#verifikasi<?= $value['nisn'] ?> " data-toggle="modal">verifikasi</button>
                                                 <?php } elseif ($value['status_daftar'] == 3) { ?>
                                                     <span class="badge bg-success">aktif</span>
                                                 <?php } ?>
@@ -340,49 +338,128 @@ $ta = $db->table('tbl_ta')
     </div>
 </div>
 
+<?php foreach ($peserta as $key => $value) { ?>
+    <div class="modal fade" id="verifikasi<?= $value['nisn'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Verifikasi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
-<div class="modal fade" id="verifikasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Proses Naik Tingkat</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-                <?= form_open('peserta/naik') ?>
-                <table class="table table-bordered" id="example1">
-                    <thead>
-                        <tr>
-                            <th><input type="checkbox" id="check-in"></th>
-                            <th>Nama Peserta Didik</th>
-                            <th>NISN</th>
-                            <th>Tingkat</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($naik as $key => $data) { ?>
-                            <tr>
-                                <td><input type="checkbox" class="check-item" name="nisn[]" value="<?= $data['nisn'] ?>"></td>
-                                <td><?= $data['nama_siswa'] ?></td>
-                                <td><?= $data['nisn'] ?></td>
-                                <td><?= $data['tingkat'] ?></td>
-                                <input type="hidden" class="form-control" name="id_tingkat[]" value="<?= $data['id_tingkat'] + 1 ?>">
+                <div class="modal-body">
+                    <?= form_open('peserta/verifikasi/' . $value['nisn']) ?>
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr class="text-center">
+                                <th>Nama Peserta Didik</th>
+                                <th>Nama Ayah</th>
+                                <th>Nama Ibu</th>
+                                <th>Telp Ayah</th>
+                                <th>Telp Ibu</th>
+                                <th>Hobi</th>
+                                <th>Cita-cita</th>
+                                <th>Seri Ijazah</th>
+                                <th>Ijazah</th>
+                                <th>Akte</th>
+                                <th>KK</th>
+                                <th>Telp Anak</th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center">
+                                <td><?= $value['nama_siswa'] ?></td>
+                                <td>
+                                    <?php if ($value['nama_ayah'] == null) { ?>
+                                        <i class="fa-solid fa-circle-xmark" style="color: #ec0909;"></i>
+                                    <?php } else { ?>
+                                        <i class="fa-solid fa-circle-check" style="color: #05fa42;"></i>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <?php if ($value['nama_ibu'] == null) { ?>
+                                        <i class="fa-solid fa-circle-xmark" style="color: #ec0909;"></i>
+                                    <?php } else { ?>
+                                        <i class="fa-solid fa-circle-check" style="color: #05fa42;"></i>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <?php if ($value['telp_ayah'] == null) { ?>
+                                        <i class="fa-solid fa-circle-xmark" style="color: #ec0909;"></i>
+                                    <?php } else { ?>
+                                        <i class="fa-solid fa-circle-check" style="color: #05fa42;"></i>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <?php if ($value['telp_ibu'] == null) { ?>
+                                        <i class="fa-solid fa-circle-xmark" style="color: #ec0909;"></i>
+                                    <?php } else { ?>
+                                        <i class="fa-solid fa-circle-check" style="color: #05fa42;"></i>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <?php if ($value['hobi'] == null) { ?>
+                                        <i class="fa-solid fa-circle-xmark" style="color: #ec0909;"></i>
+                                    <?php } else { ?>
+                                        <i class="fa-solid fa-circle-check" style="color: #05fa42;"></i>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <?php if ($value['cita_cita'] == null) { ?>
+                                        <i class="fa-solid fa-circle-xmark" style="color: #ec0909;"></i>
+                                    <?php } else { ?>
+                                        <i class="fa-solid fa-circle-check" style="color: #05fa42;"></i>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <?php if ($value['seri_ijazah'] == null) { ?>
+                                        <i class="fa-solid fa-circle-xmark" style="color: #ec0909;"></i>
+                                    <?php } else { ?>
+                                        <i class="fa-solid fa-circle-check" style="color: #05fa42;"></i>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <?php if ($value['ijazah'] == null) { ?>
+                                        <i class="fa-solid fa-circle-xmark" style="color: #ec0909;"></i>
+                                    <?php } else { ?>
+                                        <i class="fa-solid fa-circle-check" style="color: #05fa42;"></i>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <?php if ($value['akte'] == null) { ?>
+                                        <i class="fa-solid fa-circle-xmark" style="color: #ec0909;"></i>
+                                    <?php } else { ?>
+                                        <i class="fa-solid fa-circle-check" style="color: #05fa42;"></i>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <?php if ($value['kartu_keluarga'] == null) { ?>
+                                        <i class="fa-solid fa-circle-xmark" style="color: #ec0909;"></i>
+                                    <?php } else { ?>
+                                        <i class="fa-solid fa-circle-check" style="color: #05fa42;"></i>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <?php if ($value['telp_anak'] == null) { ?>
+                                        <i class="fa-solid fa-circle-xmark" style="color: #ec0909;"></i>
+                                    <?php } else { ?>
+                                        <i class="fa-solid fa-circle-check" style="color: #05fa42;"></i>
+                                    <?php } ?>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+                <?= form_close() ?>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="submit">Submit</button>
-            </div>
-            <?= form_close() ?>
         </div>
     </div>
-</div>
-
+<?php } ?>
 
 
 <?= $this->endSection() ?>

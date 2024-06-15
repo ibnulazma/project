@@ -20,6 +20,7 @@ class Kelas extends BaseController
 {
     public function __construct()
     {
+        helper('formatindo');
         helper('form');
         helper('terbilang');
         $this->ModelKelas = new ModelKelas();
