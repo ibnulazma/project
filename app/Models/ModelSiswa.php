@@ -174,7 +174,7 @@ class ModelSiswa extends Model
             ->join('tbl_kelas', 'tbl_kelas.id_kelas = tbl_database.id_kelas', 'left')
             ->join('tbl_guru', 'tbl_guru.id_guru = tbl_kelas.id_guru', 'left')
             ->where('tbl_database.nisn', $nisn)
-            ->where('tbl_ta.status', '1')
+            // ->where('tbl_ta.status', '1')
             ->get()->getResultArray();
     }
 }

@@ -67,6 +67,7 @@ class Guru extends BaseController
                 'niy'     => $this->request->getPost('niy'),
                 'password'  => $this->request->getPost('password'),
                 'walas'  => $this->request->getPost('walas'),
+                'status_aktif'  => 1,
 
             );
 
@@ -182,6 +183,16 @@ class Guru extends BaseController
             'id_guru' => $id_guru,
             'nama_guru' => $this->request->getPost('nama_guru'),
             'walas' => $this->request->getPost('walas'),
+        ];
+        $this->ModelGuru->edit($data);
+        session()->setFlashdata('pesan', 'Data Berhasil Di Update !!!');
+        return redirect()->to(base_url('guru'));
+    }
+    public function nonaktif($id_guru)
+    {
+        $data = [
+            'id_guru' => $id_guru,
+            'status_aktif' => 0,
         ];
         $this->ModelGuru->edit($data);
         session()->setFlashdata('pesan', 'Data Berhasil Di Update !!!');

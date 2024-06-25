@@ -9,6 +9,7 @@ class ModelGuru extends Model
     public function AllData()
     {
         return $this->db->table('tbl_guru')
+            ->where('status_aktif', '1')
             ->get()
             ->getResultArray();
     }

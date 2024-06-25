@@ -31,6 +31,7 @@ class ModelAuth extends Model
             ->where([
                 'niy' => $username,
                 'password' => $password,
+                'status_aktif' => 1,
             ])->get()->getRowArray();
     }
 }

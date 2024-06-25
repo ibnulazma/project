@@ -101,6 +101,7 @@ $ta = $db->table('tbl_ta')
                                             </td>
                                             <td class="text-center">
                                                 <a class="btn btn-xs btn-info" href="<?= base_url('peserta/detail_siswa/' .  $value['nisn']) ?>"> <i class="fa-solid fa-id-card-clip"></i> </a>
+                                                <a class="btn btn-xs btn-danger" href="" data-toggle="modal" data-target="#keluar<?= $value['nisn'] ?>"> <i class="fa-solid fa-right-from-bracket"></i> </a>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -113,8 +114,7 @@ $ta = $db->table('tbl_ta')
                 </div>
 
                 <button class="btn btn-danger mr-3" data-toggle="modal" data-target="#lulus">Proses Lulus</button>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#naik">Proses Naik Tingkat</button>
-
+                <button class="btn btn-primary mr-3" data-toggle="modal" data-target="#naik">Proses Naik Tingkat</button>
             </div>
         </div>
     </div>
@@ -122,6 +122,33 @@ $ta = $db->table('tbl_ta')
 </div>
 
 <!-- Modal TambahManual -->
+
+<?php foreach ($peserta as $key => $value) { ?>
+    <div class="modal fade" id="keluar<?= $value['nisn'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <?= form_open('peserta/keluar/' .  $value['nisn']) ?>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Proses Non Aktif</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group mt-2">
+                        <p>Apakah Yakin Akan Melakukan Proses keluar <?= $value['nama_siswa'] ?> ?</p>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary pull-left">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+<?php } ?>
+
+
 
 <div class="modal fade" id="upload" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -308,7 +335,7 @@ $ta = $db->table('tbl_ta')
 
             <div class="modal-body">
                 <?= form_open('peserta/naik') ?>
-                <table class="table table-bordered" id="example1">
+                <table class="table table-bordered" id="example2">
                     <thead>
                         <tr>
                             <th><input type="checkbox" id="check-in"></th>
@@ -337,6 +364,7 @@ $ta = $db->table('tbl_ta')
         </div>
     </div>
 </div>
+
 
 <?php foreach ($peserta as $key => $value) { ?>
     <div class="modal fade" id="verifikasi<?= $value['nisn'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

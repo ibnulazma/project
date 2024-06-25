@@ -118,7 +118,7 @@
                         <h5 class="card-title">
                             Rekam Didik
                         </h5>
-                        <button class="btn btn-primary btn-sm float-right">Submit</button>
+                        <button class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#pilihkelas">Pilih Kelas</button>
                     </div>
                     <div class="card-body">
                         <table class="table table-striped">
@@ -902,6 +902,38 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="pilihkelas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pilih Kelas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?= form_open('peserta/masukkelas/' . $siswa['nisn']) ?>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select name="id_kelas" id="" class="form-control">
+                                <option value="">Pilih Kelas</option>
+                                <?php foreach ($kelas as $k) : ?>
+                                    <option value="<?= $k['id_kelas'] ?>"><?= $k['kelas'] ?> | <?= $k['nama_guru'] ?></option>
+                                <?php endforeach ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-floppy-disk"></i> Submit</button>
+            </div>
+            <?= form_close() ?>
+        </div>
+    </div>
+</div>
 
 
 
@@ -926,11 +958,6 @@
         }
     }
 </script>
-
-
-
-
-
 
 
 

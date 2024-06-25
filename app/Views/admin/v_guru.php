@@ -11,21 +11,7 @@ $ta = $db->table('tbl_ta')
 
 ?>
 
-<?php
-$session = \Config\Services::session();
-if (!empty($session->getFlashdata('pesan'))) {
-    echo  '<div class="alert alert-danger" role="alert">
-                       
-            ' . $session->getFlashdata('pesan') . '
-            </div>';
-}
-if (!empty($session->getFlashdata('sukses'))) {
-    echo  '<div class="alert alert-success" role="alert">
-                       
-            ' . $session->getFlashdata('sukses') . '
-            </div>';
-}
-?>
+<div class="swal" data-swal="<?= session()->getFlashdata('pesan'); ?>"></div>
 
 
 <div class="content-header">
@@ -98,7 +84,8 @@ if (!empty($session->getFlashdata('sukses'))) {
 
                                         <td class="text-center">
                                             <a class="btn btn-xs btn-primary" data-toggle="modal" data-target="#edit<?= $value['id_guru'] ?>"> <i class="fas fa-pencil"></i> </a>
-                                            <button class="btn btn-xs btn-danger"> <i class="fas fa-trash-alt"></i></button>
+                                            <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#hapus<?= $value['id_guru'] ?>"> <i class=" fas fa-trash-alt"></i></button>
+                                            <a class="btn btn-xs btn-info" href="<?= base_url('guru/detail_guru/' . $value['id_guru']) ?>"> <i class=" fas fa-user"></i></a>
                                         </td>
 
                                     </tr>
@@ -202,7 +189,7 @@ if (!empty($session->getFlashdata('sukses'))) {
             <?php echo form_open('guru/edit/' . $value['id_guru']); ?>
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Sekolah</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit PTK</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -228,6 +215,38 @@ if (!empty($session->getFlashdata('sukses'))) {
                 </div>
             </div>
             <?php echo form_close() ?>
+        </div>
+    </div>
+<?php } ?>
+
+
+
+
+
+
+
+<?php foreach ($guru as $key => $value) { ?>
+    <div class="modal fade" id="hapus<?= $value['id_guru'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <?= form_open('guru/nonaktif/' . $value['id_guru']) ?>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Proses Non Aktif PTK</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Apakah yakin akan menonaktifkan PTK A.N <?= $value['nama_guru'] ?> ?
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger">Submit</button>
+                </div>
+                <?= form_close() ?>
+            </div>
+
         </div>
     </div>
 <?php } ?>

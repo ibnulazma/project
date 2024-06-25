@@ -21,7 +21,10 @@ class ModelKelas extends Model
 
     public function jumlahkelas()
     {
-        return $this->db->table('tbl_kelas')->countAllResults();
+        return $this->db->table('tbl_kelas')
+            ->join('tbl_ta', 'tbl_ta.id_ta = tbl_kelas.id_ta', 'left')
+            ->where('tbl_ta.status', '1')
+            ->countAllResults();
     }
 
 
@@ -106,9 +109,10 @@ class ModelKelas extends Model
     public function kelas()
     {
         return $this->db->table('tbl_kelas')
-            // ->join('tbl_tingkat', 'tbl_tingkat.id_tingkat = tbl_kelas.id_tingkat')
-            // ->join('tbl_siswa', 'tbl_siswa.id_siswa = tbl_siswa.id_tingkat')
-            // ->where('id_tingkat')
+            ->join('tbl_tingkat', 'tbl_tingkat.id_tingkat = tbl_kelas.id_tingkat')
+            ->join('tbl_siswa', 'tbl_siswa.id_siswa = tbl_siswa.id_tingkat')
+            ->join('tbl_guru', 'tbl_guru.id_guru = tbl_kelas.id_guru')
+            // ->where('tbl_tingkat.id_tingkat')
             ->orderBy('kelas', 'DESC')
             ->get()
             ->getResultArray();

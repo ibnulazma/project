@@ -7,6 +7,7 @@ use App\Models\ModelJadwal;
 use App\Models\ModelSiswa;
 use App\Models\ModelKelas;
 use App\Models\ModelSurat;
+use App\Models\ModelWilayah;
 use \Dompdf\Dompdf;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -18,6 +19,7 @@ class Pendidik extends BaseController
     {
         $this->ModelPendidik = new ModelPendidik();
         $this->ModelJadwal = new ModelJadwal();
+        $this->ModelWilayah = new ModelWilayah();
         $this->ModelKelas = new ModelKelas();
         $this->ModelSurat = new ModelSurat();
         $this->siswa = new ModelSiswa();
@@ -46,8 +48,10 @@ class Pendidik extends BaseController
             'menu'          => 'profile',
             'submenu'       => 'profile',
             'data'          => $this->ModelPendidik->DataGuru(),
+            'validation'    =>  \Config\Services::validation(),
+            'provinsi'      => $this->ModelWilayah->provinsi(),
         ];
-        return view('guru/profile', $data);
+        return view('guru/edit_guru', $data);
     }
 
     // public function jadwal()
@@ -198,5 +202,123 @@ class Pendidik extends BaseController
             "Attachment" => false
         ));
         exit();
+    }
+
+    public function update_profile($id_guru)
+    {
+        if ($this->validate([
+
+            'nama_ayah' => [
+                'label' => 'Nama',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi'
+                ]
+            ],
+            'nik_ayah' => [
+                'label' => 'NIK',
+                'rules' => 'required|min_length[16]',
+                'errors' => [
+                    'required' => '{field} harus diisi'
+                ]
+            ],
+            'tahun_ayah' => [
+                'label' => 'Tahun Lahir',
+                'rules' => 'required|min_length[4]',
+                'errors' => [
+                    'required'          => '{field} harus diisi',
+                    'min_length'        => '{field} Harus 4 Digit',
+                ]
+            ],
+            'didik_ayah' => [
+                'label' => 'Pendidikan',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi'
+                ]
+            ],
+
+
+            'telp_ayah' => [
+                'label' => 'Telepon',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+
+                ]
+            ],
+
+            'tahun_ibu' => [
+                'label' => 'Tahun Lahir',
+                'rules' => 'required|min_length[4]',
+                'errors' => [
+                    'required'          => '{field} harus diisi',
+                    'min_length'        => ' {field} Harus 4 Digit',
+
+                ]
+            ],
+            'nik_ibu' => [
+                'label' => 'NIK',
+                'rules' => 'required|min_length[16]',
+                'errors' => [
+                    'required'          => '{field} harus diisi',
+                    'min_length'        => ' {field} Harus 16 Digit',
+                ]
+            ],
+            'didik_ibu' => [
+                'label' => 'Pendidikan',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+
+                ]
+            ],
+
+            'kerja_ibu' => [
+                'label' => 'Pekerjaan',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+
+                ]
+            ],
+            'telp_ibu' => [
+                'label' => 'Telp/Hp',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+
+                ]
+            ],
+
+
+        ])) {
+            $data = [
+                'id_guru'          => $id_guru,
+                'nama_guru'         => $this->request->getPost('nama_guru'),
+                'kelamin'          => $this->request->getPost('kelamin'),
+                'tmpt_lahir'         => $this->request->getPost('tmpt_lahir'),
+                'didik_ayah'        => $this->request->getPost('didik_ayah'),
+                'tgl_lahir'        => $this->request->getPost('tgl_lahir'),
+                'email'         => $this->request->getPost('email'),
+                'alamat_guru'         => $this->request->getPost('alamat_guru'),
+                'rt_guru'        => $this->request->getPost('rt_guru'),
+                'rw_guru'         => $this->request->getPost('rw_guru'),
+                'desa_guru'          => $this->request->getPost('desa_guru'),
+                'kec_guru'           => $this->request->getPost('kec_guru'),
+                'kab_guru'           => $this->request->getPost('kab_guru'),
+                'prov_guru'           => $this->request->getPost('prov_guru'),
+                'telp_guru'          => $this->request->getPost('telp_guru'),
+
+
+            ];
+            $this->ModelPendidik->edit($data);
+            session()->setFlashdata('pesan', 'Data Berhasil Diubah');
+            return redirect()->to('siswa/periodik/' . $id_siswa);
+        } else {
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            $validation =  \Config\Services::validation();
+            return redirect()->to('siswa/edit_orangtua/' . $id_siswa)->withInput()->with('validation', $validation);
+        }
     }
 }

@@ -54,6 +54,8 @@ $tahun = $db->table('tbl_ta')
                                     <th class="text-center" width="10px">No</th>
                                     <th class="text-center">Tahun Ajaran</th>
                                     <th class="text-center">Ganjil/Genap</th>
+                                    <th class="text-center">Titi Mangsa Rapot</th>
+                                    <th class="text-center">Titi Mangsa Biodata</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Aktif/Non Aktif</th>
                                     <th class="text-center">Aksi</th>
@@ -68,6 +70,9 @@ $tahun = $db->table('tbl_ta')
                                         <td>
                                             <?= $no++; ?> </td>
                                         <td class="text-center"><?= $value['ta'] ?></td>
+                                        <td class="text-center"><?= $value['semester'] ?></td>
+                                        <td class="text-center"><?= $value['titimangsa'] ?></td>
+                                        <td class="text-center"><?= $value['titimangsabiodata'] ?></td>
                                         <td class="text-center"><?= $value['semester'] ?></td>
                                         <td class="text-center"><?= ($value['status'] == 1) ? '<span class="right badge badge-success">Aktif</span>' : '<span class="right badge badge-danger">Non Aktif</span>'  ?></td>
 
@@ -158,8 +163,12 @@ $tahun = $db->table('tbl_ta')
                         <input type="text" name="ta" value="<?= $value['ta'] ?>" class="form-control" placeholder="Tahun Akademik">
                     </div>
                     <div class="form-group">
-                        <label for="">Semester</label>
-                        <input type="text" name="semester" value="<?= $value['ta'] ?>" class="form-control" placeholder="Tahun Akademik">
+                        <label for="">Titi Mangsa Rapot</label>
+                        <input type="text" name="titimangsa" value="<?= $value['titimangsa'] ?>" class="form-control" placeholder="Tahun Akademik">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Titi Mangsa Biodata</label>
+                        <input type="text" name="titimangsabiodata" value="<?= $value['titimangsabiodata'] ?>" class="form-control" placeholder="Tahun Akademik">
                     </div>
                 </div>
                 <div class="modal-footer">

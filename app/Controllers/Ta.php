@@ -46,6 +46,8 @@ class Ta extends BaseController
         $data = [
             'id_ta' => $id_ta,
             'ta' => $this->request->getPost('ta'),
+            'titimangsa' => $this->request->getPost('titimangsa'),
+            'titimangsabiodata' => $this->request->getPost('titimangsabiodata'),
         ];
         $this->ModelTa->edit($data);
         session()->setFlashdata('pesan', 'Data Berhasil Di Update !!!');

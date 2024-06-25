@@ -112,102 +112,29 @@
 <?= form_open() ?>
 
 
-<!-- <script src="<?= base_url() ?>/AdminLTE/plugins/jquery/jquery.min.js"></script> -->
-<!-- 
+
+
+
+
+<script src="<?= base_url() ?>/AdminLTE/plugins/jquery/jquery.min.js"></script>
+
+
+
 <script>
-    $(document).ready(function() {
-        $('.formsimpan').submit(function(e) {
-            e.preventDefault();
+    function triggerClick(e) {
+        document.querySelector('#profileImage').click();
+    }
 
-            $.ajax({
-                type: "post",
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
-                dataType: "json",
-                beforeSend: function() {
-                    $('.tombolSimpan').prop('disabled', true);
-                    $('.tombolSimpan').html('Silahkan Tunggu');
-                },
-                complete: function() {
-                    $('.tombolSimpan').prop('disabled', false);
-                    $('.tombolSimpan').html('Simpan');
-                },
-                success: function(response) {
-                    if (response.error) {
-                        let data = response.error;
-                        if (data.errorAlamat) {
-                            $('#alamat').addClass('is-invalid');
-                            $('.errorAlamat').html(data.errorAlamat);
-                        } else {
-                            $('#alamat').removeClass('is-invalid');
-                            $('#alamat').addClass('is-valid');
-                        }
-
-                        if (data.errorRT) {
-                            $('#rt').addClass('is-invalid');
-                            $('.errorRT').html(data.errorRT);
-                        } else {
-                            $('#rt').removeClass('is-invalid');
-                            $('#rt').addClass('is-valid');
-                        }
-                        if (data.errorRW) {
-                            $('#rw').addClass('is-invalid');
-                            $('.errorRW').html(data.errorRW);
-                        } else {
-                            $('#rw').removeClass('is-invalid');
-                            $('#rw').addClass('is-valid');
-                        }
-
-                        if (data.errorProvinsi) {
-                            $('#provinsi').addClass('is-invalid');
-                            $('.errorProvinsi').html(data.errorProvinsi);
-                        } else {
-                            $('#provinsi').removeClass('is-invalid');
-                            $('#provinsi').addClass('is-valid');
-                        }
-                        if (data.errorKabupaten) {
-                            $('#kabupaten').addClass('is-invalid');
-                            $('.errorKabupaten').html(data.errorKabupaten);
-                        } else {
-                            $('#kabupaten').removeClass('is-invalid');
-                            $('#kabupaten').addClass('is-valid');
-                        }
-                        if (data.errorKecamatan) {
-                            $('#kecamatan').addClass('is-invalid');
-                            $('.errorKecamatan').html(data.errorKecamatan);
-                        } else {
-                            $('#kecamatan').removeClass('is-invalid');
-                            $('#kecamatan').addClass('is-valid');
-                        }
-                        if (data.errorDesa) {
-                            $('#rw').addClass('is-invalid');
-                            $('.errorDesa').html(data.errorDesa);
-                        } else {
-                            $('#desa').removeClass('is-invalid');
-                            $('#desa').addClass('is-valid');
-                        }
-                        if (data.errorKodpos) {
-                            $('#rw').addClass('is-invalid');
-                            $('.errorDesa').html(data.errorDesa);
-                        } else {
-                            $('#desa').removeClass('is-invalid');
-                            $('#desa').addClass('is-valid');
-                        }
-                    }
-                },
-                error: function(xhr, thrownError) {
-                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-                }
-            });
-            return false;
-
-        });
-    });
-</script> -->
-
-
-
-
+    function displayImage(e) {
+        if (e.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.querySelector('#profileDisplay').setAttribute('src', e.target.result);
+            }
+            reader.readAsDataURL(e.files[0]);
+        }
+    }
+</script>
 
 
 

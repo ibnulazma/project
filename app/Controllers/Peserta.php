@@ -137,12 +137,13 @@ class Peserta extends BaseController
     public function detail_siswa($nisn)
     {
         session();
+
         $data = [
             'title'         => 'SIAKAD',
             'subtitle'      => 'Profil Siswa',
             'menu'          => 'akademik',
             'submenu'       => 'peserta',
-            'kelas'         => $this->ModelKelas->kelas(),
+            'kelas'         => $this->ModelPeserta->kelas(),
             'provinsi'      => $this->ModelWilayah->provinsi(),
             'tinggal'       => $this->ModelTinggal->AllData(),
             'transportasi'  => $this->ModelTransportasi->AllData(),
@@ -184,6 +185,16 @@ class Peserta extends BaseController
         $data = [
             'id_siswa' => $id_siswa,
             'status_daftar' => 1
+        ];
+        $this->ModelPeserta->edit($data);
+        session()->setFlashdata('pesan', 'Reset Berhasil !!!');
+        return redirect()->to(base_url('peserta'));
+    }
+    public function keluar($nisn)
+    {
+        $data = [
+            'nisn' => $nisn,
+            'aktif' => 0
         ];
         $this->ModelPeserta->edit($data);
         session()->setFlashdata('pesan', 'Reset Berhasil !!!');
@@ -500,7 +511,6 @@ class Peserta extends BaseController
         }
     }
 
-
     public function editfoto($nisn)
     {
         if ($this->validate([
@@ -607,8 +617,6 @@ class Peserta extends BaseController
         return redirect()->to(base_url('peserta'));
     }
 
-
-
     public function eksporexcel()
     {
         $siswa = new ModelPeserta();
@@ -656,7 +664,6 @@ class Peserta extends BaseController
 
         $writer->save('php://output');
     }
-
 
     public function eksporpdf()
     {
@@ -817,5 +824,24 @@ class Peserta extends BaseController
             session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
             return redirect()->to(base_url('peserta/detail_siswa/' . $nisn));
         }
+    }
+
+    public function masukkelas($nisn)
+    {
+        $db     = \Config\Database::connect();
+
+        $ta = $db->table('tbl_ta')
+            ->where('status', '1')
+            ->get()->getRowArray();
+        $data = array(
+            'nisn'              => $nisn,
+            'id_kelas'          => $this->request->getPost('id_kelas'),
+            'id_ta'             => $ta['id_ta'],
+
+
+        );
+        $this->ModelPeserta->addkelas($data);
+        session()->setFlashdata('pesan', 'Peserta Berhasil Ditambah !!!');
+        return redirect()->to(base_url('peserta/detail_siswa/' . $nisn));
     }
 }
