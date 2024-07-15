@@ -16,7 +16,9 @@ class Pendidik extends BaseController
 {
 
     public function __construct()
+
     {
+        helper('gantiformat');
         $this->ModelPendidik = new ModelPendidik();
         $this->ModelJadwal = new ModelJadwal();
         $this->ModelWilayah = new ModelWilayah();

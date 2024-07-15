@@ -628,12 +628,13 @@ class Peserta extends BaseController
         $sheet = $spreadsheet->getActiveSheet();
         $sheet->setCellValue('A1', 'NO');
         $sheet->setCellValue('B1', 'NISN');
-        $sheet->setCellValue('C1', 'Nama');
+        $sheet->setCellValue('C1', 'Nama Siswa');
         $sheet->setCellValue('D1', 'Jenis Kelamin');
-        $sheet->setCellValue('E1', 'Tempat Lahir');
-        $sheet->setCellValue('F1', 'Tanggal Lahir');
+        $sheet->setCellValue('E1', 'Kelas');
+        $sheet->setCellValue('F1', 'No Wa Anaka');
         $sheet->setCellValue('G1', 'Nama Ibu');
-        $sheet->setCellValue('H1', 'Tingkat');
+        $sheet->setCellValue('H1', 'No. Wa Ibu');
+
 
         $sheet->getStyle('A1:H1')->getFont()->setBold(true);
         $spreadsheet->getActiveSheet()->getStyle('A1:H1')->getFill()
@@ -647,9 +648,10 @@ class Peserta extends BaseController
             $sheet->setCellValue('B' . $column, $data['nisn']);
             $sheet->setCellValue('C' . $column, $data['nama_siswa']);
             $sheet->setCellValue('D' . $column, $data['jenis_kelamin']);
-            $sheet->setCellValue('E' . $column, $data['tempat_lahir']);
-            $sheet->setCellValue('G' . $column, $data['tanggal_lahir']);
-            $sheet->setCellValue('H' . $column, $data['nama_ibu']);
+            $sheet->setCellValue('E' . $column, $data['tingkat']);
+            $sheet->setCellValue('F' . $column, $data['telp_anak']);
+            $sheet->setCellValue('G' . $column, $data['nama_ibu']);
+            $sheet->setCellValue('H' . $column, $data['telp_ibu']);
             $column++;
         }
 

@@ -54,8 +54,9 @@
                                     <?php if ($siswa['ijazah'] == null) { ?>
                                         <span class="badge bg-danger" data-toggle="modal" data-target="#uploadijazah"><i class="fa-solid fa-circle-xmark"></i> belum</span>
                                     <?php } else { ?>
+                                        <span class="badge bg-primary" data-toggle="modal" data-target="#uploadijazah"><i class="fa-solid fa-paintbrush"></i> edit</span>
                                         <a href="<?= base_url('peserta/ijazah/' . $siswa['nisn']); ?>" target="_blank">
-                                            <span class="badge bg-success"><i class="fa-solid fa-circle-check"></i> sudah</span>
+                                            <span class="badge bg-success"><i class="fa-solid fa-circle-check"></i> download</span>
                                         </a>
                                     <?php } ?>
                                 </div>
@@ -66,8 +67,9 @@
                                     <?php if ($siswa['akte'] == null) { ?>
                                         <span class="badge bg-danger" data-target="#uploadakte" data-toggle="modal"> <i class="fa-solid fa-circle-xmark"></i> belum</span>
                                     <?php } else { ?>
+                                        <span class="badge bg-primary" data-target="#uploadakte" data-toggle="modal"> <i class="fa-solid fa-paintbrush"></i> edit</span>
                                         <a href="<?= base_url('peserta/akte/' . $siswa['nisn']); ?>" target="_blank">
-                                            <span class=" badge bg-success"><i class="fa-solid fa-circle-check"></i> sudah</span>
+                                            <span class=" badge bg-success"><i class="fa-solid fa-circle-check"></i> download</span>
                                         </a>
                                     <?php } ?>
                                 </div>
@@ -78,8 +80,9 @@
                                     <?php if ($siswa['kartu_keluarga'] == null) { ?>
                                         <span class="badge bg-danger" data-target="#uploadkk" data-toggle="modal"> <i class="fa-solid fa-circle-xmark"></i> belum</span>
                                     <?php } else { ?>
+                                        <span class="badge bg-primary" data-target="#uploadkk" data-toggle="modal"> <i class="fa-solid fa-paintbrush"></i> edit</span>
                                         <a href="<?= base_url('peserta/kartu_keluarga/' . $siswa['nisn']); ?>" target="_blank">
-                                            <span class=" badge bg-success"><i class="fa-solid fa-circle-check"></i> sudah</span>
+                                            <span class=" badge bg-success"><i class="fa-solid fa-circle-check"></i> download</span>
                                         </a>
                                     <?php } ?>
                                 </div>
@@ -669,7 +672,7 @@
                                 <label for="">No Telp</label>
                             </div>
                             <div class="col-sm-8">
-                                <input type="text" name="telp_ibu" class="form-control" value="<?= old('telp_ibu') ?>">
+                                <input type="text" name="telp_ibu" class="form-control" value="<?= $siswa['telp_ibu'] ?>">
                             </div>
                         </div>
                     </div>

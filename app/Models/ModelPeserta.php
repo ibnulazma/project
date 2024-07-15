@@ -70,6 +70,12 @@ class ModelPeserta extends Model
             ->where('nisn', $data['nisn'])
             ->update($data);
     }
+    public function editorangtua($data)
+    {
+        $this->db->table('tbl_siswa')
+            ->where('nisn', $data['nisn'])
+            ->update($data);
+    }
 
     public function upload($data)
     {
