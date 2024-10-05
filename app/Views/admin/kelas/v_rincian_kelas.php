@@ -14,85 +14,80 @@ $ta = $db->table('tbl_ta')
 ?>
 
 <div class="swal" data-swal="<?= session()->getFlashdata('pesan'); ?>"></div>
-<div class="content-header">
-    <div class="container-fluid mt-4">
-        <div class="card">
-            <div class="card-header">
-                <h1 class="card-title"><?= $subtitle ?></h1>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <h3>Data Siswa Kelas <?= $kelas['kelas'] ?></h3>
-                        <h5>Wali Kelas : <b><?= $kelas['nama_guru'] ?></h5>
-                        <h5>Jumlah Siswa : <?= $jml_siswa ?></h5>
-                        <p class="text-muted">Tahun Pelajaran <b>Aktif</b> <?= $ta['ta'] ?> Semester <b> <?= $ta['semester'] ?></b></p>
-                    </div>
-                    <div class="col-lg-4 float-right">
-                        <div class="input-group-append ">
-                            <div class="tombol text-center">
-                                <button class="btn btn-circle" data-toggle="modal" data-target="#tambah"> <i class="fa-solid fa-circle-plus fa-3x" style="color: #74C0FC;"></i></button>
-                                <p style="color:#74C0FC">Tambah</p>
-                            </div>
-
-                            <div class="tombol text-center">
-                                <button class="btn btn-circle" data-toggle="modal" data-target="#upload"> <i class="fa-solid fa-cloud-arrow-up fa-3x" style="color: #74C0FC"></i></button>
-                                <p style="color:#74C0FC">Import Nilai</p>
-                            </div>
-
-                            <div class="tombol text-center">
-                                <a href="" class="btn"> <i class="fa-solid fa-cloud-arrow-down fa-3x" style="color: #74C0FC;"></i></a>
-                                <p style="color:#74C0FC">Export</p>
-                            </div>
-                        </div>
-                    </div>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="card mb-4  ">
+        <div class="card-header ">
+            <div class="judul d-flex justify-content-between">
+                <h5 class="card-title"><?= $subtitle ?></h5>
+                <div class="tombol">
+                    <button class="btn btn-primary btn-sm" data-bs-target="#tambah" data-bs-toggle="modal">Tambah Peserta Didik</button>
+                    <button class="btn btn-warning btn-sm" data-bs-target="#upload" data-bs-toggle="modal">Import Nilai</button>
                 </div>
+                <!-- <button class="btn btn-eksport btn-sm" data-bs-target="#tambah" data-bs-toggle="modal">Tambah Rombel</button> -->
+            </div>
+            <p class="text-muted mb-4">Tahun Pelajaran <b>Aktif</b> <?= $ta['ta'] ?> Semester <b> <?= $ta['semester'] ?></b></p>
+
+        </div>
+    </div>
 
 
+    <div class="card">
+        <div class="card-body">
+            <div class="col-lg-7">
+                <h3>Data Siswa Kelas <?= $kelas['kelas'] ?></h3>
+                <h5>Wali Kelas : <b><?= $kelas['nama_guru'] ?></h5>
+                <h5>Jumlah Siswa : <?= $jml_siswa ?></h5>
+                <p class="text-muted">Tahun Pelajaran <b>Aktif</b> <?= $ta['ta'] ?> Semester <b> <?= $ta['semester'] ?></b></p>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="">Aksi</label>
                 <select name="ap" class="form-control" id="">
                     <option>Silahkan Pilih Menu Unduh</option>
                 </select>
-
-                <div class="card card-primary mt-4">
-                    <div class="card-body">
-                        <table class="table table-bordered mt-5" id="example2" width="100%">
-                            <thead>
-                                <tr class="bg-primary">
-                                    <th class="text-center" width="10%">#</th>
-                                    <th class="text-center" width="20%">NISN</th>
-                                    <th>Nama Peserta Didik</th>
-                                    <th width="20%">JK</th>
-                                    <th width="20%" class="text-center">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $no = 1;
-                                foreach ($datasiswa as $key => $value) { ?>
-                                    <tr>
-                                        <td class="text-center"><?= $no++ ?></td>
-                                        <td class="text-center"><?= $value['nisn'] ?></td>
-                                        <td><?= $value['nama_siswa'] ?></td>
-                                        <td><?= $value['jenis_kelamin'] ?></td>
-                                        <td>
-                                            <div class="text-center">
-                                                <a href="<?= base_url('kelas/bukuinduk/' .  $value['nisn']) ?>" target="_blank" class="btn btn-sm btn-info "><i class=" fas fa-book"></i></a>
-                                                <a href="<?= base_url('kelas/halamansiswa/' .  $value['nisn']) ?>" target="_blank" class="btn btn-sm btn-success "><i class="fa-solid fa-file"></i> </a>
-                                                <a href="<?= base_url('kelas/biodatasiswa/' .  $value['nisn']) ?>" target="_blank" class="btn btn-sm bg-black "><i class="fa-solid fa-address-card"></i> </a>
-                                                <a href="<?= base_url('kelas/labelsiswa/' .  $value['nisn']) ?>" target="_blank" class="btn btn-sm bg-pink "><i class="fa-solid fa-tag"></i> </a>
-                                                <a href="<?= base_url('kelas/hapusanggota/' . $value['nisn']) ?>" target="_blank" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
             </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered mt-5" id="rinciankelas" width="100%">
+                <thead>
+                    <tr>
+                        <th class="text-center" width="10%">#</th>
+                        <th class="text-center" width="20%">NISN</th>
+                        <th>Nama Peserta Didik</th>
+                        <th width="20%">JK</th>
+                        <th width="20%" class="text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $no = 1;
+                    foreach ($datasiswa as $key => $value) { ?>
+                        <tr>
+                            <td class="text-center"><?= $no++ ?></td>
+                            <td class="text-center"><?= $value['nisn'] ?></td>
+                            <td><?= $value['nama_siswa'] ?></td>
+                            <td><?= $value['jenis_kelamin'] ?></td>
+                            <td>
+                                <div class="text-center">
+                                    <a href="<?= base_url('kelas/bukuinduk/' .  $value['nisn']) ?>" target="_blank" class="btn btn-sm btn-info "><i class="bx bx-book"></i></a>
+                                    <a href="<?= base_url('kelas/halamansiswa/' .  $value['nisn']) ?>" target="_blank" class="btn btn-sm btn-success "><i class="bx bxs-file"></i> </a>
+                                    <a href="<?= base_url('kelas/biodatasiswa/' .  $value['nisn']) ?>" target="_blank" class="btn btn-sm btn-secondary "><i class="bx bx-id-card"></i> </a>
+                                    <a href="<?= base_url('kelas/labelsiswa/' .  $value['nisn']) ?>" target="_blank" class="btn btn-sm btn-dark"><i class="bx bx-purchase-tag-alt"></i> </a>
+                                    <a href="<?= base_url('kelas/hapusanggota/' . $value['nisn']) ?>" target="_blank" class="btn btn-danger btn-sm"><i class="bx bxs-trash-alt"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
+
+
+
+
+
+
 
 
 
@@ -108,9 +103,7 @@ $ta = $db->table('tbl_ta')
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Siswa</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <?= form_open('kelas/tambahanggota/' . $kelas['id_kelas']) ?>
             <div class="modal-body">
@@ -162,14 +155,11 @@ $ta = $db->table('tbl_ta')
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Upload Nilai P3MP</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <div class="modal-body">
                 <a href="<?= base_url('kelas/printexcel/' . $kelas['id_kelas']) ?>" class="btn btn-outline-success btn-lg"> <i class="fas fa-file-excel mr-2"></i> Download Template</a>
-
 
                 <?= form_open_multipart('kelas/upload/' . $kelas['id_kelas']) ?>
                 <div class="form-group mt-4">

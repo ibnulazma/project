@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Berat Badan</label>
             </div>
@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Tinggi Badan</label>
             </div>
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Lingkar Kepala</label>
             </div>
@@ -40,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Anak Ke</label>
             </div>
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Jumlah Saudara Kandung</label>
             </div>
@@ -64,7 +64,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Tinggal Bersama</label>
             </div>
@@ -82,7 +82,7 @@
             </div>
         </div>
 
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Transportasi</label>
             </div>
@@ -104,6 +104,7 @@
 
 <button type="submit" class="btn btn-primary w-100">Simpan</button>
 <?= form_close() ?>
+</div>
 
 
 

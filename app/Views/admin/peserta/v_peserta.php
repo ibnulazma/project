@@ -15,58 +15,198 @@ $ta = $db->table('tbl_ta')
 
 <div class="swal" data-swal="<?= session()->getFlashdata('pesan'); ?>"></div>
 
-<div class="content-header">
-    <div class="container-fluid mt-4">
-        <div class="card">
-            <div class="card-header">
-                <h1 class="card-title"><?= $subtitle ?></h1>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <h3>Daftar Peserta Didik</h3>
-                        <p class="text-muted">Tahun Pelajaran <b>Aktif</b> <?= $ta['ta'] ?> Semester <b> <?= $ta['semester'] ?></b></p>
-                        <p class=" text-danger">*<i> Proses Luluskan dahulu tingkat 9, baru Proses Naik Tingkat</i></p>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="input-group-append float-right">
-                            <div class="tombol text-center">
-                                <button class="btn btn-circle" data-toggle="modal" data-target="#tambah"> <i class="fa-solid fa-circle-plus fa-3x" style="color: #74C0FC;"></i></button>
-                                <p style="color:#74C0FC">Tambah</p>
-                            </div>
-                            <div class="tombol text-center">
-                                <button class="btn btn-circle" data-toggle="modal" data-target="#upload"> <i class="fa-solid fa-cloud-arrow-down fa-3x" style="color: #74C0FC"></i></button>
-                                <p style="color:#74C0FC">Import</p>
-                            </div>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="card-title"><?= $subtitle ?></h5>
+            <p class="text-muted mb-4">Tahun Pelajaran <b>Aktif</b> <?= $ta['ta'] ?> Semester <b> <?= $ta['semester'] ?></b></p>
+        </div>
+    </div>
+    <div class="nav-align-top mb-6">
+        <ul class="nav nav-pills mb-4" role="tablist">
+            <li class="nav-item">
+                <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-home" aria-controls="navs-pills-top-home" aria-selected="true">Aktif</button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-profile" aria-controls="navs-pills-top-profile" aria-selected="false">Keluar</button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-lulus" aria-controls="navs-pills-top-lulus" aria-selected="false">Lulus</button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-messages" aria-controls="navs-pills-top-messages" aria-selected="false">Verifikasi</button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-tambahsiswa" aria-controls="navs-pills-top-messages" aria-selected="false">Tambah Siswa</button>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="navs-pills-top-home" role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="example">
+                        <thead>
+                            <tr>
+                                <th class="text-center">No</th>
+                                <th class="text-center">NIS</th>
+                                <th class="text-center">NISN</th>
+                                <th class="text-center">Nama Siswa</th>
+                                <th class="text-center">TTL</th>
+                                <th class="text-center">L/P</th>
+                                <th class="text-center">Nama Ibu</th>
+                                <th class="text-center">Tingkat</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
 
-                            <div class="tombol text-center">
-                                <button class="btn" data-toggle="modal" data-target="#eksport"> <i class="fa-solid fa-cloud-arrow-up fa-3x" style="color: #74C0FC;"></i></button>
-                                <p style="color:#74C0FC">Eksport</p>
+                            $no = 1;
+
+                            foreach ($peserta as $key => $value) { ?>
+                                <tr class="<?php
+                                            $hasil = "Sudah Meninggal";
+                                            if ($hasil == $value['kerja_ayah']) { ?>
+                                                            echo bg-lightblue
+                                                    <?php } ?>
+                                                    ">
+                                    <td><?= $no++; ?></td>
+                                    <td class="text-center"><?= $value["nis"] ?></td>
+                                    <td class="text-center"><?= $value["nisn"] ?></td>
+                                    <td><?= $value["nama_siswa"] ?></td>
+                                    <td class="text-center"><?= $value["tempat_lahir"] ?>, <?= date('d M Y', strtotime($value["tanggal_lahir"])) ?></td>
+                                    <td class="text-center"><?= $value["jenis_kelamin"] ?></td>
+                                    <td class=""><?= $value["nama_ibu"] ?></td>
+                                    <td class="text-center"><?= $value["tingkat"] ?></td>
+                                    <td class="text-center">
+                                        <a href="<?= base_url('peserta/detail_siswa/' .  $value['nisn']) ?>"> <i class='bx bxs-id-card bx-sm text-info '></i> </a>
+                                        <a href="" data-bs-toggle="modal" data-bs-target="#keluar<?= $value['nisn'] ?>"> <i class='bx bx-log-out bx-sm text-danger'></i> </a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <p class=" text-danger mt-3">*<i> Luluskan dahulu tingkat 9, baru Proses Naik Tingkat</i></p>
+                <button class="btn btn-danger mr-3 mt-2" data-bs-toggle="modal" data-bs-target="#lulusan">Proses Lulus Kelas 9</button>
+                <button class="btn btn-primary mr-3 mt-2" data-bs-toggle="modal" data-bs-target="#naik">Proses Naik Tingkat</button>
+            </div>
+            <div class="tab-pane fade" id="navs-pills-top-profile" role="tabpanel">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="example1">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">No</th>
+                                    <th class="text-center">NIS</th>
+                                    <th class="text-center">NISN</th>
+                                    <th class="text-center">Nama Siswa</th>
+                                    <th class="text-center">TTL</th>
+                                    <th class="text-center">L/P</th>
+                                    <th class="text-center">Tingkat</th>
+                                    <th class="text-center">Alasan</th>
+                                    <th class="text-center"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+
+                                $no = 1;
+
+                                foreach ($keluar as $key => $value) { ?>
+                                    <tr>
+                                        <td><?= $no++; ?></td>
+                                        <td class="text-center"><?= $value["nis"] ?></td>
+                                        <td class="text-center"><?= $value["nisn"] ?></td>
+                                        <td><?= $value["nama_siswa"] ?></td>
+                                        <td class="text-center"><?= $value["tempat_lahir"] ?>, <?= date('d M Y', strtotime($value["tanggal_lahir"])) ?></td>
+                                        <td class="text-center"><?= $value["jenis_kelamin"] ?></td>
+                                        <td class="text-center"><?= $value["tingkat"] ?></td>
+
+                                        <td class="text-center">
+
+                                            <?php if ($value['status'] == 'Mutasi') { ?>
+                                                <span class="text-info">Mutasi</span>
+                                            <?php } else { ?>
+                                                <span class="text-danger">Mengundurkan diri</span>
+                                            <?php }  ?>
+                                        </td>
+                                        <td class="text-center">
+                                            <?php if ($value['status'] == 'Mutasi') { ?>
+                                                <a href="" class="btn rounded-pill btn-icon btn-primary"> <i class='bx bx-printer'></i></a>
+                                            <?php } else { ?>
+
+                                            <?php }  ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="navs-pills-top-lulus" role="tabpanel">
+                <div class="card-body">
+                    <div class="col-md-5">
+                        <div class="row mb-3">
+                            <label for="" class="col-sm-4">Tahun Lulus</label>
+                            <div class="col-sm-8">
+                                <select name="" id="" class="form-select form-select-sm">
+                                    <option value=""></option>
+                                </select>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="lulus">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">No</th>
+                                    <th class="text-center">NIS</th>
+                                    <th class="text-center">NISN</th>
+                                    <th class="text-center">Nama Siswa</th>
+                                    <th class="text-center">TTL</th>
+                                    <th class="text-center">L/P</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
 
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            Data <?= $subtitle ?>
-                        </h3>
+                                $no = 1;
+
+                                foreach ($lulusan as $key => $value) { ?>
+                                    <tr>
+                                        <td><?= $no++; ?></td>
+                                        <td class="text-center"><?= $value["nis"] ?></td>
+                                        <td class="text-center"><?= $value["nisn"] ?></td>
+                                        <td><?= $value["nama_siswa"] ?></td>
+                                        <td class="text-center"><?= $value["tempat_lahir"] ?>, <?= date('d M Y', strtotime($value["tanggal_lahir"])) ?></td>
+                                        <td class="text-center"><?= $value["jenis_kelamin"] ?></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="navs-pills-top-messages" role="tabpanel">
+                <div class="tab-pane fade show active" id="navs-pills-top-home" role="tabpanel">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="example2">
+                            <table class="table table-bordered" id="verifikasi">
                                 <thead>
-                                    <tr class="text-center">
-                                        <th>No</th>
-                                        <th>NIS</th>
-                                        <th>NISN</th>
-                                        <th>Nama Siswa</th>
-                                        <th>TTL</th>
-                                        <th>L/P</th>
-                                        <th>Tingkat</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                    <tr>
+                                        <th class="text-center">No</th>
+                                        <th class="text-center">NIS</th>
+                                        <th class="text-center">NISN</th>
+                                        <th class="text-center">Nama Siswa</th>
+                                        <th class="text-center">TTL</th>
+                                        <th class="text-center">L/P</th>
+                                        <th class="text-center">Tingkat</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -74,13 +214,8 @@ $ta = $db->table('tbl_ta')
 
                                     $no = 1;
 
-                                    foreach ($peserta as $key => $value) { ?>
-                                        <tr class="<?php
-                                                    $hasil = "Sudah Meninggal";
-                                                    if ($hasil == $value['kerja_ayah']) { ?>
-                                                            echo bg-lightblue
-                                                    <?php } ?>
-                                                    ">
+                                    foreach ($verifikasi as $key => $value) { ?>
+                                        <tr>
                                             <td><?= $no++; ?></td>
                                             <td class="text-center"><?= $value["nis"] ?></td>
                                             <td class="text-center"><?= $value["nisn"] ?></td>
@@ -90,18 +225,7 @@ $ta = $db->table('tbl_ta')
                                             <td class="text-center"><?= $value["tingkat"] ?></td>
 
                                             <td class="text-center">
-
-                                                <?php if ($value['status_daftar'] == 1) { ?>
-                                                    <span class="badge bg-danger">belum aktif</span>
-                                                <?php } elseif ($value['status_daftar'] == 2) { ?>
-                                                    <button class="btn btn-info btn-sm" data-target="#verifikasi<?= $value['nisn'] ?> " data-toggle="modal">verifikasi</button>
-                                                <?php } elseif ($value['status_daftar'] == 3) { ?>
-                                                    <span class="badge bg-success">aktif</span>
-                                                <?php } ?>
-                                            </td>
-                                            <td class="text-center">
-                                                <a class="btn btn-xs btn-info" href="<?= base_url('peserta/detail_siswa/' .  $value['nisn']) ?>"> <i class="fa-solid fa-id-card-clip"></i> </a>
-                                                <a class="btn btn-xs btn-danger" href="" data-toggle="modal" data-target="#keluar<?= $value['nisn'] ?>"> <i class="fa-solid fa-right-from-bracket"></i> </a>
+                                                <a href="" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#verif<?= $value['nisn'] ?>"> <i class='bx bx-check-square'></i> </a>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -110,18 +234,100 @@ $ta = $db->table('tbl_ta')
                         </div>
 
                     </div>
-
                 </div>
+            </div>
+            <div class="tab-pane fade" id="navs-pills-top-tambahsiswa" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="card-header">Upload Data Siswa</h5>
+                        <div class="card-body demo-vertical-spacing demo-only-element">
 
-                <button class="btn btn-danger mr-3" data-toggle="modal" data-target="#lulus">Proses Lulus</button>
-                <button class="btn btn-primary mr-3" data-toggle="modal" data-target="#naik">Proses Naik Tingkat</button>
+                            <a href="<?= base_url('peserta/downloadtemplate') ?>" class="btn btn-outline-success btn-lg"> <i class='bx bxs-download'></i> Download Template</a>
+                            <?= form_open_multipart('peserta/upload') ?>
+                            <div class="input-group">
+                                <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="fileimport" accept=".xls,.xlsx">
+                                <button class="btn btn-outline-primary" type="submit" id="inputGroupFileAddon04">Submit</button>
+                            </div>
+                            <?= form_close() ?>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="card-header">Tambah Data Siswa</h5>
+                        <div class="card-body demo-vertical-spacing demo-only-element">
+                            <?= form_open('peserta/add') ?>
+                            <div class=" row mb-3">
+                                <label for="nama siswa" class="col-sm-4">Nama Siswa</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="nama_siswa">
+                                </div>
+                            </div>
+                            <div class=" row mb-3">
+                                <label for="jenis_kelamin" class="col-sm-4">Jenis Kelamin</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" name="jenis_kelamin">
+                                        <option value="L">Laki-laki</option>
+                                        <option value="P">Perempuan</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class=" row mb-3">
+                                <label for="tempat_lahir" class="col-sm-4">Tempat</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="tempat_lahir">
+                                </div>
+                            </div>
+                            <div class=" row mb-3">
+                                <label for="tanggal_lahir" class="col-sm-4">Tanggal Lahir</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="tanggal_lahir" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask>
+                                </div>
+                            </div>
+                            <div class=" row mb-3">
+                                <label for="" class="col-sm-4">NISN</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="nisn">
+                                </div>
+                            </div>
+                            <div class=" row mb-3">
+                                <label for="" class="col-sm-4">NIK</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="nik">
+                                </div>
+                            </div>
+                            <div class=" row mb-3">
+                                <label for="" class="col-sm-4">Nama Ibu</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="nama_ibu">
+                                </div>
+                            </div>
+                            <div class=" row mb-3">
+                                <label for="" class="col-sm-4">Password</label>
+                                <div class="col-sm-8">
+                                    <input type="password" class="form-control" name="password">
+                                </div>
+                            </div>
+                            <div class=" row mb-3">
+                                <label for="" class="col-sm-4">Tingkat</label>
+                                <div class="col-sm-8">
+                                    <select name="id_tingkat" id="" class="form-control">
+                                        <?php foreach ($tingkat as $key => $val) { ?>
+                                            <option value="<?= $val['id_tingkat'] ?>"><?= $val['tingkat'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-outline-primary">Save</button>
+                            <?= form_close() ?>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-</div>
 
-<!-- Modal TambahManual -->
+
+<!-- Modal Keluar -->
 
 <?php foreach ($peserta as $key => $value) { ?>
     <div class="modal fade" id="keluar<?= $value['nisn'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -130,16 +336,28 @@ $ta = $db->table('tbl_ta')
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Proses Non Aktif</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group mt-2">
-                        <p>Apakah Yakin Akan Melakukan Proses keluar <?= $value['nama_siswa'] ?> ?</p>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary pull-left">Submit</button>
-                        </div>
+                    <p>Apakah Yakin Akan Melakukan Proses keluar <?= $value['nama_siswa'] ?> ?</p>
+                    <div class="form-group">
+                        <label for="">Keluar Karena?</label>
+                        <select name="status" class="form-control">
+                            <option value="Mutasi">Mutasi</option>
+                            <option value="Mengundurkan diri">Mengundurkan diri</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Ke Sekolah</label>
+                        <input type="text" name="sekolah" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Alasan</label>
+                        <input type="text" name="alasan" class="form-control">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>
@@ -150,122 +368,42 @@ $ta = $db->table('tbl_ta')
 
 
 
-<div class="modal fade" id="upload" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="eksport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Impor Data Peserta Didik</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title" id="exampleModalLabel">Eksport Data Peserta Didik</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <a href="<?= base_url('peserta/downloadtemplate') ?>" class="btn btn-outline-success btn-lg"> <i class="fas fa-file-excel mr-2"></i> Download Template</a>
-                <?= form_open_multipart('peserta/upload') ?>
-                <div class="form-group mt-2">
-                    <label for="exampleInputFile">
-                        <h5>File input</h5>
-                    </label>
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="fileimport" id="exampleInputFile" accept=".xls,.xlsx">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                        </div>
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="fas fa-folder"></i></span>
-                        </div>
+                <div class="row justify-content-start">
+                    <div class="excel text-center">
+                        <a href=" <?= base_url('peserta/eksporexcel') ?>"></a>
+                        <p style="font-size: 20px;font-weight:bold">.xlsx</p>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary pull-left">Simpan</button>
+                    <div class="pdf text-center">
+                        <a href="<?= base_url('peserta/eksporpdf') ?>"><i class='bx bxs-file-pdf bx-lg'></i></a>
+                        <p style="font-size: 20px;font-weight:bold">.pdf</p>
                     </div>
-
                 </div>
-                <?= form_close() ?>
             </div>
         </div>
     </div>
 </div>
 
 
-<div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="lulusan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Peserta Didik</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title" id="exampleModalLabel"> Proses Naik Tingkat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <?= form_open_multipart('peserta/add') ?>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="nama siswa">Nama Siswa</label>
-                            <input type="text" class="form-control" name="nama_siswa">
-                        </div>
-                        <div class="form-group">
-                            <label for="jenis_kelamin">Jenis Kelamin</label>
-                            <input type="text" class="form-control" name="jenis_kelamin">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Tempat</label>
-                            <input type="text" class="form-control" name="tempat_lahir">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Tanggal Lahir</label>
-                            <input type="text" class="form-control" name="tanggal_lahir" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask>
-                        </div>
-                        <div class="form-group">
-                            <label for="">NISN</label>
-                            <input type="text" class="form-control" name="nisn">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="">NIK</label>
-                            <input type="text" class="form-control" name="nik">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Nama Ibu</label>
-                            <input type="text" class="form-control" name="nama_ibu">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Password</label>
-                            <input type="password" class="form-control" name="password">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Tingkat</label>
-                            <select name="id_tingkat" id="" class="form-control">
-                                <?php foreach ($tingkat as $key => $val) { ?>
-                                    <option value="<?= $val['id_tingkat'] ?>"><?= $val['tingkat'] ?></option>
-                                <?php } ?>
 
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary pull-left">Simpan</button>
-            </div>
-            <?= form_close() ?>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="lulus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Peserta Didik</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
             <div class="modal-body">
                 <?= form_open('peserta/lulus') ?>
-                <table class="table table-bordered" id="example1">
+                <table class="table table-bordered" id="example">
                     <thead>
                         <tr>
                             <th><input type="checkbox" id="check-all"></th>
@@ -283,6 +421,8 @@ $ta = $db->table('tbl_ta')
                                 <td><?= $data['tingkat'] ?></td>
                                 <input type="hidden" name="aktif[]" value="0">
                                 <input type="hidden" name="id_tingkat[]" value="0">
+                                <input type="hidden" name="status_daftar[]" value="4">
+                                <input type="hidden" name="id_ta[]" value="<?= $ta['tahun'] ?>">
 
                             </tr>
                         <?php } ?>
@@ -290,7 +430,7 @@ $ta = $db->table('tbl_ta')
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary pull-left">Submit</button>
+                <button class="btn btn-primary" type="submit">Submit</button>
             </div>
             <?= form_close() ?>
         </div>
@@ -298,44 +438,20 @@ $ta = $db->table('tbl_ta')
 </div>
 
 
-<div class="modal fade" id="eksport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Eksport Data Peserta Didik</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row justify-content-start">
-                    <div class="excel text-center">
-                        <a href=" <?= base_url('peserta/eksporexcel') ?>"><img src="<?= base_url() ?>/AdminLTE/dist/img/logo.png" alt="" width="90px" class="mr-3"></a>
-                        <p style="font-size: 20px;font-weight:bold">.xlsx</p>
-                    </div>
-                    <div class="pdf text-center">
-                        <a href="<?= base_url('peserta/eksporpdf') ?>"><img src="<?= base_url() ?>/AdminLTE/dist/img/pdf.png" alt="" width="90px"></a>
-                        <p style="font-size: 20px;font-weight:bold">.pdf</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+
 <!-- ProsesNaik Tingkat -->
 <div class="modal fade" id="naik" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"> Proses Naik Tingkat</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <div class="modal-body">
                 <?= form_open('peserta/naik') ?>
-                <table class="table table-bordered" id="example2">
+                <table class="table table-bordered" id="example">
                     <thead>
                         <tr>
                             <th><input type="checkbox" id="check-in"></th>
@@ -365,18 +481,15 @@ $ta = $db->table('tbl_ta')
     </div>
 </div>
 
-
-<?php foreach ($peserta as $key => $value) { ?>
-    <div class="modal fade" id="verifikasi<?= $value['nisn'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Verifikasi -->
+<?php foreach ($verifikasi as $key => $value) { ?>
+    <div class="modal fade" id="verif<?= $value['nisn'] ?>" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"> Verifikasi</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-
                 <div class="modal-body">
                     <?= form_open('peserta/verifikasi/' . $value['nisn']) ?>
                     <table class="table table-borderless">
@@ -390,9 +503,6 @@ $ta = $db->table('tbl_ta')
                                 <th>Hobi</th>
                                 <th>Cita-cita</th>
                                 <th>Seri Ijazah</th>
-                                <th>Ijazah</th>
-                                <th>Akte</th>
-                                <th>KK</th>
                                 <th>Telp Anak</th>
                             </tr>
                         </thead>
@@ -449,27 +559,6 @@ $ta = $db->table('tbl_ta')
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <?php if ($value['ijazah'] == null) { ?>
-                                        <i class="fa-solid fa-circle-xmark" style="color: #ec0909;"></i>
-                                    <?php } else { ?>
-                                        <i class="fa-solid fa-circle-check" style="color: #05fa42;"></i>
-                                    <?php } ?>
-                                </td>
-                                <td>
-                                    <?php if ($value['akte'] == null) { ?>
-                                        <i class="fa-solid fa-circle-xmark" style="color: #ec0909;"></i>
-                                    <?php } else { ?>
-                                        <i class="fa-solid fa-circle-check" style="color: #05fa42;"></i>
-                                    <?php } ?>
-                                </td>
-                                <td>
-                                    <?php if ($value['kartu_keluarga'] == null) { ?>
-                                        <i class="fa-solid fa-circle-xmark" style="color: #ec0909;"></i>
-                                    <?php } else { ?>
-                                        <i class="fa-solid fa-circle-check" style="color: #05fa42;"></i>
-                                    <?php } ?>
-                                </td>
-                                <td>
                                     <?php if ($value['telp_anak'] == null) { ?>
                                         <i class="fa-solid fa-circle-xmark" style="color: #ec0909;"></i>
                                     <?php } else { ?>
@@ -490,12 +579,27 @@ $ta = $db->table('tbl_ta')
 <?php } ?>
 
 
-<?= $this->endSection() ?>
 
-<script>
-    window.setTimeout(function() {
-        $(".alert").fadeTo(500, 0).slideDown(500, function() {
-            $(this).remove();
-        });
-    }, 2000);
-</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?= $this->endSection() ?>

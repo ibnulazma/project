@@ -200,4 +200,20 @@ class Setting extends BaseController
         session()->setFlashdata('pesan', 'Data Berhasil Di Hapus !!!');
         return redirect()->to(base_url('user'));
     }
+
+    public function editprofile()
+    {
+        $data = [
+            'id_profile'      => $this->request->getPost('id_profile'),
+            'nama_sekolah'    => $this->request->getPost('nama_sekolah'),
+            'alamat'          => $this->request->getPost('alamat'),
+            'npsn'            => $this->request->getPost('npsn'),
+            'status'          => $this->request->getPost('status'),
+            'email'           => $this->request->getPost('email'),
+            'kepsek'          => $this->request->getPost('kepsek'),
+        ];
+        $this->ModelSetting->edit($data);
+        session()->setFlashdata('pesan', 'Data Berhasil Di Update !!!');
+        return redirect()->to(base_url('setting'));
+    }
 }

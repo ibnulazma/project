@@ -6,8 +6,17 @@
     <meta name="viewport" content="widtd=device-widtd, initial-scale=1.0">
     <title>Biodata Rapot</title>
 </head>
+<?php
+$db     = \Config\Database::connect();
+$ta = $db->table('tbl_ta')
+    ->where('status', '1')
+    ->get()->getRowArray();
 
+$profile = $db->table('tbl_profile')
+    ->where('id_profile', '1')
+    ->get()->getRowArray();
 
+?>
 
 <style>
     .content {
@@ -152,12 +161,12 @@
                 <tr class="left">
                     <td> &nbsp;&nbsp;&nbsp;a. Di kelas</td>
                     <td>:</td>
-                    <td>7.1 </td>
+                    <td><?= $biodata['kelas'] ?>< </td>
                 </tr>
                 <tr class="left">
                     <td>&nbsp;&nbsp;&nbsp;b. Pada Tanggal</td>
                     <td>:</td>
-                    <td>17 Juli 2023 </td>
+                    <td> <?= $ta['titimangsabiodata'] ?></td>
                 </tr>
                 <tr class="">
                     <td>8. Orang Tua</td>
@@ -170,7 +179,7 @@
                 <tr class="">
                     <td>&nbsp;&nbsp;&nbsp;b. Ibu</td>
                     <td>:</td>
-                    <td><?= $biodata['nama_ibu'] ?></td>
+                    <td><?= strtoupper($biodata['nama_ibu']) ?></td>
                 </tr>
             </table>
 
@@ -183,9 +192,9 @@
                         <td width=" 10%">
                         </td>
                         <td>
-                            Tangerang, 17 Juli 2023<br>
+                            Tangerang, <?= $ta['titimangsabiodata'] ?><br>
                             Kepala Sekolah <br><br><br><br><br><br>
-                            <span style="text-decoration: underline; font-weight:bold; "> Fadilah, S.Ag</span>
+                            <span style="text-decoration: underline; font-weight:bold; "> <?= $profile['kepsek'] ?></span>
                         </td>
                     </tr>
                     <tr>

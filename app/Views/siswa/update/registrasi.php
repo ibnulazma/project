@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Hobi</label>
             </div>
@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Cita-cita</label>
             </div>
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Telpon/Wa Anak</label>
             </div>
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Seri Ijazah</label>
             </div>
@@ -54,7 +54,7 @@
         </div>
     </div>
 </div>
-<div class="form-group">
+<div class="mb-4">
     <div class="form-check">
         <input class="form-check-input <?= ($validation->hasError('status_daftar')) ? 'is-invalid' : ''; ?>" type="checkbox" value="2" id="invalidCheck" name="status_daftar">
         <label class="form-check-label " for="invalidCheck">
@@ -64,12 +64,12 @@
             <p> <?= $validation->getError('status_daftar'); ?></p>
         </div>
     </div>
-    
+
 </div>
 <button type="submit" class="btn btn-primary w-100">Simpan</button>
 <?= form_close() ?>
 
-
+</div>
 
 
 

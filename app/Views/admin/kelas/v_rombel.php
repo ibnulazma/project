@@ -12,87 +12,63 @@ $ta = $db->table('tbl_ta')
 
 ?>
 
-<div class="content-header">
-    <div class="container-fluid mt-4">
-        <div class="card">
-            <div class="card-header">
-                <h1 class="card-title"><?= $subtitle ?></h1>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="card mb-4  ">
+        <div class="card-header ">
+            <div class="judul d-flex justify-content-between">
+                <h5 class="card-title"><?= $subtitle ?></h5>
+                <button class="btn btn-primary btn-sm" data-bs-target="#tambah" data-bs-toggle="modal">Tambah Rombel</button>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <h3>Daftar Rombongan Belajar</h3>
-                        <p class="text-muted">Tahun Pelajaran <b>Aktif</b> <?= $ta['ta'] ?> Semester <b> <?= $ta['semester'] ?></b></p>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="input-group-append float-right">
-                            <div class="tombol text-center">
-                                <button class="btn btn-circle" data-toggle="modal" data-target="#tambah"> <i class="fa-solid fa-circle-plus fa-3x" style="color: #74C0FC;"></i></button>
-                                <p style="color:#74C0FC">Tambah</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Rombongan Belajar</h3>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-bordered" id="example2">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">No</th>
-                                    <th class="text-center">Kelas</th>
-                                    <th class="text-center">Nama Wali Kelas</th>
-                                    <th class="text-center">Anggota Peserta Didik</th>
-                                    <th class="text-center">Tingkat</th>
+            <p class="text-muted mb-4">Tahun Pelajaran <b>Aktif</b> <?= $ta['ta'] ?> Semester <b> <?= $ta['semester'] ?></b></p>
 
-                                    <th class="text-center">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <?php
-                                $no = 1;
-                                foreach ($kelas as $key => $value) {
-                                ?>
-                                    <tr>
-                                        <td class="text-center"><?= $no++ ?></td>
-                                        <td class="text-center"><?= $value['kelas'] ?></td>
-                                        <td class="text-center"><?= $value['nama_guru'] ?></td>
-                                        <td class="text-center"><a href="<?= base_url('kelas/rincian_kelas/' . $value['id_kelas']) ?>" class=" text-primary">Lihat Detail</td>
-                                        <td class="text-center"><?= $value['tingkat'] ?></td>
-
-                                        <td class="text-center">
-                                            <a href="<?= base_url('kelas/delete/' . $value['id_kelas']) ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
-                                            <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit<?= $value['id_kelas'] ?>"><i class="fas fa-pencil"></i></button>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
+
+    <div class="card ">
+        <div class="card-body">
+            <table class="table table-bordered" id="kelas">
+                <thead>
+                    <tr>
+                        <th class="text-center">No</th>
+                        <th class="text-center">Kelas</th>
+                        <th class="text-center">Nama Wali Kelas</th>
+                        <th class="text-center">Anggota Peserta Didik</th>
+                        <th class="text-center">Tingkat</th>
+                        <th class="text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <?php
+                    $no = 1;
+                    foreach ($kelas as $key => $value) {
+                    ?>
+                        <tr>
+                            <td class="text-center"><?= $no++ ?></td>
+                            <td class="text-center"><?= $value['kelas'] ?></td>
+                            <td class="text-center"><?= $value['nama_guru'] ?></td>
+                            <td class="text-center"><a href="<?= base_url('kelas/rincian_kelas/' . $value['id_kelas']) ?>" class=" text-primary">Lihat Detail</td>
+                            <td class="text-center"><?= $value['tingkat'] ?></td>
+
+                            <td class="text-center">
+                                <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?= $value['id_kelas'] ?>"><i class="bx bxs-pencil"></i></button>
+                                <a href="<?= base_url('kelas/delete/' . $value['id_kelas']) ?>" class="btn btn-danger btn-sm"><i class="bx bxs-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>
-
-
-
-
-
-
-
 
 <div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Rombel</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <?= form_open('kelas/add') ?>
@@ -134,18 +110,16 @@ $ta = $db->table('tbl_ta')
         <div class="modal-dialog ">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Rombel</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Rombel</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <?= form_open('kelas/edit/' . $value['id_kelas']); ?>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="">Nama Kelas</label>
                         <input type="text" class="form-control" name="kelas" value="<?= $value['kelas'] ?>">
                     </div>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="">Wali Kelas</label>
                         <select name="id_guru" id="" class="form-control">
                             <option value="">Pilih Guru</option>
@@ -154,7 +128,7 @@ $ta = $db->table('tbl_ta')
                             <?php  } ?>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="">Tingkat</label>
                         <select name="id_tingkat" id="" class="form-control">
                             <option value="">Pilih Tingkat</option>

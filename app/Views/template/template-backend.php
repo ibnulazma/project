@@ -1,32 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+
+
+<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="<?= base_url() ?>/tempalte/assets/"
+    data-template="vertical-menu-template-free">
 
 <head>
 
     <?= $this->include('template/header') ?>
-
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
+<body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+            <!-- Menu -->
+            <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+                <?= $this->include('template/sidebar') ?>
+            </aside>
+            <div class="layout-page">
+                <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+                    id="layout-navbar">
+                    <?= $this->include('template/nav') ?>
+                </nav>
 
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <?= $this->include('template/nav') ?>
-        </nav>
-        <aside class="main-sidebar sidebar-light-primary elevation-4">
-            <?= $this->include('template/sidebar') ?>
-        </aside>
-        <div class="content-wrapper">
-            <?php
+                <div class="content-wrapper">
+                    <?= $this->renderSection('content') ?>
+                </div>
 
-            $db     = \Config\Database::connect();
-
-            $ta = $db->table('tbl_ta')
-                ->where('status', '1')
-                ->get()->getRowArray();
-
-            ?>
-            <?= $this->renderSection('content') ?>
-
-        </div>
-        <?= $this->include('template/footer') ?>
+                <?= $this->include('template/footer') ?>

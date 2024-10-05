@@ -41,9 +41,14 @@ class Filters extends BaseConfig
             'filteradmin' =>
             [
                 'except' => [
-                    'auth', 'auth/*',
-                    'home', 'home/*',
-                    'loginsiswa', 'loginsiswa/*',
+                    'auth',
+                    'auth/*',
+                    'home',
+                    'home/*',
+                    'datasiswa',
+                    'datasiswa/*',
+                    'siswa',
+                    'siswa/*',
                     '/',
                     // 
                 ]
@@ -51,9 +56,15 @@ class Filters extends BaseConfig
             'filterpiket' =>
             [
                 'except' => [
-                    'auth', 'auth/*',
-                    'home', 'home/*',
-                    'loginsiswa', 'loginsiswa/*',
+                    'auth',
+                    'auth/*',
+                    'home',
+                    'home/*',
+                    'loginsiswa',
+                    'loginsiswa/*',
+                    'datasiswa',
+                    'datasiswa/*',
+
                     '/',
                     // 
                 ]
@@ -61,9 +72,14 @@ class Filters extends BaseConfig
             'filterpeserta' =>
             [
                 'except' => [
-                    'auth', 'auth/*',
-                    'home', 'home/*',
-                    'loginsiswa', 'loginsiswa/*',
+                    'auth',
+                    'auth/*',
+                    'home',
+                    'home/*',
+                    'loginsiswa',
+                    'loginsiswa/*',
+                    'datasiswa',
+                    'datasiswa/*',
                     '/',
 
 
@@ -86,37 +102,57 @@ class Filters extends BaseConfig
             [
                 'except' => [
 
-                    'admin', 'admin/*',
-                    'guru', 'guru/*',
-                    'kelas', 'kelas/*',
-                    'mapel', 'mapel/*',
-                    'jadwal', 'jadwal/*',
-                    'ta', 'ta/*',
-                    'user', 'user/*',
-                    'peserta', 'peserta/*',
-                    'surat', 'surat/*',
-                    'setting', 'setting/*',
-                    'ppdb', 'ppdb/*',
-                    'nilai', 'nilai/*',
-                    'datatables', 'datatables/*',
-                    'presensi', 'presensi/*'
+                    'admin',
+                    'admin/*',
+                    'guru',
+                    'guru/*',
+                    'kelas',
+                    'kelas/*',
+                    'mapel',
+                    'mapel/*',
+                    'jadwal',
+                    'jadwal/*',
+                    'ta',
+                    'ta/*',
+                    'user',
+                    'user/*',
+                    'peserta',
+                    'peserta/*',
+                    'surat',
+                    'surat/*',
+                    'setting',
+                    'setting/*',
+                    'ppdb',
+                    'ppdb/*',
+                    'nilai',
+                    'nilai/*',
+                    'datatables',
+                    'datatables/*',
+                    'presensi',
+                    'presensi/*'
                 ]
             ],
             'filterpiket' =>
             [
                 'except' => [
 
-                    'admin', 'admin/*',
-                    'presensi', 'presensi/*'
+                    'admin',
+                    'admin/*',
+                    'presensi',
+                    'presensi/*'
                 ]
             ],
             'filterpeserta' =>
             [
                 'except' => [
-                    'siswa', 'siswa/*',
-                    'presensi', 'presensi/*',
-                    'pelajaran', 'pelajaran/*',
-                    'pengajuan', 'pengajuan/*',
+                    'siswa',
+                    'siswa/*',
+                    'presensi',
+                    'presensi/*',
+                    'pelajaran',
+                    'pelajaran/*',
+                    'pengajuan',
+                    'pengajuan/*',
 
 
                 ]
@@ -124,9 +160,12 @@ class Filters extends BaseConfig
             'filterpendidik' =>
             [
                 'except' => [
-                    'pendidik', 'pendidik/*',
-                    'nilai', 'nilai/*',
-                    'profile', 'profile/*',
+                    'pendidik',
+                    'pendidik/*',
+                    'nilai',
+                    'nilai/*',
+                    'profile',
+                    'profile/*',
 
                     // '/',
                 ]

@@ -15,6 +15,15 @@ class ModelAuth extends Model
 
             ])->get()->getRowArray();
     }
+    // public function login($username, $password)
+    // {
+    //     return $this->db->table('tbl_user')
+    //         ->where([
+    //             'username' => $username,
+    //             'password' => $password,
+
+    //         ])->get()->getRowArray();
+    // }
     public function loginsiswa($username, $password)
     {
         return $this->db->table('tbl_siswa')

@@ -24,23 +24,6 @@
         border: 1px solid black;
         border-collapse: collapse;
     }
-
-    /* 
-    .card-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        widtd: 200px;
-        background: #bbb;
-        z-index: 2;
-        height: 20px;
-    }
-
-    .card-block {
-        margin-top: 20px;
-        height: 100px;
-        overflow: auto;
-    } */
 </style>
 
 
@@ -64,12 +47,12 @@
                         <div class="table-responsive">
                             <table class="table table-bordered" width="100px">
                                 <tr>
-                                    <th colspan="3" class="text-center">
+                                    <th colspan="2" class="text-center">
                                         Lembar Induk Siswa
                                     </th>
                                 </tr>
                                 <tr>
-                                    <td class="text-center" colspan="2">Nomor Induk Siswa :</td>
+                                    <td class="text-center" colspan="2">Nomor Induk Siswa : <?= $siswa['nis'] ?></td>
                                 </tr>
                                 <tr>
                                     <td class="text-center" colspan="2">Nomor Induk Siswa Nasional : <?= $siswa['nisn'] ?></td>
@@ -80,7 +63,6 @@
                                 </tr>
                                 <tr>
                                     <td class="text-center" colspan="2">DATA ASLI </td>
-                                    <td class="text-center">UBAH </td>
                                 </tr>
                                 <tr>
                                     <td widtd="100px">1. Nama Lengkap</td>
@@ -92,7 +74,7 @@
                                 </tr>
                                 <tr>
                                     <td>3. Tempat dan Tanggal Lahir</td>
-                                    <td><?= $siswa['tempat_lahir'] ?>, <?= date('d M Y', strtotime($siswa['tanggal_lahir'])) ?></td>
+                                    <td><?= $siswa['tempat_lahir'] ?>, <?= formatindo($siswa['tanggal_lahir']) ?></td>
                                 </tr>
                                 <tr>
                                     <td>4. Agama</td>

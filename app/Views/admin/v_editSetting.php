@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 
 
-<div class="col-md-8">
+
     <div class="card card-outline card-primary">
         <div class="card-header">
             <h3 class="card-title">Ubah Data Sekolah</h3> <a href="<?= base_url('admin/setting') ?>" class="text-primary"><i class="fa-solid fa-arrow-rotate-left float-right"></i></a>

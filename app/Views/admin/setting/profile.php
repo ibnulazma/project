@@ -7,55 +7,72 @@ $profil = $db->table('tbl_profile')
 
 ?>
 
-<div class="content-header">
-    <div class="container-fluid mt-4">
-        <div class="card">
-            <div class="card-header">
-                <h1 class="card-title"><?= $subtitle ?></h1>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-9">
-                        <h3><?= $profil['npsn'] ?> - <?= $profil['nama_sekolah'] ?></h3>
-                    </div>
-                    <div class="col-lg-3 col">
-                        <div class="tombol text-center">
-                            <a href="" class="btn btn-circle"><i class="fa-solid fa-pen-to-square fa-3x" style="color: #74C0FC;"></i></a>
-                            <p style="color:#74C0FC">Edit</p>
-                        </div>
-                    </div>
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title"><?= $subtitle ?></h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h3><?= $profil['npsn'] ?> - <?= $profil['nama_sekolah'] ?></h3>
                 </div>
-                <h5><b>Informasi Tentang Sekolah</b></h5>
-                <table width="40%" style="font-size: 16px;">
-                    <tr>
-                        <td>Nama Sekolah</td>
-                        <td><?= $profil['nama_sekolah'] ?></td>
-                    </tr>
-                    <tr>
-                        <td>NPSN</td>
-                        <td><?= $profil['npsn'] ?></td>
-                    </tr>
-                    <tr>
-                        <td>Status</td>
-                        <td><?= $profil['status'] ?></td>
-                    </tr>
-                    <tr>
-                        <td>Alamat</td>
-                        <td><?= $profil['alamat'] ?></td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td><?= $profil['email'] ?></td>
-                    </tr>
-                    <tr>
-                        <td>Kepala Sekolah</td>
-                        <td><?= $profil['kepsek'] ?></td>
-                    </tr>
-                </table>
             </div>
+            <h5><b>Informasi Tentang Sekolah</b></h5>
+            <?= form_open('setting/editprofile/') ?>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">Nama Sekolah</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="basic-default-name" name="nama_sekolah" value="<?= $profil['nama_sekolah'] ?>" />
+                </div>
+            </div>
+            <input type="hidden" name="id_profile" value="<?= $profil['id_profile'] ?>">
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">NPSN</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="basic-default-name" name="npsn" value="<?= $profil['npsn'] ?>" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">Status</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="basic-default-name" name="status" value="<?= $profil['status'] ?>" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">Alamat</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="basic-default-name" name="alamat" value="<?= $profil['alamat'] ?>" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">Email</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="basic-default-name" name="email" value="<?= $profil['email'] ?>" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">Kepala Sekolah</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="basic-default-name" name="kepsek" value="<?= $profil['kepsek'] ?>" />
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-info">Edit</button>
+                </div>
+            </div>
+            <?= form_close() ?>
+
+
+
+
+
         </div>
     </div>
 </div>
+
 
 
 

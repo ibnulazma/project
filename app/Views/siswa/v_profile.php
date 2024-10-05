@@ -2,263 +2,138 @@
 <?= $this->section('content') ?>
 
 
-<div class="content-header">
-    <div class="container-fluid mt-4">
-        <div class="row text-sm">
-            <div class="col-lg-4">
-                <div class=" card">
-                    <div class="card-body box-profile">
-                        <div class="text-center">
-                            <?php if ($siswa['foto_siswa'] == null) { ?>
-                                <?php
-                                $gender = "L";
-                                if ($gender == $siswa['jenis_kelamin']) { ?>
-
-                                    <img class="img-profil" src="<?= base_url('foto/muslim.png') ?>" id="profileDisplay" onClick="triggerClick()" id="profileDisplay">
-                                    <input type="file" name="foto_siswa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display:none">
-
-                                <?php } else { ?>
-                                    <img class=" img-profil" src="<?= base_url('foto/woman.png') ?>" alt="User profile picture" onClick="triggerClick()" id="profileDisplay">
-                                    <input type="file" name="foto_siswa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display:none">
-                                <?php  } ?>
-
-                            <?php  } else { ?>
-                                <img class="img-profil" src="<?= base_url('foto_siswa/' . $siswa['foto_siswa']) ?>" alt="User profile picture" onClick="triggerClick()" id="profileDisplay">
-                                <input type="file" name="foto_siswa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display:none">
-                            <?php    } ?>
-
-                        </div>
-                        <h3 class="profile-username text-center"><?= $siswa['nama_siswa'] ?></h3>
-                        <p class="text-muted text-center">(<?= $siswa['nisn'] ?> / <?= $siswa['nis'] ?>)</p>
-                        <?php if ($siswa['status_daftar'] == 1) { ?>
-                            <div class="tombol text-center">
-                                <p class="badge badge-danger">Belum Aktif</p>
-                            </div>
-                        <?php } elseif ($siswa['status_daftar'] == 2) { ?>
-                            <div class="tombol text-center">
-                                <p class="badge badge-info">Verifikasi</p>
-                            </div>
-                        <?php } elseif ($siswa['status_daftar'] == 3) { ?>
-                            <div class="tombol text-center">
-                                <p class="badge badge-success">Aktif</p>
-                            </div>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav-align-top">
+                <ul class="nav nav-pills flex-column flex-md-row mb-4">
+                    <li class="nav-item"><a class="nav-link active" href=""><i class="bx bx-sm bx-user me-1_5"></i> Account</a></li>
+                    <li class="nav-item"><a class="nav-link" href=""><i class="bx bx-sm bx-bell me-1_5"></i> Notifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href=""><i class="bx bx-sm bx-link-alt me-1_5"></i> Connections</a></li>
+                </ul>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="d-flex align-items-start align-items-sm-center gap-4 pb-4 border-bottom">
+                        <?php
+                        $gender = "L";
+                        if ($gender == $siswa['jenis_kelamin']) { ?>
+                            <img src="<?= base_url('foto/muslim.png') ?>" alt="user-avatar" class="d-block w-px-100 h-px-100 rounded" id="uploadedAvatar" />
+                        <?php } else { ?>
+                            <img src="<?= base_url('foto/woman.png') ?>" alt="user-avatar" class="d-block w-px-100 h-px-100 rounded" id="uploadedAvatar" />
                         <?php } ?>
-                    </div>
-                    <!-- <div class="card-footer">
-                <div class="row">
-                    <div class="col-sm-4 col-4 border-right">
-                        <div class="description-block">
-                            <p class="description-header">ijazah</p>
-                            <span class="badge bg-danger"><i class="fa-solid fa-circle-xmark"></i> belum</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-4 border-right">
-                        <div class="description-block">
-                            <p class="description-header">akte</p>
-                            <p class="badge bg-danger"><i class="fa-solid fa-circle-xmark"></i> belum</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-4 border-right">
-                        <div class="description-block">
-                            <p class="description-header">kk</p>
-                            <p class="badge bg-danger"><i class="fa-solid fa-circle-xmark"></i> belum</p>
+                        <div class="button-wrapper">
+                            <label for="upload" class="btn btn-primary me-4 mb-4" tabindex="0">
+                                <span class="d-none d-sm-block">Upload new photo</span>
+                                <i class="bx bx-upload d-block d-sm-none"></i>
+                                <input type="file" id="upload" class="account-file-input" hidden accept="image/png, image/jpeg" />
+                            </label>
+                            <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
+                                <i class="bx bx-reset d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Reset</span>
+                            </button>
+
+                            <div>Allowed JPG, GIF or PNG. Max size of 800K</div>
                         </div>
                     </div>
                 </div>
-            </div> -->
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title">
-                            <strong>IDENTITAS</strong>
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-group  mb-3">
-                            <li class="list-group-item">
-                                <span>TTL: <?= $siswa['tempat_lahir'] ?>, <?= $siswa['tanggal_lahir'] ?> </span>
-                            </li>
-                            <li class="list-group-item">
-                                <span>NIK : <?= $siswa['nik'] ?> </span>
-                            </li>
-                            <li class="list-group-item">
-                                <span>NISN : <?= $siswa['nisn'] ?> </span>
-                            </li>
-                            <li class="list-group-item">
-                                <span>NIS : <?= $siswa['nis'] ?> </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title">
-                            Rekam Didik
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Semester</th>
-                                    <th>Kelas</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($datadidik as $key => $value) { ?>
-                                    <tr>
-                                        <td><?= $value['ta'] ?> <?= $value['semester'] ?></td>
-                                        <td><?= $value['kelas'] ?> <?= $value['nama_guru'] ?></td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="card-body pt-4">
+                    <form id="" method="POST" onsubmit="return false">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="namaLengkap" class="form-label">Nama Lengkap</label>
+                                    <input class="form-control" type="text" id="namaLengkap" name="nama_siswa" value="<?= $siswa['nama_siswa'] ?>" autofocus />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="jk" class="form-label">Jenis Kelamin</label>
+                                    <select name="" id="" class="form-select">
+
+                                        <?php if ($siswa['jenis_kelamin'] == 'L') {
+                                            echo  "<option value='L' selected>Laki-laki</option>";
+                                        } else {
+                                            echo  "<option value='L'>Laki-laki</option>";
+                                        }
+
+                                        if ($siswa['jenis_kelamin'] == 'P') {
+                                            echo  "<option value='P' selected>Perempuan</option>";
+                                        } else {
+                                            echo  "<option value='P'>Laki-Perempuan</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nisn" class="form-label">Nisn</label>
+                                    <input class="form-control" type="text" id="nisn" name="nisn" value="<?= $siswa['nisn'] ?>" autofocus />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nik" class="form-label">NIK</label>
+                                    <input class="form-control" type="text" id="nik" name="nik" value="<?= $siswa['nik'] ?>" autofocus />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="no_kk" class="form-label">Nomor Kartu Keluarga</label>
+                                    <input class="form-control" type="text" id="no_kk" name="no_kk" value="<?= $siswa['no_kk'] ?>" autofocus />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tempatLahir" class="form-label">Tempat Lahir</label>
+                                    <input class="form-control" type="text" id="tempatLahir" name="tempat_lahir" value="<?= $siswa['tempat_lahir'] ?>" autofocus />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="date" class="form-label">Tanggal Lahir</label>
+                                    <input class="form-control date" type="text" name="tanggal_lahir" id="date" value="<?= $siswa['tanggal_lahir'] ?>" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">E-mail</label>
+                                    <input class="form-control" type="text" id="email" name="email" value="<?= $siswa['email'] ?>" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="telp_anak" class="form-label">No Telp</label>
+                                    <input type="text" class="form-control" id="telp_anak" name="telp_anak" value="<?= $siswa['telp_anak'] ?>" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="alamat" class="form-label">Alamat</label>
+                                    <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $siswa['alamat'] ?>" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="state" class="form-label">Provinsi</label>
+                                    <select name="provinsi" id="provinsi" class="form-select">
+                                        <option value="">Pilih Provinsi</option>
+                                        <?php foreach ($provinsi as $key => $prov) { ?>
+                                            <option value=" <?= $prov['id_provinsi'] ?>"><?= $prov['prov_name'] ?></option>
+
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="kabupaten" class="form-label">Kabupaten</label>
+                                    <select name="kabupaten" id="kabupaten" class="form-select">
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="zipCode" class="form-label">Kecamatan</label>
+                                    <select name="kecamatan" id="kecamatan" class="form-select">
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="zipCode" class="form-label">Kecamatan</label>
+                                    <select name="desa" id="desa" class="form-select">
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="mt-6">
+                                <button type="submit" class="btn btn-primary me-3">Save changes</button>
+                                <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                            </div>
+                    </form>
                 </div>
             </div>
-            <div class="col-lg-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title">
-                            <strong>ALAMAT</strong>
-                        </h5>
-                        <button class="btn btn-danger btn-sm float-right" data-toggle="modal" data-target="#alamat"><i class="fas fa-edit"></i> </button>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="list-group list-group-unbordered mb-3">
-
-                                    <li class="list-group-item">
-                                        <span> Alamat: <?= $siswa['alamat'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span> RT/ RW: <?= $siswa['rt'] ?>/<?= $siswa['rw'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span> Desa/Kel: <?= $siswa['desa'] ?> </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul class="list-group list-group-unbordered mb-3">
-                                    <li class="list-group-item">
-                                        <span> Kec: <?= $siswa['nama_kecamatan'] ?> </span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span> Kab/Kota: <?= $siswa['city_name'] ?> </span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title">
-                            <strong>DATA ORANG TUA</strong>
-                        </h5>
-                        <button class="btn btn-danger btn-sm float-right" data-toggle="modal" data-target="#orangtua"><i class="fas fa-edit"></i> </button>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="list-group list-group-unbordered mb-3">
-                                    <li class="list-group-item">
-                                        <span> Nama Ayah: <?= $siswa['nama_ayah'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        NIK Ayah: <?= $siswa['nik_ayah'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Tahun Lahir: <?= $siswa['tahun_ayah'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Pendidikan : <?= $siswa['didik_ayah'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Pekerjaan : <?= $siswa['kerja_ayah'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Penghasilan : <?= $siswa['hasil_ayah'] ?></span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-
-                                <ul class="list-group list-group-unbordered mb-3">
-                                    <li class="list-group-item">
-                                        <span> Nama Ibu: <?= $siswa['nama_ibu'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        NIK Ibu: <?= $siswa['nik_ibu'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Tahun Lahir: <?= $siswa['tahun_ibu'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Pendidikan : <?= $siswa['didik_ibu'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Pekerjaan : <?= $siswa['kerja_ibu'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Penghasilan : <?= $siswa['hasil_ibu'] ?></span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h5><strong>DATA PERIODIK</strong></h5>
-                                <ul class="list-group list-group-unbordered mb-3">
-                                    <li class="list-group-item">
-                                        <span> Berat Badan : <?= $siswa['berat'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Tinggi Badan : <?= $siswa['tinggi'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Lingkar Kepala : <?= $siswa['lingkar'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Jumlah Saudara : <?= $siswa['jml_saudara'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Transportasi : <?= $siswa['transportasi'] ?></span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <h5><strong>DATA REGISTRASI</strong></h5>
-                                <ul class="list-group list-group-unbordered mb-3">
-                                    <li class="list-group-item">
-                                        <span> Jenis Pendaftaran: Siswa Baru</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Hobi: <?= $siswa['hobi'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Cita-cita: <?= $siswa['cita_cita'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        No Telp : <?= $siswa['telp_anak'] ?></span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        No Seri Ijazah : <?= $siswa['seri_ijazah'] ?></span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        </div>
+        <div class="card">
+            <h5 class="card-header">Biodata Orang Tua</h5>
         </div>
     </div>
 </div>
@@ -266,46 +141,56 @@
 
 
 
-<!-- ModalAlamat -->
-<div class="modal fade" id="alamat" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Edit Alamat</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!--OranTua -->
-<div class="modal fade" id="orangtua" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Edit Orang Tua</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
-            </div>
-        </div>
-    </div>
-</div>
+
+
+
+
+<script src="<?= base_url() ?>/template/assets/vendor/libs/jquery/jquery.js"></script>
+<!-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script> -->
+
+
+<script>
+    $(document).ready(function() {
+        $("#kabupaten").change(function() {
+            var id_kecamatan = $("#kabupaten").val();
+            $.ajax({
+                type: 'GET',
+                url: '<?= base_url('Siswa/dataKecamatan') ?>/' + id_kecamatan,
+                success: function(html) {
+                    $("#kecamatan").html(html);
+                }
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $("#kecamatan").change(function() {
+            var id_desa = $("#kecamatan").val();
+            $.ajax({
+                type: 'GET',
+                url: '<?= base_url('Siswa/dataDesa') ?>/' + id_desa,
+                success: function(html) {
+                    $("#desa").html(html);
+                }
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $("#kecamatan").change(function() {
+            var id_desa = $("#kecamatan").val();
+            $.ajax({
+                type: 'GET',
+                url: '<?= base_url('Siswa/dataDesa') ?>/' + id_desa,
+                success: function(html) {
+                    $("#desa").html(html);
+                }
+            });
+        });
+    });
+</script>
 
 <?= $this->endSection() ?>

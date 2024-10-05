@@ -18,6 +18,7 @@ class Siswa extends BaseController
 
     public function __construct()
     {
+        helper('gantiformat');
         helper('formatindo');
         helper('terbilang');
         helper('form');

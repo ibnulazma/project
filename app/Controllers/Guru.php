@@ -24,7 +24,7 @@ class Guru extends BaseController
         $data = [
             'title'      => 'SIAKADINKA',
             'subtitle'      => 'PTK',
-            'menu'      => 'akademik',
+            'menu'      => 'guru',
             'submenu'      => 'guru',
             'guru'    => $this->ModelGuru->AllData(),
 
@@ -183,6 +183,7 @@ class Guru extends BaseController
             'id_guru' => $id_guru,
             'nama_guru' => $this->request->getPost('nama_guru'),
             'walas' => $this->request->getPost('walas'),
+            'link_wa' => $this->request->getPost('link_wa'),
         ];
         $this->ModelGuru->edit($data);
         session()->setFlashdata('pesan', 'Data Berhasil Di Update !!!');

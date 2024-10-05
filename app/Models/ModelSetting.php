@@ -9,7 +9,7 @@ class ModelSetting extends Model
     public function Profile()
     {
         return $this->db->table('tbl_profile')
-            ->get()->getResultArray();
+            ->where('id_profile')->get()->getRowArray();
     }
     public function user()
     {
@@ -24,8 +24,8 @@ class ModelSetting extends Model
 
     public function edit($data)
     {
-        $this->db->table('tbl_tinggal')
-            ->where('id_tinggal', $data['id_tinggal'])
+        $this->db->table('tbl_profile')
+            ->where('id_profile', $data['id_profile'])
             ->update($data);
     }
     public function delete_data($data)

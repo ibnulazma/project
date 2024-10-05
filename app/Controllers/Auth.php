@@ -54,8 +54,8 @@ class Auth extends BaseController
             if ($ceksiswa) {
                 session()->set('username', $ceksiswa['nisn']);
                 session()->set('nama', $ceksiswa['nama_siswa']);
-                session()->set('foto', $ceksiswa['foto_siswa']);
-                session()->set('level', 'siswa');
+                // session()->set('foto', $ceksiswa['foto_siswa']);
+                session()->set('level', '3');
                 return redirect()->to(base_url('siswa'));
             } else {
                 session()->setFlashdata('error', 'Username or Password is Wrong');
@@ -67,16 +67,7 @@ class Auth extends BaseController
         }
     }
 
-    public function logout()
-    {
-        session()->remove('log');
-        session()->remove('username');
-        session()->remove('nama');
-        session()->remove('foto');
-        session()->remove('level');
-        session()->setFlashdata('pesan', 'Thanks, Are You Logged Out!!');
-        return redirect()->to(base_url('auth'));
-    }
+
 
     public function loginguru()
     { {
@@ -117,10 +108,11 @@ class Auth extends BaseController
 
             $cekguru = $this->ModelAuth->loginguru($username, $password);
             if ($cekguru) {
+
                 session()->set('username', $cekguru['niy']);
                 session()->set('nama', $cekguru['nama_guru']);
                 // session()->set('foto', $cekguru['foto_siswa']);
-                session()->set('level', 'pendidik');
+                session()->set('level', '2');
                 return redirect()->to(base_url('pendidik'));
             } else {
                 session()->setFlashdata('error', 'Username or Password is Wrong');
@@ -171,11 +163,11 @@ class Auth extends BaseController
 
             $cekadmin = $this->ModelAuth->login($username, $password);
             if ($cekadmin) {
+
                 session()->set('username', $cekadmin['username']);
                 session()->set('nama', $cekadmin['nama_user']);
                 session()->set('foto', $cekadmin['foto']);
-                session()->set('level', 'admin');
-                return redirect()->to(base_url('admin'));
+                session()->set('level', '1');
             } else {
                 session()->setFlashdata('error', 'Username or Password is Wrong');
                 return redirect()->to(base_url('auth/loginadmin'));
@@ -186,5 +178,18 @@ class Auth extends BaseController
             // session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
             // return redirect()->to(base_url('auth'));
         }
+    }
+
+
+
+    public function logout()
+    {
+        session()->remove('log');
+        session()->remove('username');
+        session()->remove('nama');
+        session()->remove('foto');
+        session()->remove('level');
+        session()->setFlashdata('pesan', 'Thanks, Are You Logged Out!!');
+        return redirect()->to(base_url('auth'));
     }
 }

@@ -17,8 +17,8 @@ class Ta extends BaseController
     {
         $data = [
             'title'         => 'SIAKADINKA',
-            'subtitle'      => 'Tahun Akademik',
-            'menu'          => 'setting',
+            'subtitle'      => 'Setting Tahun ',
+            'menu'          => 'ta',
             'submenu'       => 'ta',
             'ta'            =>  $this->ModelTa->AllData(),
             'isi'           => 'admin/v_ta'

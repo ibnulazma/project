@@ -7,16 +7,50 @@ use CodeIgniter\Model;
 class ModelPeserta extends Model
 
 {
-    public function AllData()
+    public function aktif()
     {
         return $this->db->table('tbl_siswa')
             ->join('tbl_tingkat', 'tbl_tingkat.id_tingkat = tbl_siswa.id_tingkat', 'left')
             // ->join('tbl_ta', 'tbl_ta.id_ta = tbl_siswa.id_ta', 'left')
             // ->where('status', '1')
             ->where('aktif', '1')
+            ->where('status_daftar', '3')
             ->get()
             ->getResultArray();
     }
+    public function verifikasi()
+    {
+        return $this->db->table('tbl_siswa')
+            ->join('tbl_tingkat', 'tbl_tingkat.id_tingkat = tbl_siswa.id_tingkat', 'left')
+            ->join('tbl_ta', 'tbl_ta.id_ta = tbl_siswa.id_ta', 'left')
+            ->where('status_daftar', '2')
+            ->where('aktif', '1')
+            ->get()
+            ->getResultArray();
+    }
+
+
+    // status_daftar 4
+    public function lulusan()
+    {
+        return $this->db->table('tbl_siswa')
+            ->join('tbl_tingkat', 'tbl_tingkat.id_tingkat = tbl_siswa.id_tingkat', 'left')
+            ->where('aktif', '0')
+            ->where('status_daftar', '4')
+            ->get()
+            ->getResultArray();
+    }
+    // status_daftar 5
+    public function keluar()
+    {
+        return $this->db->table('tbl_siswa')
+            ->join('tbl_tingkat', 'tbl_tingkat.id_tingkat = tbl_siswa.id_tingkat', 'left')
+            ->where('aktif', '0')
+            ->where('status_daftar', '5')
+            ->get()
+            ->getResultArray();
+    }
+
 
     public function pertahun()
     {
@@ -37,15 +71,7 @@ class ModelPeserta extends Model
             ->countAllResults();
     }
 
-    public function verifikasi()
-    {
-        return $this->db->table('tbl_siswa')
-            ->join('tbl_tingkat', 'tbl_tingkat.id_tingkat = tbl_siswa.id_tingkat', 'left')
-            ->join('tbl_ta', 'tbl_ta.id_ta = tbl_siswa.id_ta', 'left')
-            ->where('status_daftar', '2')
-            ->get()
-            ->getResultArray();
-    }
+
 
     public function add($data)
     {
@@ -115,6 +141,7 @@ class ModelPeserta extends Model
             ->where('nisn', $nisn)
             ->get()->getRowArray();
     }
+
     public function Data($id_siswa)
     {
         return $this->db->table('tbl_siswa')
@@ -126,7 +153,6 @@ class ModelPeserta extends Model
             ->join('provinsi', 'provinsi.id_provinsi = tbl_siswa.provinsi', 'left')
             ->join('kecamatan', 'kecamatan.id_kecamatan = tbl_siswa.kecamatan', 'left')
             ->join('kabupaten', 'kabupaten.id_kabupaten = tbl_siswa.kabupaten', 'left')
-
             ->where('id_siswa', $id_siswa)
             ->where('tbl_kelas.id_guru')
             ->get()->getRowArray();
@@ -135,7 +161,7 @@ class ModelPeserta extends Model
     {
         return $this->db->table('tbl_siswa')
             // ->join('tbl_ta', 'tbl_ta.id_ta = tbl_siswa.id_ta', 'left')
-            ->where('aktif', '1')
+            ->where('status_daftar', '3')
             // ->where('status', '1')
             ->countAllResults();
     }
@@ -143,9 +169,11 @@ class ModelPeserta extends Model
     public function jumlahNonAktif()
     {
         return $this->db->table('tbl_siswa')
-            ->where('aktif', '0')
+            ->where('status_daftar', '2')
             ->countAllResults();
     }
+
+
 
     public function jml_baru()
     {
@@ -194,6 +222,7 @@ class ModelPeserta extends Model
         return $this->db->table('tbl_siswa')
             ->join('tbl_tingkat', 'tbl_tingkat.id_tingkat = tbl_siswa.id_tingkat', 'left')
             ->where('tbl_siswa.id_tingkat', '3')
+            ->where('status_daftar', '3')
             ->get()
             ->getResultArray();
     }

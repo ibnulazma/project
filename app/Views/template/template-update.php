@@ -49,14 +49,13 @@
 
         }
 
-        li .aktip {}
+
     }
 </style>
 
 
 <body class="hold-transition sidebar-mini layout-fixed text-sm">
     <div class="wrapper">
-
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <?= $this->include('template/nav') ?>
         </nav>
@@ -79,7 +78,6 @@
                     </div>
                 </div>
             </div>
-
             <section class="content">
                 <div class="container-fluid">
                     <div class="card">

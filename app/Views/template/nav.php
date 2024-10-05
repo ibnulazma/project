@@ -1,52 +1,106 @@
-<ul class="navbar-nav">
-    <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-    </li>
-</ul>
-<ul class="navbar-nav ml-auto">
-    <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-            <?php if (session()->get('level') == 'admin') { ?>
-                <?= session()->get('nama') ?> <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" class=" mr-3" style="width:25px;height:25px; border-radius:50%">
-            <?php  } else if (session()->get('level') == 'siswa') { ?>
-                <img src="<?= base_url('foto_siswa/' .  session()->get('foto')) ?>" class=" mr-3" style="width:25px;height:25px;border-radius:50%">
-            <?php  } ?>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item">
+<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+    <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+        <i class="bx bx-menu bx-sm"></i>
+    </a>
+</div>
 
-                <div class="media">
-                    <?php if (session()->get('level') == 'admin') { ?>
-                        <img src="<?= base_url('foto_user/' .  session()->get('foto')) ?>" class=" mr-3" style="width:25px;height:25px; border-radius:50%">
-                    <?php  } else if (session()->get('level') == 'siswa') { ?>
-                        <img src="<?= base_url('foto_siswa/' .  session()->get('foto')) ?>" class=" mr-3" style="width:25px;height:25px;border-radius:50%">
-                    <?php  } ?>
-                    <div class="media-body">
-                        <h3 class="dropdown-item-title">
-                            <?= session()->get('nama') ?>
-                        </h3>
-                        <?php if (session()->get('level') == 1) { ?>
-                            <p class="text-sm">Administrator</p>
-                        <?php } elseif (session()->get('level') == 2) { ?>
-                            <p class="text-sm">Piket</p>
-                        <?php } ?>
+<div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+    <!-- Search -->
+    <div class="navbar-nav align-items-center">
+        <div class="nav-item d-flex align-items-center">
+            <?php if (session()->get('level') == 1) { ?>
+                <span><?= session()->get('nama') ?></span>
 
-                    </div>
-
-
-
-                </div>
-            </a>
-            <p>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-user mr-2"></i> My Profile
-                </a>
-            </p>
-            <p>
-                <a href="<?= base_url('auth/logout') ?>" class="dropdown-item">
-                    <i class="fas fa-sign-out mr-2"></i> Logout
-                </a>
-            </p>
+            <?php } elseif (session()->get('level') == 2) { ?>
+                <span><?= session()->get('nama') ?></span>
+            <?php } elseif (session()->get('level') == 3) { ?>
+                <span><?= session()->get('nama') ?></span>
+            <?php } ?>
         </div>
-    </li>
-</ul>
+    </div>
+    <!-- /Search -->
+
+    <ul class="navbar-nav flex-row align-items-center ms-auto">
+        <!-- Place this tag where you want the button to render. -->
+
+        <!-- User -->
+        <li class="nav-item navbar-dropdown dropdown-user dropdown">
+            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                <?php if (session()->get('level') == 1) { ?>
+                    <div class="avatar avatar-online">
+                        <img src="<?= base_url() ?>/template/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                    </div>
+                <?php } else if (session()->get('level') == 2) { ?>
+                    <div class="avatar avatar-online">
+                        <img src="<?= base_url() ?>/template/assets/img/avatars/5.png" alt class="w-px-40 h-auto rounded-circle" />
+                    </div>
+                <?php } else if (session()->get('level') == 3) { ?>
+                    <div class="avatar avatar-online">
+
+                        <img src="<?= base_url() ?>/template/assets/img/avatars/logo.png" alt class="w-px-40 h-auto rounded-circle" />
+                    </div>
+                <?php } ?>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                    <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0 me-3">
+                                <div class="avatar avatar-online">
+                                    <?php if (session()->get('level') == 1) { ?>
+                                        <img src="<?= base_url() ?>/template/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                                    <?php } else if (session()->get('level') == 2) { ?>
+                                        <img src="<?= base_url() ?>/template/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                                    <?php } else if (session()->get('level') == 3) { ?>
+                                        <img src="<?= base_url() ?>/template/assets/img/avatars/logo.png" alt class="w-px-40 h-auto rounded-circle" />
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1">
+                                <?php if (session()->get('level') == 1) { ?>
+                                    <span class="fw-semibold d-block"><?= session()->get('nama') ?></span>
+                                <?php } else if (session()->get('level') == 2) { ?>
+                                    <span class="fw-semibold d-block"><?= session()->get('nama') ?></span>
+                                <?php } else if (session()->get('level') == 3) { ?>
+                                    <span class="fw-semibold d-block"><?= session()->get('nama') ?></span>
+                                <?php } ?>
+                                <?php if (session()->get('level') == 1) { ?>
+                                    <small class="text-muted">Admin</small>
+                                <?php } else if (session()->get('level') == 2) { ?>
+                                    <small class="text-muted">Guru</small>
+                                <?php } else if (session()->get('level') == 3) { ?>
+                                    <small class="text-muted">Siswa</small>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">
+                        <i class="bx bx-user me-2"></i>
+                        <span class="align-middle">My Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">
+                        <i class="bx bx-cog me-2"></i>
+                        <span class="align-middle">Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="<?= base_url('auth/logout') ?>">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">Log Out</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!--/ User -->
+    </ul>
+</div>

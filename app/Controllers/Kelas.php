@@ -7,6 +7,7 @@ use App\Models\ModelGuru;
 use App\Models\ModelTa;
 use App\Models\ModelNilai;
 use App\Models\ModelPeserta;
+use App\Models\ModelSetting;
 use \Dompdf\Dompdf;
 use \Dompdf\Options;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -20,6 +21,7 @@ class Kelas extends BaseController
 {
     public function __construct()
     {
+
         helper('formatindo');
         helper('form');
         helper('terbilang');
@@ -28,6 +30,7 @@ class Kelas extends BaseController
         $this->ModelTa = new ModelTa();
         $this->ModelNilai = new ModelNilai();
         $this->ModelPeserta = new ModelPeserta();
+        $this->ModelSetting = new ModelSetting();
     }
 
     public function index()
@@ -36,12 +39,11 @@ class Kelas extends BaseController
         $data = [
             'title'         => 'SIAKADINKA',
             'subtitle'      => 'Rombongan Kelas',
-            'menu'          => 'akademik',
+            'menu'          => 'kelas',
             'submenu'       => 'kelas',
             'kelas'         => $this->ModelKelas->AllData(),
             'guru'          => $this->ModelGuru->walikelas(),
             'tingkat'       => $this->ModelKelas->Tingkat(),
-
             'grupkelas'        => $this->ModelKelas->kelas_grup(),
 
         ];
@@ -498,6 +500,7 @@ class Kelas extends BaseController
 
 
         $data = [
+            'profile' => $this->ModelSetting->Profile(),
             'biodata'     => $this->ModelKelas->halamansiswa($nisn),
         ];
         $html = view('admin/kelas/biodatasiswa', $data);

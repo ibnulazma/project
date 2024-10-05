@@ -6,7 +6,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Alamat</label>
             </div>
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">RT</label>
             </div>
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">RW</label>
             </div>
@@ -39,12 +39,12 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Provinsi</label>
             </div>
             <div class="col-sm-8">
-                <select name="provinsi" class="form-control select2bs4 <?= ($validation->hasError('provinsi')) ? 'is-invalid' : ''; ?> " style="width: 100%;" id="provinsi" value="<?= old('provinsi') ?>">
+                <select name="provinsi" class="form-select  <?= ($validation->hasError('provinsi')) ? 'is-invalid' : ''; ?> " id="provinsi" value="<?= old('provinsi') ?>">
                     <option value="">--Pilih Provinsi--</option>
                     <?php foreach ($provinsi as $row) { ?>
                         <option value="<?= $row['id_provinsi'] ?>"><?= $row['prov_name'] ?></option>
@@ -55,12 +55,12 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Kab/Kota</label>
             </div>
             <div class="col-sm-8">
-                <select name="kabupaten" class="form-control select2bs4 <?= ($validation->hasError('kabupaten')) ? 'is-invalid' : ''; ?>" style="width: 100%;" id="kabupaten" value="<?= old('kebupaten') ?>">
+                <select name="kabupaten" class="form-select <?= ($validation->hasError('kabupaten')) ? 'is-invalid' : ''; ?>" id="kabupaten" value="<?= old('kebupaten') ?>">
                 </select>
                 <div class=" invalid-feedback">
                     <?= $validation->getError('kabupaten'); ?>
@@ -69,24 +69,24 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Kecamatan</label>
             </div>
             <div class="col-sm-8">
-                <select name="kecamatan" class="form-control select2bs4 <?= ($validation->hasError('kecamatan')) ? 'is-invalid' : ''; ?>" style="width: 100%;" id="kecamatan" value="<?= old('kecamatan') ?>">
+                <select name="kecamatan" class="form-select <?= ($validation->hasError('kecamatan')) ? 'is-invalid' : ''; ?>" id="kecamatan" value="<?= old('kecamatan') ?>">
                 </select>
                 <div class=" invalid-feedback">
                     <?= $validation->getError('kecamatan'); ?>
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Desa</label>
             </div>
             <div class="col-sm-8">
-                <select name="desa" class="form-control select2bs4 <?= ($validation->hasError('desa')) ? 'is-invalid' : ''; ?>" style="width: 100%;" id="desa" value="<?= old('desa') ?>">
+                <select name="desa" class="form-select <?= ($validation->hasError('desa')) ? 'is-invalid' : ''; ?>" id="desa" value="<?= old('desa') ?>">
                 </select>
                 <div class=" invalid-feedback">
                     <?= $validation->getError('desa'); ?>
@@ -94,7 +94,7 @@
             </div>
         </div>
 
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Kode Pos</label>
             </div>
@@ -111,29 +111,56 @@
 <button type="submit" class="btn btn-primary w-100 tombolSimpan">Simpan</button>
 <?= form_open() ?>
 
+</div>
 
 
 
 
 
-<script src="<?= base_url() ?>/AdminLTE/plugins/jquery/jquery.min.js"></script>
-
-
+<script src="<?= base_url() ?>/template/assets/vendor/libs/jquery/jquery.js"></script>
+<!-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script> -->
 
 <script>
-    function triggerClick(e) {
-        document.querySelector('#profileImage').click();
-    }
-
-    function displayImage(e) {
-        if (e.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.querySelector('#profileDisplay').setAttribute('src', e.target.result);
-            }
-            reader.readAsDataURL(e.files[0]);
-        }
-    }
+    $(document).ready(function() {
+        $("#kabupaten").change(function() {
+            var id_kecamatan = $("#kabupaten").val();
+            $.ajax({
+                type: 'GET',
+                url: '<?= base_url('Siswa/dataKecamatan') ?>/' + id_kecamatan,
+                success: function(html) {
+                    $("#kecamatan").html(html);
+                }
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $("#kecamatan").change(function() {
+            var id_desa = $("#kecamatan").val();
+            $.ajax({
+                type: 'GET',
+                url: '<?= base_url('Siswa/dataDesa') ?>/' + id_desa,
+                success: function(html) {
+                    $("#desa").html(html);
+                }
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $("#kecamatan").change(function() {
+            var id_desa = $("#kecamatan").val();
+            $.ajax({
+                type: 'GET',
+                url: '<?= base_url('Siswa/dataDesa') ?>/' + id_desa,
+                success: function(html) {
+                    $("#desa").html(html);
+                }
+            });
+        });
+    });
 </script>
 
 

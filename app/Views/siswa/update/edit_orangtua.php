@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Nama Ayah</label>
             </div>
@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">NIK AYAH</label>
             </div>
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Tahun Lahir</label>
             </div>
@@ -40,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Pendidikan</label>
             </div>
@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Pekerjaan</label>
             </div>
@@ -72,7 +72,7 @@
                 </select>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Penghasilan</label>
             </div>
@@ -88,7 +88,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">No Telp</label>
             </div>
@@ -101,7 +101,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Nama Ibu</label>
             </div>
@@ -112,7 +112,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">NIK Ibu</label>
             </div>
@@ -123,7 +123,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Tahun Lahir</label>
             </div>
@@ -134,7 +134,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Pendidikan</label>
             </div>
@@ -150,7 +150,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Pekerjaan</label>
             </div>
@@ -166,7 +166,7 @@
                 </select>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">Penghasilan</label>
             </div>
@@ -182,7 +182,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-4 row">
             <div class="col-sm-4">
                 <label for="">No Telp</label>
             </div>
@@ -200,7 +200,7 @@
 <button type="submit" class="btn btn-primary w-100">Simpan</button>
 <?= form_close() ?>
 
-
+</div>
 
 
 <script>

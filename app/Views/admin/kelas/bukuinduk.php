@@ -84,7 +84,7 @@
                                 </tr>
                                 <tr>
                                     <td>3. Tempat dan Tanggal Lahir</td>
-                                    <td><?= $siswa['tempat_lahir'] ?>, <?= formatindo(date($biodata['tanggal_lahir']))  ?></td>
+                                    <td><?= $siswa['tempat_lahir'] ?>, <?= formatindo(date($siswa['tanggal_lahir']))  ?></td>
                                 </tr>
                                 <tr>
                                     <td>4. Agama</td>

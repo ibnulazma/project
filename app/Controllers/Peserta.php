@@ -47,14 +47,17 @@ class Peserta extends BaseController
         $data = [
             'title'      => 'SIAKADINKA',
             'subtitle'   => 'Peserta Didik',
-            'menu'       => 'akademik',
+            'menu'       => 'peserta',
             'submenu'    => 'peserta',
             'tingkat'    => $this->ModelKelas->Tingkat(),
             'kelas'      => $this->ModelKelas->kelas(),
-            'peserta'    => $this->ModelPeserta->AllData(),
+            'peserta'    => $this->ModelPeserta->aktif(),
             'jumlverifikasi'    => $this->ModelPeserta->jmlverifikasi(),
-            'lulus'    => $this->ModelPeserta->lulus(),
             'naik'    => $this->ModelPeserta->naik(),
+            'keluar'    => $this->ModelPeserta->keluar(),
+            'lulusan'    => $this->ModelPeserta->lulusan(),
+            'verifikasi'    => $this->ModelPeserta->verifikasi(),
+            'lulus'    => $this->ModelPeserta->lulus(),
             // 'siswa'    => $this->ModelPeserta->detail_data()
 
         ];
@@ -141,7 +144,7 @@ class Peserta extends BaseController
         $data = [
             'title'         => 'SIAKAD',
             'subtitle'      => 'Profil Siswa',
-            'menu'          => 'akademik',
+            'menu'          => 'peserta',
             'submenu'       => 'peserta',
             'kelas'         => $this->ModelPeserta->kelas(),
             'provinsi'      => $this->ModelWilayah->provinsi(),
@@ -152,7 +155,7 @@ class Peserta extends BaseController
             'hasil'         => $this->ModelPenghasilan->AllData(),
             'siswa'         => $this->ModelPeserta->DataPeserta($nisn),
             'validation'    =>  \Config\Services::validation(),
-            'rekamdidik'    => $this->ModelPeserta->rekamdidik($nisn)
+            'rekamdidik'    => $this->ModelPeserta->rekamdidik($nisn),
         ];
         return view('admin/peserta/v_detail_siswa', $data);
     }
@@ -194,7 +197,11 @@ class Peserta extends BaseController
     {
         $data = [
             'nisn' => $nisn,
-            'aktif' => 0
+            'aktif' => 0,
+            'status_daftar' => 5,
+            'status' => $this->request->getPost('status'),
+            'catatan' => $this->request->getPost('catatan'),
+            'sekolah' => $this->request->getPost('sekolah'),
         ];
         $this->ModelPeserta->edit($data);
         session()->setFlashdata('pesan', 'Reset Berhasil !!!');
@@ -488,9 +495,17 @@ class Peserta extends BaseController
 
     public function dataKabupaten($id_provinsi)
     {
+
         $data = $this->ModelWilayah->getKabupaten($id_provinsi);
         echo '<option>--Pilih Kabupaten--</option>';
         foreach ($data as $value) {
+            // if ($siswa['kabupaten'] == $value['id_provinsi']) {
+            //     $select = "selected";
+            // } else {
+            //     $select = "";
+            // }
+            // echo "<option value=" . $value['id_kabupaten'] . " $select>" . $value['city_name'] . "</option>";
+
             echo '<option value="' . $value['id_kabupaten'] . '">' . $value['city_name'] . '</option>';
         }
     }
@@ -584,6 +599,7 @@ class Peserta extends BaseController
         $nisn           = $_POST['nisn'];
         $id_tingkat     = $_POST['id_tingkat'];
         $aktif          = $_POST['aktif'];
+        $status_daftar          = $_POST['status_daftar'];
 
 
         $jml_siswa = count($nisn);
@@ -592,6 +608,7 @@ class Peserta extends BaseController
                 'nisn' =>       $nisn[$i],
                 'id_tingkat' => $id_tingkat[$i],
                 'aktif' =>      $aktif[$i],
+                'status_daftar' =>      $status_daftar[$i],
             );
             $this->ModelPeserta->edit($data);
         }
